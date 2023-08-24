@@ -5,3 +5,59 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+
+.card-code {
+    background: #2B2B2B;
+    margin-bottom: 10rem;
+}
+
+.card-offers {
+    background: var(--background, #1C1C1C);
+    display: flex;
+    padding: 2rem 0rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.75rem;
+    align-self: stretch;
+}
+
+h1 {
+    font-family: Work Sans;
+    font-size: 2.375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   
+}
+
+.btn-code {
+
+    border-radius: 1.25rem;
+    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+    display: flex;
+    height: 3.75rem;
+    padding: 0rem 1.875rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    margin-left: 70rem;
+}
+
+.btn {
+    border-radius: 1.25rem;
+    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+    display: flex;
+    height: 3.75rem;
+    padding: 0rem 1.875rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+}
