@@ -94,8 +94,10 @@ def getUserById(user_id):
             "username": user.username,
             "first_name": user.first_name,
             "last_name": user.last_name,
+            "phone": user.phone,
             #"role":user.role,
-            "question_security": user.question_security
+            "question_security": user.question_security,
+            "answer_security": user.answer_security
         }
     }
     
@@ -115,6 +117,7 @@ def getUserByUsername(user_username):
             "username": user.username,
             "first_name": user.first_name,
             "last_name": user.last_name,
+            "phone": user.phone,
             #"role":user.role,
             "question_security": user.question_security,
             "answer_security": user.answer_security
@@ -175,6 +178,53 @@ def addUser():
     }
     
     return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>', methods=['PUT'])
+def updateUser(user_id):
+    request_body = request.get_json(force=True)
+    user = User.query.get(user_id)
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
+    if "first_name" in request_body:
+        user.first_name = request_body['first_name']
+        
+    if "last_name" in request_body:
+        user.last_name = request_body['last_name']
+    
+    """ if "role" in request_body:
+        user.role = request_body['role'] """
+    
+    if "phone" in request_body:
+        user.phone = request_body['phone']
+    
+    if "password" in request_body:
+        user.password = request_body['password']
+        
+    user.update()
+    
+    response_body = {
+        "msg": "ok",
+        "User": user.serialize()
+    }
+    
+    return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>', methods=['DELETE'])
+def deleteUser(user_id):
+    user = User.query.get(user_id)
+    
+    if user is None:
+        raise APIException('User not found', status_code=404)
+    
+    user.delete()
+    
+    response_body = {
+        "msg": "ok"
+    }
+    
+    return jsonify(response_body)
+        
     
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
