@@ -24,12 +24,11 @@ class User(db.Model):
             "username": self.username,
             "first_name": self.first_name,
             "last_name": self.last_name,
-            "role":self.role,
+            #"role":self.role,
             "question_security": self.question_security
             # do not serialize the password, its a security breach
         }
-        
-        
+          
     def save(self):
         db.session.add(self)
         db.commit()
@@ -47,9 +46,30 @@ class Client (db.Model):
     first_name = db.Column(db.String(80), nullable=False)
     last_name = db.Column(db.String(80), nullable=False)
     phone = db.Column(db.String(20), nullable=False)
-     
+    
+    def __repr__(self):
+        return f'<Client {self.first_name + " " + self.last_name}>'
+    
+    def __serialize__(self):
+        return {
+            "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "phone": self.phone
+        }
+        
+    def save(self):
+        db.session.add(self)
+        db.commit()
+    
+    def update(self):
+        db.session.commit()
+        
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit() 
 
-class Jobs(db.Model):
+class Job(db.Model):
     id = db.Column(db.Integer, primary_key=(True))
     code = db.Column(db.String(80), unique=True, nullable=False)
     #type = db.Column(db.Enum("laptop", "monitor", "cpu", "printer", "ups", name="type"), nullable=False)
@@ -64,3 +84,34 @@ class Jobs(db.Model):
     id_client = db.Column(db.Integer, db.ForeignKey(Client.id))
     technical = db.relationship(User)
     client = db.relationship(Client)
+    
+    def __repr__(self):
+        return f'<Job {self.code}>'
+    
+    def __serialize__(self):
+        return{
+            "id": self.id,
+            "code": self.code,
+            #"type": self.type,
+            "brand": self.brand,
+            "model": self.model,
+            "serial_number": self.serial_number,
+            #"status": self.status,
+            "issues": self.issues,
+            "comment": self.comments,
+            "time_stamps": self.time_stamp,
+            "technical": self.technical,
+            "client": self.client
+        }
+    
+    
+    def save(self):
+        db.session.add(self)
+        db.commit()
+    
+    def update(self):
+        db.session.commit()
+        
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
