@@ -10,6 +10,7 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     first_name = db.Column(db.String(80), nullable=False)
     last_name = db.Column(db.String(80), nullable=False)
+    phone = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(250), nullable=False)
     #role = db.Column(db.String(Roles, name="role"), nullable=False)
     question_security = db.Column(db.String(150), nullable=False)
@@ -24,14 +25,16 @@ class User(db.Model):
             "username": self.username,
             "first_name": self.first_name,
             "last_name": self.last_name,
+            "phone": self.phone,
             #"role":self.role,
-            "question_security": self.question_security
+            "question_security": self.question_security,
+            "answer_security": self.answer_security
             # do not serialize the password, its a security breach
         }
           
     def save(self):
         db.session.add(self)
-        db.commit()
+        db.session.commit()
     
     def update(self):
         db.session.commit()
@@ -60,7 +63,7 @@ class Client (db.Model):
         
     def save(self):
         db.session.add(self)
-        db.commit()
+        db.session.commit()
     
     def update(self):
         db.session.commit()
@@ -107,7 +110,7 @@ class Job(db.Model):
     
     def save(self):
         db.session.add(self)
-        db.commit()
+        db.session.commit()
     
     def update(self):
         db.session.commit()
