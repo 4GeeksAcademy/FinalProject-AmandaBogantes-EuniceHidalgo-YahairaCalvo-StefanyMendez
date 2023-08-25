@@ -53,7 +53,7 @@ class Client (db.Model):
     def __repr__(self):
         return f'<Client {self.first_name + " " + self.last_name}>'
     
-    def __serialize__(self):
+    def serialize(self):
         return {
             "id": self.id,
             "first_name": self.first_name,
@@ -91,7 +91,7 @@ class Job(db.Model):
     def __repr__(self):
         return f'<Job {self.code}>'
     
-    def __serialize__(self):
+    def serialize(self):
         return{
             "id": self.id,
             "code": self.code,
