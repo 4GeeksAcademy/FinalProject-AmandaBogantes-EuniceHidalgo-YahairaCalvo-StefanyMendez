@@ -2,7 +2,6 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 body{
-
   background: #1C1C1C;
 }
 .navbar, .footer{
@@ -81,4 +80,3 @@ color: white;
 .footer-title{
   color:#D04E8D
 }
-
