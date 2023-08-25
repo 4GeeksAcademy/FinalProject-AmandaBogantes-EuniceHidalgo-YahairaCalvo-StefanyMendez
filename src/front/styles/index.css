@@ -1,3 +1,82 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+body{
+  background: #1C1C1C;
+}
+.navbar, .footer{
+    background: #41206C;
+    font-family: 'Russo One', sans-serif;
+
+  line-height: 140%;
+}
+
+.nav-link{
+  color: rgb(255, 255, 255);
+
+  &:hover{
+    color: #22B5BE;
+    -webkit-transform: translateY(-0.25em);
+    transform: translateY(-0.25em);
+  }
+}
+
+.btn-login, .btn-account{
+  color: white;
+  height: 2.8rem;
+  padding: 0px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 20px;
+  background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+  &:hover{
+    box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
+  }
+  &:active{
+    -webkit-transform: translateY(0.25em);
+    transform: translateY(0.25em);
+  }
+}
+.nav-img{
+  width: 4rem;
+  height: 3.5rem;
+}
+.navbar-toggler{
+  color: white;
+}
+.dropdown-menu{
+  background: #41206C;
+  border:none;
+
+}
+.dropdown-item{
+  color:white;
+  &:hover{
+      background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+  }
+}
+.hr-footer{
+  width: 95%;
+}
+
+.link-footer{
+color: white;
+&:hover{
+  color: #22B5BE;
+}
+}
+.icon{
+  position: relative;
+  color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55,0.265,1.55);
+  
+  &:hover{
+    color: #D04E8D;
+  }
+}
+.footer-title{
+  color:#D04E8D
+}
