@@ -281,6 +281,113 @@ def protected():
     return jsonify({"msg": "Token approved", "identity": identity}), 200
 
 
+# <-- Client -->
+
+
+@app.route("/client", methods=["GET"])
+def getClients():
+    client = Client.query.all()
+
+    if client is None:
+        raise APIException("Clients not found", status_code=404)
+
+    clients = list(map(lambda client: client.serialize(), client))
+
+    response_body = {"msg": "ok", "clients": clients}
+
+    return jsonify(response_body), 200
+
+
+@app.route("/client/<int:client_id>", methods=["GET"])
+def getClient(client_id):
+    client = Client.query.get(client_id)
+
+    if client is None:
+        raise APIException("Client not found", status_code=404)
+
+    response_body = {
+        "msg": "ok",
+        "Client": {
+            "id": client.id,
+            "first_name": client.first_name,
+            "last_name": client.last_name,
+            "phone": client.phone,
+        },
+    }
+
+    return jsonify(response_body), 200
+
+
+@app.route("/client", methods=["POST"])
+def addClient():
+    request_body = request.get_json(force=True, silent=True)
+
+    if request_body is None:
+        raise APIException("You must send information", 400)
+
+    if "first_name" not in request_body:
+        raise APIException("The first name is required", status_code=404)
+
+    if "last_name" not in request_body:
+        raise APIException("The last name is required")
+
+    if "phone" not in request_body:
+        raise APIException("The phone is required")
+
+    client = Client(
+        first_name=request_body["first_name"],
+        last_name=request_body["last_name"],
+        phone=request_body["phone"],
+    )
+
+    client.save()
+
+    response_body = {"msg": "ok", "client": client.serialize()}
+
+    return jsonify(response_body), 200
+
+
+@app.route("/client/<int:client_id>", methods=["PUT"])
+def updateClient(client_id):
+    request_body = request.get_json(force=True, silent=True)
+    client = Client.query.get(client_id)
+
+    if client is None:
+        raise APIException("Client not found", status_code=404)
+
+    if request_body is None:
+        raise APIException("You must send information", status_code=400)
+
+    if "first_name" in request_body:
+        client.first_name = request_body["first_name"]
+
+    if "last_name" in request_body:
+        client.last_name = request_body["last_name"]
+
+    if "phone" in request_body:
+        client.phone = request_body["phone"]
+
+    client.update()
+
+    response_body = {"msg": "ok", "client": client.serialize()}
+
+    return jsonify(response_body), 200
+
+
+@app.route("/client/<int:client_id>", methods=["DELETE"])
+def deleteClient(client_id):
+    client = Client.query.get(client_id)
+
+    if client is None:
+        raise APIException("Client not found", status_code=400)
+
+    client.delete()
+
+    response_body = {"msg": "ok", "client": client.serialize()}
+
+    return jsonify(response_body), 200
+
+
 # this only runs if `$ python src/main.py` is executed
 if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 3001))
