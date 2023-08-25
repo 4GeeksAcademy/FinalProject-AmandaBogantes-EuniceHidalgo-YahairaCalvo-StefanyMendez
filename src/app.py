@@ -73,7 +73,7 @@ def sitemap():
 
 
 # any other endpoint will try to serve it like a static file
-@app.route("/<path:path>", methods=["GET"])
+@app.route("/<path:path>", methods=['GET'])
 def serve_any_other_file(path):
     if not os.path.isfile(os.path.join(static_file_dir, path)):
         path = "index.html"
@@ -82,7 +82,7 @@ def serve_any_other_file(path):
     return response
 
 
-@app.route("/user", methods=["GET"])
+@app.route('/user', methods=['GET'])
 def getUsers():
     user = User.query.all()
 
@@ -91,11 +91,15 @@ def getUsers():
 
     users = list(map(lambda user: user.serialize(), user))
 
-    response_body = {"msg": "ok", "Users": users}
+    response_body = {
+        "msg": "ok",
+        "Users": users
+    }
+
     return jsonify(response_body), 200
 
 
-@app.route("/user/<int:user_id>", methods=["GET"])
+@app.route('/user/<int:user_id>', methods=['GET'])
 def getUserById(user_id):
     user = User.query.get(user_id)
 
@@ -119,7 +123,7 @@ def getUserById(user_id):
     return jsonify(response_body), 200
 
 
-@app.route("/user/<string:user_username>", methods=["GET"])
+@app.route('/user/<string:user_username>', methods=['GET'])
 def getUserByUsername(user_username):
     user = User.query.filter_by(username=user_username).first()
 
@@ -143,7 +147,7 @@ def getUserByUsername(user_username):
     return jsonify(response_body), 200
 
 
-@app.route("/user", methods=["POST"])
+@app.route('/user', methods=['POST'])
 def addUser():
     request_body = request.get_json(force=True, silent=True)
 
@@ -169,35 +173,42 @@ def addUser():
     # raise APIException("The role is required", status_code=404)
 
     if "question_security" not in request_body:
-        raise APIException("The question security is required", status_code=404)
+        raise APIException(
+            "The question security is required", status_code=404)
 
     if "answer_security" not in request_body:
         raise APIException("The answer security is required", status_code=404)
 
-    username_exist = User.query.filter_by(username=request_body["username"]).first()
+    username_exist = User.query.filter_by(
+        username=request_body['username']).first()
 
     if username_exist:
         raise APIException("The username already exist", status_code=400)
 
-    pw_hash = bcrypt.generate_password_hash(request_body["password"]).decode("utf-8")
+    pw_hash = bcrypt.generate_password_hash(
+        request_body['password']).decode("utf-8")
 
     user = User(
-        username=request_body["username"],
-        first_name=request_body["first_name"],
-        last_name=request_body["last_name"],
-        phone=request_body["phone"],
+        username=request_body['username'],
+        first_name=request_body['first_name'],
+        last_name=request_body['last_name'],
+        phone=request_body['phone'],
         password=pw_hash,
         # role = request_body['#role'],
-        question_security=request_body["question_security"],
-        answer_security=request_body["answer_security"],
+        question_security=request_body['question_security'],
+        answer_security=request_body['answer_security'],
     )
     user.save()
-    response_body = {"msg": "ok", "User": user.serialize()}
+    
+    response_body = {
+        "msg": "ok", 
+        "User": user.serialize()
+        }
 
     return jsonify(response_body), 200
 
 
-@app.route("/user/<int:user_id>", methods=["PUT"])
+@app.route('/user/<int:user_id>', methods=['PUT'])
 def updateUser(user_id):
     request_body = request.get_json(force=True, silent=True)
     user = User.query.get(user_id)
@@ -209,28 +220,31 @@ def updateUser(user_id):
         raise APIException("You must send information", status_code=404)
 
     if "first_name" in request_body:
-        user.first_name = request_body["first_name"]
+        user.first_name = request_body['first_name']
 
     if "last_name" in request_body:
-        user.last_name = request_body["last_name"]
+        user.last_name = request_body['last_name']
 
     """ if "role" in request_body:
         user.role = request_body['role'] """
 
     if "phone" in request_body:
-        user.phone = request_body["phone"]
+        user.phone = request_body['phone']
 
     if "password" in request_body:
-        user.password = request_body["password"]
+        user.password = request_body['password']
 
     user.update()
 
-    response_body = {"msg": "ok", "User": user.serialize()}
+    response_body = {
+        "msg": "ok", 
+        "User": user.serialize()
+        }
 
     return jsonify(response_body), 200
 
 
-@app.route("/user/<int:user_id>", methods=["DELETE"])
+@app.route('/user/<int:user_id>', methods=['DELETE'])
 def deleteUser(user_id):
     user = User.query.get(user_id)
 
@@ -239,7 +253,9 @@ def deleteUser(user_id):
 
     user.delete()
 
-    response_body = {"msg": "ok"}
+    response_body = {
+        "msg": "ok"
+        }
 
     return jsonify(response_body)
 
@@ -247,7 +263,7 @@ def deleteUser(user_id):
 # <-- Login -->
 
 
-@app.route("/login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def addLogin():
     request_body = request.get_json(force=True, silent=True)
 
@@ -260,31 +276,30 @@ def addLogin():
     if "password" not in request_body:
         raise APIException("The password is required", status_code=404)
 
-    user_data = User.query.filter_by(username=request_body["username"]).first()
+    user_data = User.query.filter_by(username=request_body['username']).first()
 
     if user_data is None:
         raise APIException("The user is incorrect", status_code=404)
 
-    if user_data.password != request_body["password"]:
+    if user_data.password != request_body['password']:
         raise APIException("The password is incorrect")
 
-    access_token = create_access_token(identity=request_body["username"])
+    access_token = create_access_token(identity=request_body['username'])
 
     return jsonify(access_token=access_token), 200
 
 
-@app.route("/protected", methods=["GET"])
+@app.route('/protected', methods=['GET'])
 @jwt_required()
 def protected():
     identity = get_jwt_identity()
 
     return jsonify({"msg": "Token approved", "identity": identity}), 200
 
-
 # <-- Client -->
 
 
-@app.route("/client", methods=["GET"])
+@app.route('/client', methods=['GET'])
 def getClients():
     client = Client.query.all()
 
@@ -293,12 +308,15 @@ def getClients():
 
     clients = list(map(lambda client: client.serialize(), client))
 
-    response_body = {"msg": "ok", "clients": clients}
+    response_body = {
+        "msg": "ok", 
+        "clients": clients
+        }
 
     return jsonify(response_body), 200
 
 
-@app.route("/client/<int:client_id>", methods=["GET"])
+@app.route('/client/<int:client_id>', methods=['GET'])
 def getClient(client_id):
     client = Client.query.get(client_id)
 
@@ -318,7 +336,7 @@ def getClient(client_id):
     return jsonify(response_body), 200
 
 
-@app.route("/client", methods=["POST"])
+@app.route('/client', methods=['POST'])
 def addClient():
     request_body = request.get_json(force=True, silent=True)
 
@@ -335,19 +353,22 @@ def addClient():
         raise APIException("The phone is required")
 
     client = Client(
-        first_name=request_body["first_name"],
-        last_name=request_body["last_name"],
-        phone=request_body["phone"],
+        first_name=request_body['first_name'],
+        last_name=request_body['last_name'],
+        phone=request_body['phone'],
     )
 
     client.save()
 
-    response_body = {"msg": "ok", "client": client.serialize()}
+    response_body = {
+        "msg": "ok", 
+        "client": client.serialize()
+        }
 
     return jsonify(response_body), 200
 
 
-@app.route("/client/<int:client_id>", methods=["PUT"])
+@app.route('/client/<int:client_id>', methods=['PUT'])
 def updateClient(client_id):
     request_body = request.get_json(force=True, silent=True)
     client = Client.query.get(client_id)
@@ -359,22 +380,25 @@ def updateClient(client_id):
         raise APIException("You must send information", status_code=400)
 
     if "first_name" in request_body:
-        client.first_name = request_body["first_name"]
+        client.first_name = request_body['first_name']
 
     if "last_name" in request_body:
-        client.last_name = request_body["last_name"]
+        client.last_name = request_body['last_name']
 
     if "phone" in request_body:
-        client.phone = request_body["phone"]
+        client.phone = request_body['phone']
 
     client.update()
 
-    response_body = {"msg": "ok", "client": client.serialize()}
+    response_body = {
+        "msg": "ok", 
+        "client": client.serialize()
+        }
 
     return jsonify(response_body), 200
 
 
-@app.route("/client/<int:client_id>", methods=["DELETE"])
+@app.route('/client/<int:client_id>', methods=['DELETE'])
 def deleteClient(client_id):
     client = Client.query.get(client_id)
 
@@ -383,24 +407,30 @@ def deleteClient(client_id):
 
     client.delete()
 
-    response_body = {"msg": "ok", "client": client.serialize()}
+    response_body = {
+        "msg": "ok", 
+        "client": client.serialize()
+        }
 
     return jsonify(response_body), 200
+
 
 @app.route('/job', methods=['GET'])
 def getJobs():
     job = Job.query.all()
-    
+
     if job is None:
         raise APIException("Jobs not found")
-    
+
     jobs = list(map(lambda job: job.serialize(), job))
-    
+
     response_body = {
         "msg": "ok",
         "Jobs": jobs
     }
     return jsonify(response_body), 200
+
+
 # this only runs if `$ python src/main.py` is executed
 if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 3001))
