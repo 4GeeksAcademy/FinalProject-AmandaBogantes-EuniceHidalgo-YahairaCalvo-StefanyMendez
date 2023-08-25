@@ -225,6 +225,20 @@ def deleteUser(user_id):
     
     return jsonify(response_body)
         
+@app.route('/job', methods=['GET'])
+def getJobs():
+    job = Job.query.all()
+    
+    if job is None:
+        raise APIException("Jobs not found")
+    
+    jobs = list(map(lambda job: job.serialize(), job))
+    
+    response_body = {
+        "msg": "ok",
+        "Jobs": jobs
+    }
+    return jsonify(response_body), 200
     
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
