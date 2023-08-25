@@ -103,8 +103,8 @@ class Job(db.Model):
             "issues": self.issues,
             "comment": self.comments,
             "time_stamps": self.time_stamp,
-            "technical": self.technical,
-            "client": self.client
+            "technical": self.technical.serialize(),
+            "client": self.client.serialize()
         }
     
     
