@@ -7,16 +7,18 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, User, Client, Job
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+from flask_bcrypt import Bcrypt
 
 #from models import Person
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 app.url_map.strict_slashes = False
 
 # database condiguration
@@ -63,7 +65,167 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0 # avoid cache memory
     return response
 
+@app.route('/user', methods=['GET'])
+def getUsers():
+    user = User.query.all()
+    
+    if user is None:
+        raise APIException("Users not found", status_code=400)
+    
+    users = list(map(lambda user: user.serialize(), user))
 
+    response_body = {
+        "msg": "ok",
+        "Users": users
+    }
+    return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>', methods=['GET'])
+def getUserById(user_id):
+    user = User.query.get(user_id)
+    
+    if user is None:
+        raise APIException("User not found", status_code=400)
+    
+    response_body = {
+        "msg": "ok",
+        "User": {
+            "id": user.id,
+            "username": user.username,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "phone": user.phone,
+            #"role":user.role,
+            "question_security": user.question_security,
+            "answer_security": user.answer_security
+        }
+    }
+    
+    return jsonify(response_body), 200
+
+@app.route('/user/<string:user_username>', methods=['GET'])
+def getUserByUsername(user_username):
+    user = User.query.filter_by(username = user_username).first()
+    
+    if user is None:
+        raise APIException("User not found", status_code=400)
+    
+    response_body = {
+        "msg": "ok",
+        "User": {
+            "id": user.id,
+            "username": user.username,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "phone": user.phone,
+            #"role":user.role,
+            "question_security": user.question_security,
+            "answer_security": user.answer_security
+        }
+    }
+    
+    return jsonify(response_body), 200
+
+@app.route('/user', methods=['POST'])
+def addUser():
+    request_body = request.get_json(force=True)
+    
+    if "username" not in request_body:
+        raise APIException("The username is requiered", status_code=404)
+    
+    if "first_name" not in request_body:
+        raise APIException("The first name is requiered", status_code=404)
+    
+    if "last_name" not in request_body:
+        raise APIException("The last name is requiered", status_code=404)
+    
+    if "phone" not in request_body:
+        raise APIException("The phone is requiered", status_code=404)
+    
+    if "password" not in request_body:
+        raise APIException("The password is requiered", status_code=404)
+    
+    #if "role" not in request_body:
+        #raise APIException("The role is requiered", status_code=404)
+        
+    if "question_security" not in request_body:
+        raise APIException("The question security is requiered", status_code=404)
+    
+    if "answer_security" not in request_body:
+        raise APIException("The answer security is requiered", status_code=404)
+    
+    username_exist = User.query.filter_by(username = request_body['username']).first()
+    
+    if username_exist:
+        raise APIException("The username already exist", status_code=400)
+    
+    pw_hash = bcrypt.generate_password_hash(request_body['password']).decode('utf-8')
+
+    user = User(
+        username = request_body['username'],
+        first_name = request_body['first_name'],
+        last_name = request_body['last_name'],
+        phone = request_body['phone'],
+        password = pw_hash,
+        #role = request_body['#role'],
+        question_security = request_body['question_security'],
+        answer_security = request_body['answer_security'],
+    )
+    user.save()
+    response_body = {
+        "msg": "ok",
+        "User": user.serialize()
+    }
+    
+    return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>', methods=['PUT'])
+def updateUser(user_id):
+    request_body = request.get_json(force=True)
+    user = User.query.get(user_id)
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
+    if "first_name" in request_body:
+        user.first_name = request_body['first_name']
+        
+    if "last_name" in request_body:
+        user.last_name = request_body['last_name']
+    
+    """ if "role" in request_body:
+        user.role = request_body['role'] """
+    
+    if "phone" in request_body:
+        user.phone = request_body['phone']
+    
+    if "password" in request_body:
+        user.password = request_body['password']
+        
+    user.update()
+    
+    response_body = {
+        "msg": "ok",
+        "User": user.serialize()
+    }
+    
+    return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>', methods=['DELETE'])
+def deleteUser(user_id):
+    user = User.query.get(user_id)
+    
+    if user is None:
+        raise APIException('User not found', status_code=404)
+    
+    user.delete()
+    
+    response_body = {
+        "msg": "ok"
+    }
+    
+    return jsonify(response_body)
+        
+    
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
