@@ -5,3 +5,108 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+/*
+    ---------------------------------------up--------------------------
+*/
+.card-home-title {
+    margin: 2rem;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*------------------------------------------CARDCODE---------------------------------------- */
+
+.card-code {
+    width: 90rem;
+    height: 40rem;
+    margin: auto;
+    background: linear-gradient(to right, transparent, rgba(199, 114, 241, 0.721)), url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    max-width: 90rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-control {
+    width: 24rem;
+    height: 3rem;
+}
+
+.btn-code {
+    color: white;
+    height: 4rem;
+    padding: 0px 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+
+    &:hover {
+        box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
+    }
+
+    &:active {
+        -webkit-transform: translateY(0.25em);
+        transform: translateY(0.25em);
+    }
+}
+
+
+/*------------------------------------------CARDPRODUCTS----------------------------------------*/
+.carousel {
+    width: 100%;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+/*------------------------------------------CARDOFFERS----------------------------------------*/
+.cardOffers {
+    width: 20rem;
+    color: aliceblue;
+    overflow: inherit;
+
+}
+
+h3 {
+    text-align: center;
+    color: white;
+    margin: 2rem;
+    font-family: Work Sans;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    border-radius: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+/*------------------------------------------RESPONSIVE----------------------------------------*/
+/* Media query for small devices */
+@media (max-width: 768px) {
+    .card-code {
+        width: 100%;
+        height: auto;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .btn-code {
+        width: 100%;
+        text-align: center;
+    }
+
+    .carousel {
+        width: 100%;
+    }
+}
