@@ -1,0 +1,45 @@
+.container{
+    background:  #41206C;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  
+}
+
+.lh1{
+    color: white;
+}
+
+.form-label {
+  text-decoration: none;
+}
+
+
+
+.form-control{
+   
+    border-radius: 20px;
+   
+}
+
+.btnLogin{
+    color: white;
+    border-radius: 20px;
+    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+    &:hover{
+      box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
+    }
+    &:active{
+      -webkit-transform: translateY(0.25em);
+      transform: translateY(0.25em);
+    }
+  }
+
+  
+
+
+
+
+
