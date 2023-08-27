@@ -304,7 +304,7 @@ def protected():
         "first_name": user.first_name,
         "last_name": user.last_name,
         "phone": user.phone,
-        # "role": user.role,
+        "role": user.role,
         "question_security": user.question_security,
         "answer_security": user.answer_security
     }
