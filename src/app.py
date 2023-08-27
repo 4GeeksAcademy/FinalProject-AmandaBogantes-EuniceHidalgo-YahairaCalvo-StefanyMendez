@@ -292,9 +292,24 @@ def addLogin():
 @app.route('/protected', methods=['GET'])
 @jwt_required()
 def protected():
-    identity = get_jwt_identity()
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
 
-    return jsonify({"msg": "Token approved", "identity": identity}), 200
+    if user is None:
+        return jsonify({"message": "User not found"}), 404
+    
+    response_body = {
+        "id": user.id,
+        "username": user.username,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "phone": user.phone,
+        "role": user.role,
+        "question_security": user.question_security,
+        "answer_security": user.answer_security
+    }
+
+    return jsonify(response_body), 200
 
 # <-- Client -->
 
