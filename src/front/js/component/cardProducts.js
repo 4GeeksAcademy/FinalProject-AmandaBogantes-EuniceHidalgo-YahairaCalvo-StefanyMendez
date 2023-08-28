@@ -7,7 +7,8 @@ export const cardProducts = ({ }, ...props) => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="carousel">
+        <div className="carousel ">
+          <h3>  Unveiling Technological Marvels: Exploring the Latest Breakthroughs in Tech</h3>
             <div id="carouselExampleDark" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -23,14 +24,14 @@ export const cardProducts = ({ }, ...props) => {
             </div>
           </div>
           <div className="carousel-item" data-bs-interval="2000">
-            <img src="https://tecnobits.net/wp-content/uploads/2020/11/pc-gama-extrema-2021-tecnobits-rtx-3090.jpg" className="d-block w-100" alt="..."/>
+            <img src="https://pbblogassets.s3.amazonaws.com/uploads/2020/07/13110748/Build-an-editing-PC.jpg" className="d-block w-100" alt="..."/>
             <div className="carousel-caption d-none d-md-block">
               <h5>Second slide label</h5>
               <p>Some representative placeholder content for the second slide.</p>
             </div>
           </div>
           <div className="carousel-item">
-            <img src="https://img.freepik.com/fotos-premium/fragmento-componentes-hardware-computadora-interior-potente-procesador_407240-1423.jpg" className="d-block w-100" alt="..."/>
+            <img src="https://www.cnet.com/a/img/resize/030de97d0662cd1deac67e0878561d13f82e7e91/hub/2021/06/01/c9b522da-25c1-4265-8738-435a6c06d0fa/nvidia-geforce-rtx-3080-ti-dsc02684.jpg?auto=webp&fit=crop&height=900&width=1200" className="d-block w-100" alt="..."/>
             <div className="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>Some representative placeholder content for the third slide.</p>

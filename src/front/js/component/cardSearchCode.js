@@ -11,12 +11,12 @@ export const cardSearchCode = ({ }, ...props) => {
             <img className="ms-auto me-3 h-25 w-25" src={Logo}></img>
             <div className="form mt-auto mb-5 text-center">
                 <div className="row mb-3">
-                    <div className="col">
+                    <div className="col-xs-12 col-sm-6 col-md-8">
                         <input type="code" className="form-control" id="Code" placeholder="Your Code Here" />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-xs-12 col-sm-6 col-md-8">
                         <button type="submit" className=" btn btn-code"><i class="fa-solid fa-magnifying-glass"></i>  Search Code</button>
                     </div>
                 </div>
