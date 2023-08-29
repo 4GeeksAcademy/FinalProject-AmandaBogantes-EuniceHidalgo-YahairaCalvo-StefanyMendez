@@ -13,13 +13,9 @@ export const Home = () => {
 
 		<div>
 			<CardSearchCode />
-			{/* <h3 className="card-home-title m-3">Become a EyA Solutiona Rewards member to unlock exclusive perks and more!</h3> */}
 			<CardProducts />
 			<CardInformation />
 			<CardOffers />
-			
-
-
 		</div>
 
 	);

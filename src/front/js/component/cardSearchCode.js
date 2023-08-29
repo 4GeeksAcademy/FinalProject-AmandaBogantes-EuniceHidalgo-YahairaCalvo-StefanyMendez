@@ -1,30 +1,32 @@
-import React, { useContext, useEffect } from "react";
-import PropTypes from "prop-types"
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import Logo from "../../img/logo.png"
+import Logo from "../../img/logo.png";
 
-export const cardSearchCode = ({ }, ...props) => {
+const CardSearchCode = () => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="card-code">
-            <img className="ms-auto me-3 h-25 w-25" src={Logo}></img>
-            <div className="form mt-auto mb-5 text-center">
+        <div className="card-code text-center">
+            <img className="logo ms-auto" src={Logo} alt="Logo" />
+            <form className="form mt-auto mb-5">
                 <div className="row mb-3">
-                    <div className="col-xs-12 col-sm-6 col-md-8">
+                    <div className="col-xs-12">
                         <input type="code" className="form-control" id="Code" placeholder="Your Code Here" />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-xs-12 col-sm-6 col-md-8">
-                        <button type="submit" className=" btn btn-code"><i class="fa-solid fa-magnifying-glass"></i>  Search Code</button>
+                    <div className="col-xs-12">
+                        <button type="submit" className="btn btn-code"><i className="fas fa-search"></i> Search Code</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    )
-}
-cardSearchCode.propTypes = {
+    );
+};
+
+CardSearchCode.propTypes = {
     job: PropTypes.object
-}
-export default cardSearchCode
+};
+
+export default CardSearchCode;

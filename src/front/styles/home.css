@@ -6,16 +6,6 @@
     on that page only (the ones not reused in other pages).
 */
 
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px; 
-    z-index: 1000; 
-}
-
 /*  ---------------------------------------up--------------------------*/
 .card-home-title {
     margin: 2rem;
@@ -24,15 +14,15 @@
     font-weight: 600;
     line-height: 120%;
     text-transform: capitalize;
-    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%,  #41206C 100%));
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #41206C 100%));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 h3 {
-    font-size: 6rem;
-    margin-top: 7rem;
+    font-size: 3rem;
+    margin-top: 2rem;
     margin-bottom: 3rem;
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
@@ -45,7 +35,7 @@ h3 {
     -webkit-text-fill-color: transparent;
     display: inline-block;
     animation: moveLeftRight 5s ease forwards;
-    
+
 }
 
 h6 {
@@ -54,7 +44,8 @@ h6 {
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%; /* 1.4rem */
+    line-height: 140%;
+    /* 1.4rem */
     position: relative;
     animation: bounceEffect 1.5s ease infinite alternate;
 }
@@ -63,29 +54,37 @@ h6 {
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(-10px);
     }
 }
+
+.titles-Products {
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+
 /*------------------------------------------CARDCODE---------------------------------------- */
 
 .card-code {
-    width: 94rem;
-    height: 40rem;
+    width: 100%;
+    height: 30rem;
     margin: auto;
     background: linear-gradient(to bottom, transparent, rgba(199, 114, 241, 0.721)), url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
     background-size: cover;
     background-position: center;
     margin-bottom: 3rem;
     margin-top: 3rem;
-    max-width: 100%;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
 
+
 }
+
 .btn-code {
     color: white;
     align-items: center;
@@ -107,18 +106,21 @@ h6 {
     width: 30rem;
     height: 3rem;
     max-width: 100%;
+    align-items: center;
 }
 
-
+.logo {
+    margin: 2rem;
+    height: 24%;
+    width: 20%;
+}
 
 /*------------------------------------------CARDPRODUCTS----------------------------------------*/
 .carousel {
-    text-align: center;
+    text-align: start;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     color: white;
-    background: linear-gradient(to bottom, transparent, rgba(199, 114, 241, 0.721))
-    
 }
 
 /*------------------------------------------CARDOFFERS----------------------------------------*/
@@ -127,52 +129,38 @@ h6 {
     color: aliceblue;
     overflow: inherit;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
 }
 
-
 /*------------------------------------------CardInformation----------------------------------------*/
-.container {
-    align-items: flex;
+.container-information {
     background-size: cover;
     max-width: 500rem;
-    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     overflow: auto;
     box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 3rem;
-  
 }
 
-.card-body {
-    border-radius: 1.25rem;
+.card-group-information {
     color: white;
+    margin: 1rem;
     text-align: center;
-    align-items: center;
-    margin: auto;
-}
-
-.card-img-top {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: auto;
-    box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-information {
-    margin: 1rem;
-    display: flex;
-    width: 15rem;
-    height: 20rem;
-    padding: 0.625rem 1.8rem 1.8rem 1.8rem;
-    flex-direction: column;
-    align-items: center;
-    align-self: stretch;
-    border-radius: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 1.25rem;
+    background: #41206C;
     box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
-    background: #41206C
+}
+
+.card-img-top {
+    margin: auto;
+    margin-top: 1rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /*------------------------------------------RESPONSIVE----------------------------------------*/
