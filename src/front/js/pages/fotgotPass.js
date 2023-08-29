@@ -1,6 +1,7 @@
 import React from 'react'
-import '../../styles/forgotP.css'
+import '../../styles/forgotPass.css'
 import logo from "../../img/logo.png"
+import { Link } from 'react-router-dom'
 
 
 const ForgotPass = () => {
@@ -14,7 +15,6 @@ const ForgotPass = () => {
 
             <img src={logo} alt='logo' className='logo1 w-75' />
 
-
             <form className=" forgot mt-3"  >
 
                 <input
@@ -23,7 +23,6 @@ const ForgotPass = () => {
                     placeholder='Username'
                     name='username'
                 />
-
 
                 {/*Dop */}
 
@@ -36,9 +35,7 @@ const ForgotPass = () => {
                     </select>
                 </div>
 
-
                 {/* Respuesta */}
-
                 <input
                     className='form-control mb-3'
                     type='text'
@@ -47,9 +44,11 @@ const ForgotPass = () => {
                 />
 
                 <div className='text-center'>
-                    <button className='btnforgot btn' >Continue</button>
+                    <button className='btnforgot btn'>Continue</button>
+                    <Link to="/login">
+                        <button className='btnforgot btn ms-2'>Cancel</button>
+                    </Link>
                 </div>
-
 
             </form>
 

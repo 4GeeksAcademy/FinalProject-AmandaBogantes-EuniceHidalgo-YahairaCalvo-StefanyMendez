@@ -46,7 +46,9 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item ms-3 me-2 mb-2">
-							<button className="btn btn-login my-1"><i className="fa-regular fa-user me-2"></i>Login</button>
+							<Link to="/login" className="text-decoration-none">
+								<button className="btn btn-login my-1"><i className="fa-regular fa-user me-2"></i>Login</button>
+							</Link>
 						</li>
 
 						<li className="nav-item ms-3 me-2 mb-1">
@@ -56,7 +58,7 @@ export const Navbar = () => {
 								</button>
 								<ul className="dropdown-menu dropdown-menu-lg-end mt-2" aria-labelledby="dropdownMenuButton2">
 									<li className="dropdown-item">
-										<Link to="/" className="text-decoration-none">
+										<Link to="/changePass" className="text-decoration-none">
 											<span className="text-white">Change Password</span>
 										</Link>
 									</li>
@@ -64,7 +66,7 @@ export const Navbar = () => {
 									<li className="dropdown-item">
 										<Link to="/" className="text-decoration-none d-flex">
 											<span className="text-white">Logout</span>
-											<i class="fa-solid fa-right-from-bracket ms-auto text-white"></i>
+											<i className="fa-solid fa-right-from-bracket ms-auto text-white"></i>
 										</Link>
 									</li>
 								</ul>

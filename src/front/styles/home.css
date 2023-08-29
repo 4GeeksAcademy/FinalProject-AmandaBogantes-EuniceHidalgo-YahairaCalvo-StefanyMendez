@@ -88,6 +88,7 @@ h6 {
 .btn-code {
     color: white;
     align-items: center;
+    padding: 0px 30px;
     height: 4rem;
     border-radius: 20px;
     background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
@@ -111,8 +112,8 @@ h6 {
 
 .logo {
     margin: 2rem;
-    height: 24%;
-    width: 20%;
+    height: 32%;
+    width: 18%;
 }
 
 /*------------------------------------------CARDPRODUCTS----------------------------------------*/
@@ -121,6 +122,9 @@ h6 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     color: white;
+}
+.carousel-img{
+    height: 50rem;
 }
 
 /*------------------------------------------CARDOFFERS----------------------------------------*/
@@ -161,6 +165,10 @@ h6 {
     height: 10rem;
     border-radius: 50%;
     box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card-img{
+    height: 50rem;
+    margin-bottom: 5rem;
 }
 
 /*------------------------------------------RESPONSIVE----------------------------------------*/
