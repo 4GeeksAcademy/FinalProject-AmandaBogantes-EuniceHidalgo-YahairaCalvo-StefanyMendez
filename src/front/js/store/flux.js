@@ -46,7 +46,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+
+/* 			addJob: async()=>{
+				const body = {
+					"code":"lsdflknsdfj",
+					"type":"cpu",
+					"brand":"HP",
+					"model":"ljksdfsdsdf2313",
+					"serial_number":"jksdflan56",
+					"status":"finish",
+					"issues":"Tarjeta madre alzo fuego",
+					"comments":"Se le cambio la tarjeta",
+					"id_technical":"14",
+					"id_client":"1"
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + "/job",{
+
+					method:'POST',
+					body: JSON.stringify(body),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+				
+				)
+				const result = await response.json()
+
+				console.log(result)
+			} */
 		}
 	};
 };

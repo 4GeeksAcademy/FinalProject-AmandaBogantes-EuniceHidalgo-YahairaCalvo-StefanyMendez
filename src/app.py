@@ -81,6 +81,8 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+# <----------------- User ----------------------->
+
 
 @app.route('/user', methods=['GET'])
 def getUsers():
@@ -114,7 +116,7 @@ def getUserById(user_id):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "phone": user.phone,
-            # "role":user.role,
+            "role": user.role,
             "question_security": user.question_security,
             "answer_security": user.answer_security,
         },
@@ -138,7 +140,7 @@ def getUserByUsername(user_username):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "phone": user.phone,
-            # "role":user.role,
+            "role": user.role,
             "question_security": user.question_security,
             "answer_security": user.answer_security,
         },
@@ -169,8 +171,8 @@ def addUser():
     if "password" not in request_body:
         raise APIException("The password is required", status_code=404)
 
-    # if "role" not in request_body:
-    # raise APIException("The role is required", status_code=404)
+    if "role" not in request_body:
+        raise APIException("The role is required", status_code=404)
 
     if "question_security" not in request_body:
         raise APIException(
@@ -194,16 +196,16 @@ def addUser():
         last_name=request_body['last_name'],
         phone=request_body['phone'],
         password=pw_hash,
-        # role = request_body['#role'],
+        role=request_body['role'],
         question_security=request_body['question_security'],
         answer_security=request_body['answer_security'],
     )
     user.save()
-    
+
     response_body = {
-        "msg": "ok", 
+        "msg": "ok",
         "User": user.serialize()
-        }
+    }
 
     return jsonify(response_body), 200
 
@@ -225,8 +227,8 @@ def updateUser(user_id):
     if "last_name" in request_body:
         user.last_name = request_body['last_name']
 
-    """ if "role" in request_body:
-        user.role = request_body['role'] """
+    if "role" in request_body:
+        user.role = request_body['role']
 
     if "phone" in request_body:
         user.phone = request_body['phone']
@@ -237,9 +239,9 @@ def updateUser(user_id):
     user.update()
 
     response_body = {
-        "msg": "ok", 
+        "msg": "ok",
         "User": user.serialize()
-        }
+    }
 
     return jsonify(response_body), 200
 
@@ -255,12 +257,12 @@ def deleteUser(user_id):
 
     response_body = {
         "msg": "ok"
-        }
+    }
 
     return jsonify(response_body)
 
 
-# <-- Login -->
+# <----------------- Login ----------------------->
 
 
 @app.route('/login', methods=['POST'])
@@ -311,7 +313,7 @@ def protected():
 
     return jsonify(response_body), 200
 
-# <-- Client -->
+# <----------------- Client ----------------------->
 
 
 @app.route('/client', methods=['GET'])
@@ -324,9 +326,9 @@ def getClients():
     clients = list(map(lambda client: client.serialize(), client))
 
     response_body = {
-        "msg": "ok", 
+        "msg": "ok",
         "clients": clients
-        }
+    }
 
     return jsonify(response_body), 200
 
@@ -376,9 +378,9 @@ def addClient():
     client.save()
 
     response_body = {
-        "msg": "ok", 
+        "msg": "ok",
         "client": client.serialize()
-        }
+    }
 
     return jsonify(response_body), 200
 
@@ -406,9 +408,9 @@ def updateClient(client_id):
     client.update()
 
     response_body = {
-        "msg": "ok", 
+        "msg": "ok",
         "client": client.serialize()
-        }
+    }
 
     return jsonify(response_body), 200
 
@@ -423,11 +425,13 @@ def deleteClient(client_id):
     client.delete()
 
     response_body = {
-        "msg": "ok", 
+        "msg": "ok",
         "client": client.serialize()
-        }
+    }
 
     return jsonify(response_body), 200
+
+# <----------------- Job ----------------------->
 
 
 @app.route('/job', methods=['GET'])
@@ -443,6 +447,202 @@ def getJobs():
         "msg": "ok",
         "Jobs": jobs
     }
+    return jsonify(response_body), 200
+
+
+@app.route('/job/<int:job_id>', methods=['GET'])
+def getJobById(job_id):
+    job = Job.query.get(job_id)
+
+    if job is None:
+        raise APIException("Job not found", status_code=404)
+
+    response_body = {
+        "msg": "ok",
+        "Job": {
+            "id": job.id,
+            "code": job.code,
+            "type": job.type,
+            "brand": job.brand,
+            "model": job.model,
+            "serial_number": job.serial_number,
+            "status": job.status,
+            "issues": job.issues,
+            "comment": job.comments,
+            "time_stamp": job.time_stamp,
+            "technical": job.technical.serialize(),
+            "client": job.client.serialize()
+        }
+    }
+    return jsonify(response_body), 200
+
+
+@app.route('/job/technical/<int:technical_id>', methods=['GET'])
+def getJobsByTechnical(technical_id):
+    job = Job.query.filter_by(id_technical=technical_id)
+    jobs = list(map(lambda job: job.serialize(), job))
+
+    if job is None:
+        raise APIException("Jobs not found", status_code=404)
+
+    response_body = {
+        "msg": "ok",
+        "Jobs": jobs
+    }
+    return jsonify(response_body), 200
+
+
+@app.route('/job/client/<int:client_id>', methods=['GET'])
+def getJobsNyClient(client_id):
+    job = Job.query.filter_by(id_client=client_id)
+    jobs = list(map(lambda job: job.serialize(), job))
+
+    if job is None:
+        raise APIException("Jobs not found", status_code=404)
+
+    response_body = {
+        "msg": "ok",
+        "Jobs": jobs
+    }
+    return jsonify(response_body), 200
+
+
+@app.route('/job/code/<string:code>', methods=['GET'])
+def getJobByCode(code):
+    job = Job.query.filter_by(code=code).first()
+
+    if job is None:
+        raise APIException("Job not found", status_code=404)
+
+    response_body = {
+        "msg": "ok",
+        "Job": job.serialize()
+    }
+
+    return jsonify(response_body), 200
+
+
+@app.route('/job', methods=['POST'])
+def addJob():
+    request_body = request.get_json(force=True, silent=True)
+
+    if request_body is None:
+        raise APIException("You must send information", status_code=400)
+
+    if "code" not in request_body:
+        raise APIException("The code is required", status_code=404)
+
+    if "type" not in request_body:
+        raise APIException("The type is required", status_code=404)
+
+    if "brand" not in request_body:
+        raise APIException("The brand is required", status_code=404)
+
+    if "model" not in request_body:
+        raise APIException("The model is required", status_code=404)
+
+    if "serial_number" not in request_body:
+        raise APIException("The serial number is required", status_code=404)
+
+    if "status" not in request_body:
+        raise APIException("The status is required", status_code=404)
+
+    if "issues" not in request_body:
+        raise APIException("The issues are required", status_code=404)
+
+    if "id_technical" not in request_body:
+        raise APIException("The id technical is required", status_code=404)
+
+    if "id_client" not in request_body:
+        raise APIException("The id client is required", status_code=404)
+
+    job_code_exist = Job.query.filter_by(code=request_body['code']).first()
+
+    if job_code_exist:
+        raise APIException("The code already exist", status_code=400)
+
+    if "comments" in request_body:
+        comments = request_body['comments']
+    else:
+        comments = ""
+
+    job = Job(
+        code=request_body['code'],
+        type=request_body['type'],
+        brand=request_body['brand'],
+        model=request_body['model'],
+        serial_number=request_body['serial_number'],
+        status=request_body['status'],
+        issues=request_body['issues'],
+        comments=comments,
+        id_technical=request_body['id_technical'],
+        id_client=request_body['id_client']
+    )
+    job.save()
+
+    response_body = {
+        "msg": "ok",
+        "Job": job.serialize()
+    }
+
+    return jsonify(response_body), 200
+
+
+@app.route('/job/<int:job_id>', methods=['PUT'])
+def updateJob(job_id):
+    request_body = request.get_json(force=True, silent=True)
+    job = Job.query.get(job_id)
+
+    if job is None:
+        raise APIException("Job not found", status_code=404)
+
+    if request_body is None:
+        raise APIException("You must send information", status_code=404)
+
+    if "type" in request_body:
+        job.type = request_body['type']
+
+    if "brand" in request_body:
+        job.brand = request_body['brand']
+
+    if "model" in request_body:
+        job.model = request_body['model']
+
+    if "serial_number" in request_body:
+        job.serial_number = request_body['serial_number']
+
+    if "status" in request_body:
+        job.status = request_body['status']
+
+    if "comments" in request_body:
+        job.comments = request_body['comments']
+
+    if "id_technical" in request_body:
+        job.id_technical = request_body['id_technical']
+
+    job.update()
+
+    response_body = {
+        "msg": "ok",
+        "Job": job.serialize()
+    }
+
+    return jsonify(response_body), 200
+
+
+@app.route('/job/<int:job_id>', methods=['DELETE'])
+def deleteJob(job_id):
+    job = Job.query.get(job_id)
+
+    if job is None:
+        raise APIException("Job not found", status_code=404)
+
+    job.delete()
+
+    response_body = {
+        "msg": "ok"
+    }
+
     return jsonify(response_body), 200
 
 
