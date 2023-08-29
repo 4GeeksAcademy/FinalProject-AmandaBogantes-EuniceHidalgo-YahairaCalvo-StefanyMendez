@@ -3,7 +3,7 @@ import '../../styles/changeP.css'
 import logo from "../../img/logo.png"
 
 
-const ChangeP = () => {
+const ChangePass = () => {
 
 
     return (
@@ -52,4 +52,4 @@ const ChangeP = () => {
     )
 }
 
-export default ChangeP
+export default ChangePass
