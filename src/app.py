@@ -563,7 +563,6 @@ def addJob():
         id_technical=request_body['id_technical'],
         id_client=request_body['id_client']
     )
-
     job.save()
 
     response_body = {
