@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import Login from "./pages/login";
 import ForgotPass from "./pages/fotgotPass";
 import ChangePass from "./pages/changeP";
+import AboutUs from "./pages/aboutUs";
 
 
 
@@ -34,7 +35,8 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<ForgotPass />} path="/forgotPass" />
-                        <Route element={<ChangePass />} path="/changep" />
+                        <Route element={<ChangePass />} path="/changePass" />
+                        <Route element={<AboutUs />} path="/aboutus" />
                         <Route element={<Single />} path="/single/:theid" />
 
                         <Route element={<h1>Not found!</h1>} />

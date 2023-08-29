@@ -64,7 +64,7 @@ export const Navbar = () => {
 									<li className="dropdown-item">
 										<Link to="/" className="text-decoration-none d-flex">
 											<span className="text-white">Logout</span>
-											<i class="fa-solid fa-right-from-bracket ms-auto text-white"></i>
+											<i className="fa-solid fa-right-from-bracket ms-auto text-white"></i>
 										</Link>
 									</li>
 								</ul>
