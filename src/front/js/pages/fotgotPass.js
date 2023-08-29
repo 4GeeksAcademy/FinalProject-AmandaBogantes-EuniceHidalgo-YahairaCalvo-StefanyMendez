@@ -47,7 +47,7 @@ const ForgotPass = () => {
                 />
 
                 <div className='text-center'>
-                    <button className='btnforgot btn' >Submid</button>
+                    <button className='btnforgot btn' >Continue</button>
                 </div>
 
 
