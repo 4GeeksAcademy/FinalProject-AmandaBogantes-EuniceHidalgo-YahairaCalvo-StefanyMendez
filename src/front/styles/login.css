@@ -1,11 +1,13 @@
-.container{
+.container-login{
+  margin: auto;
     background:  #41206C;
     border-radius: 1rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-  
+  width: fit-content;
+  padding: 2rem;
 }
 
 .lh1{
@@ -25,6 +27,9 @@
 }
 
 .btnLogin{
+   
+   height: 2.8rem;
+   padding: 0px 30px;
     color: white;
     border-radius: 20px;
     background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));

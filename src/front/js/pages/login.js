@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 const Login = () => {
 
     return (
-        <div className='container my-5 w-sm-25' >
+        <div className='container-login my-5 ' >
 
             <h1 className='lh1'>LOGIN</h1>
 
-            <img src={logo} alt='logo' className='logo1' />
+            <img src={logo} alt='logo' className='logo1 w-75' />
 
             <form className=" login mt-3  "  >
 
@@ -38,7 +38,7 @@ const Login = () => {
                 <br></br>
 
                 <div className='text-center'>
-                    <button className='btnLogin btn'>login</button>
+                    <button className='btnLogin btn'>Login</button>
                 </div>
 
 
