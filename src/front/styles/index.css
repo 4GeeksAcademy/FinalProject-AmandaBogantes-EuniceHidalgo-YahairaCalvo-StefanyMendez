@@ -57,7 +57,7 @@ body{
   }
 }
 .hr-footer{
-  width: 95%;
+  width: 100%;
 }
 
 .link-footer{
@@ -79,4 +79,11 @@ color: white;
 }
 .footer-title{
   color:#D04E8D
+}
+@media (max-width: 768px) {
+  .logo-footer{
+    width: 90%;
+    height: 80%;
+  }
+  
 }

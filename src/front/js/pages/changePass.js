@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/changeP.css'
+import '../../styles/changePass.css'
 import logo from "../../img/logo.png"
 
 
@@ -20,25 +20,16 @@ const ChangePass = () => {
                 <input
                     className='form-control mb-3'
                     type='text'
-                    placeholder='Username'
-                    name='username'
-                />
-
-                <input
-                    className='form-control mb-3'
-                    type='text'
                     placeholder='NewPassword'
-                    name='nPassword'
+                    name='´password'
                 />
 
                 <input
                     className='form-control mb-3'
                     type='text'
                     placeholder='ConfirmPassword'
-                    name='nPassword'
+                    name='confirm_password'
                 />
-
-
 
 
                 <div className='text-center'>

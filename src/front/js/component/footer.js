@@ -1,39 +1,15 @@
 import React, { Component } from "react";
-import logo from "../../img/logo-laptop2.png"
 import { Link } from "react-router-dom";
+import logo from "../../img/logo.png"
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3  text-white">
-		<div className="row me-5">
-			<div className="col-6 text-center mt-4">
-				<div className="col">
-					<img src={logo} alt="Logo" className="nav-img d-inline-block align-text-center me-2" />
-					<span className="mb-0 fs-4">EyA Solutions</span>
-					<br></br>
-					<span className="mb-0 ">Teléfono: +(506) 8888-8888</span>
-				</div>
-				<div className="col my-2 ">
-					<span className="mb-0 fs-5">Join our community</span>
-				</div>
-
-				<div className="col icons">
-					<a className="icon" href="https://facebook.com">
-					<span className="tooltip">Facebook</span>
-					<i className="fa-brands fa-facebook ms-2 fs-5"></i>
-					</a>
-					<a className="icon" href="https://instagram.com">
-					<i className="fa-brands fa-instagram ms-2 fs-5"></i>
-					</a>
-					<a className="icon" href="https://twitter.com">
-					<i className="fa-brands fa-twitter ms-2 fs-5"></i>
-					</a>
-					<a className="icon"href="https://youtube.com">
-					<i className="fa-brands fa-youtube ms-2 fs-5"></i>
-					</a>
-						
-				</div>
+	<footer className="footer mt-auto py-3 text-white">
+		<div className="row me-0">
+			<div className="col-lg-4 col-md-12 col-sm-12">
+				<img src={logo} alt="Logo" className="m-auto logo-footer ms-3" />
 			</div>
-			<div className="col-2">
+
+			<div className="col-lg-1 col-md-12 col-sm-12 text-center m-auto">
 				<div className="col mb-2">
 					<span className="fs-4 footer-title">Explore</span>
 				</div>
@@ -67,14 +43,41 @@ export const Footer = () => (
 					</Link>
 				</div>
 
-				<div className="col">
+				<div className="col mb-5">
 					<Link to="/" className="link-footer text-decoration-none">
 						<span className="footer-span">Contact</span>
 					</Link>
 				</div>
+				
 			</div>
+			<div className="col-md-12 col-lg-2 col-sm-12 text-center m-auto">
+				<div className="col">
+					<span className="mb-0 fs-4">EyA Solutions</span>
+					<br></br>
+					<span className="mb-0 ">Phone: +(506) 8888-8888</span>
+				</div>
+				<div className="col my-2 ">
+					<span className="mb-0 fs-5">Join our community</span>
+				</div>
 
-			<hr className="hr-footer m-auto mt-2"></hr>
+				<div className="col icons">
+					<a className="icon" href="https://facebook.com">
+						<span className="tooltip">Facebook</span>
+						<i className="fa-brands fa-facebook ms-2 fs-5"></i>
+					</a>
+					<a className="icon" href="https://instagram.com">
+						<i className="fa-brands fa-instagram ms-2 fs-5"></i>
+					</a>
+					<a className="icon" href="https://twitter.com">
+						<i className="fa-brands fa-twitter ms-2 fs-5"></i>
+					</a>
+					<a className="icon" href="https://youtube.com">
+						<i className="fa-brands fa-youtube ms-2 fs-5"></i>
+					</a>
+
+				</div>
+			</div>
+			<hr className="mt-2 hr-footer"></hr>
 			<span className="text-center mt-3">© Copyright EyA Solutions</span>
 		</div>
 	</footer >
