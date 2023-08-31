@@ -14,6 +14,7 @@ import Login from "./pages/login";
 import ForgotPass from "./pages/fotgotPass";
 import ChangePass from "./pages/changeP";
 import AboutUs from "./pages/aboutUs";
+import OurServices from "./pages/ourServices";
 
 
 
@@ -37,6 +38,7 @@ const Layout = () => {
                         <Route element={<ForgotPass />} path="/forgotPass" />
                         <Route element={<ChangePass />} path="/changePass" />
                         <Route element={<AboutUs />} path="/aboutus" />
+                        <Route element={<OurServices />} path="/ourServices" />
                         <Route element={<Single />} path="/single/:theid" />
 
                         <Route element={<h1>Not found!</h1>} />
