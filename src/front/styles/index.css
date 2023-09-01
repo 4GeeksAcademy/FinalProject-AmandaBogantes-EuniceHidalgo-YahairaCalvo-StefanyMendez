@@ -13,6 +13,7 @@ body{
 
 .nav-link{
   color: rgb(255, 255, 255);
+  
 
   &:hover{
     color: #22B5BE;

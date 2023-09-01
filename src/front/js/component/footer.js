@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png"
+import { Context } from "../store/appContext";
 
-export const Footer = () => (
+export const Footer = () => {
+	const {store, actions} = useContext(Context)
+	return(
 	<footer className="footer mt-auto py-3 text-white">
 		<div className="row me-0">
 			<div className="col-lg-4 col-md-12 col-sm-12">
@@ -14,19 +17,19 @@ export const Footer = () => (
 					<span className="fs-4 footer-title">Explore</span>
 				</div>
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.users}>
 						<span className="footer-span">Users</span>
 					</Link>
 				</div>
 
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.clients}>
 						<span className="footer-span">Clients</span>
 					</Link>
 				</div>
 
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
 						<span className="footer-span">Jobs</span>
 					</Link>
 				</div>
@@ -81,4 +84,4 @@ export const Footer = () => (
 			<span className="text-center mt-3">© Copyright EyA Solutions</span>
 		</div>
 	</footer >
-);
+)};
