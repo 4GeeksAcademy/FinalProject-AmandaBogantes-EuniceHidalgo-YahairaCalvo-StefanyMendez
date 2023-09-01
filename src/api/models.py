@@ -6,7 +6,6 @@ import enum
 
 db = SQLAlchemy()
 
-
 class role(enum.Enum):
     admin = "admin"
     technical = "technical"

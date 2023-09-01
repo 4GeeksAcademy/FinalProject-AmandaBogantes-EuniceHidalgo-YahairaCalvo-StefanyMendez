@@ -116,8 +116,8 @@ def getUserById(user_id):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "phone": user.phone,
-            "role": user.role,
-            "question_security": user.question_security,
+            "role": user.role.name,
+            "question_security": user.question_security.name,
             "answer_security": user.answer_security,
         },
     }
@@ -140,8 +140,8 @@ def getUserByUsername(user_username):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "phone": user.phone,
-            "role": user.role,
-            "question_security": user.question_security,
+            "role": user.role.name,
+            "question_security": user.question_security.name,
             "answer_security": user.answer_security,
         },
     }
@@ -198,7 +198,7 @@ def addUser():
         password=pw_hash,
         role=request_body['role'],
         question_security=request_body['question_security'],
-        answer_security=request_body['answer_security'],
+        answer_security=request_body['answer_security']
     )
     user.save()
 
@@ -221,6 +221,9 @@ def updateUser(user_id):
     if request_body is None:
         raise APIException("You must send information", status_code=404)
 
+    pw_hash = bcrypt.generate_password_hash(
+        request_body['password']).decode("utf-8")
+
     if "first_name" in request_body:
         user.first_name = request_body['first_name']
 
@@ -234,7 +237,7 @@ def updateUser(user_id):
         user.phone = request_body['phone']
 
     if "password" in request_body:
-        user.password = request_body['password']
+        user.password = pw_hash
 
     user.update()
 
@@ -281,14 +284,20 @@ def addLogin():
     user_data = User.query.filter_by(username=request_body['username']).first()
 
     if user_data is None:
-        raise APIException("The user is incorrect", status_code=404)
+        raise APIException("The username is incorrect", status_code=404)
 
-    if user_data.password != request_body['password']:
-        raise APIException("The password is incorrect")
+    if bcrypt.check_password_hash(user_data.password, request_body['password']) is False:
+        raise APIException('The password is incorrect', 401)
 
     access_token = create_access_token(identity=request_body['username'])
 
-    return jsonify(access_token=access_token), 200
+    response_body = {
+        "msg": "ok",
+        "access_token": access_token,
+        "User": user_data.serialize()
+    }
+
+    return jsonify(response_body), 200
 
 
 @app.route('/protected', methods=['GET'])
@@ -299,7 +308,7 @@ def protected():
 
     if user is None:
         return jsonify({"message": "User not found"}), 404
-    
+
     response_body = {
         "id": user.id,
         "username": user.username,
@@ -462,11 +471,11 @@ def getJobById(job_id):
         "Job": {
             "id": job.id,
             "code": job.code,
-            "type": job.type,
+            "type": job.type.name,
             "brand": job.brand,
             "model": job.model,
             "serial_number": job.serial_number,
-            "status": job.status,
+            "status": job.status.name,
             "issues": job.issues,
             "comment": job.comments,
             "time_stamp": job.time_stamp,

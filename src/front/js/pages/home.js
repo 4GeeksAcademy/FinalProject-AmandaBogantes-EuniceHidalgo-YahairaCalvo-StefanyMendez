@@ -4,7 +4,6 @@ import "../../styles/home.css";
 import CardSearchCode from "../component/cardSearchCode";
 import CardProducts from "../component/cardProducts";
 import CardOffers from "../component/cardOffers";
-
 import CardInformation from "../component/cardInformation";
 
 export const Home = () => {
