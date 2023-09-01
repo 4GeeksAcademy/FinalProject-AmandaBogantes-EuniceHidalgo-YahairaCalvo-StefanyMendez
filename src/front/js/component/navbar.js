@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo-laptop2.png"
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const {store, actions} = useContext(Context)
+
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container-fluid">
@@ -65,7 +66,7 @@ export const Navbar = () => {
 									</li>
 									<li><hr className="dropdown-divider" /></li>
 									<li className="dropdown-item">
-										<Link to="/" className="text-decoration-none d-flex">
+										<Link to="/" className="text-decoration-none d-flex" onClick={()=>actions.logout()}>
 											<span className="text-white">Logout</span>
 											<i className="fa-solid fa-right-from-bracket ms-auto text-white"></i>
 										</Link>

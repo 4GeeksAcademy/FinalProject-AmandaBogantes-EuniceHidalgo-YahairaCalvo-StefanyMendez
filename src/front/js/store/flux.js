@@ -12,10 +12,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			question_security: null,
 			answer_security: null,
 
-			first_name: null,
-			last_name: null,
-			phone: null,
-
 			code: null,
 			type: null,
 			brand: null,
@@ -25,7 +21,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			issues: null,
 			technical_id: null,
 			client_id: null,
-
 
 			jobs: [],
 			clients: [],
@@ -42,15 +37,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			password_changed: false,
 
 			buttons_admin_tech:{
-				users:true,
-				clients:true,
-				jobs: true,
-				login:false,
-				account:true
+				users:JSON.parse(localStorage.getItem("btnUsers")) == undefined ? true : JSON.parse(localStorage.getItem("btnUsers")),
+				clients:JSON.parse(localStorage.getItem("btnClients")) == undefined ? true : JSON.parse(localStorage.getItem("btnClients")),
+				jobs: JSON.parse(localStorage.getItem("btnJobs")) == undefined ? true : JSON.parse(localStorage.getItem("btnjobs")),
+				login:JSON.parse(localStorage.getItem("btnLogin")) == undefined ? false : JSON.parse(localStorage.getItem("btnLogin")),
+				account:JSON.parse(localStorage.getItem("btnAccount")) == undefined ? true : JSON.parse(localStorage.getItem("btnAccount"))
 			}
 		},
 		actions: {
-			/* 			addJob: async()=>{
+			/* addJob: async()=>{
 							const body = {
 								"code":"lsdflknsdfj",
 								"type":"cpu",
@@ -81,7 +76,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login_user: async () => {
 				
 				const store = getStore()
-				console.log(store.buttons_admin_tech.login);
 				const actions = getActions()
 				try {
 					let user = {}
@@ -107,8 +101,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					const result = await response.json()
 
-					console.log(result);
-
 					if (result.msg == "ok") {
 						Swal.fire({
 							position: 'top-end',
@@ -121,9 +113,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 							timer: 2000
 						})
 						localStorage.setItem("jwt-token", result.access_token);
-						setStore({ isloged: true })
+						setStore({ is_logued: true })
 						setStore({user_login: result.User})
+						setStore({user_question: result.User})
 						actions.active_buttons_by_role()
+
 					} else {
 						Swal.fire({
 							position: 'top-end',
@@ -145,9 +139,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			active_buttons_by_role: () =>{
 				const store = getStore()
 				if (store.user_login.role == "admin"){
-					setStore({buttons_admin_tech:{users:false, jobs:false, clients:false,login:true,account:false}})
+					localStorage.setItem("btnUsers", false)
+					localStorage.setItem("btnJobs", false)
+					localStorage.setItem("btnClients", false)
+					localStorage.setItem("btnLogin", true)
+					localStorage.setItem("btnAccount", false)
+
 				}else if (store.user_login.role=="technical"){
-					setStore({buttons_admin_tech:{users:true, jobs:false, clients:true,login:true,account:false}})
+					localStorage.setItem("btnUsers", true)
+					localStorage.setItem("btnJobs", false)
+					localStorage.setItem("btnClients", true)
+					localStorage.setItem("btnLogin", true)
+					localStorage.setItem("btnAccount", false)
 
 				}
 			},
@@ -269,7 +272,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 								background: '#41206C',
 								timer: 1500
 							})
-
 						}
 					} catch (error) {
 						console.log(error + " Error in change_password backEnd")
@@ -287,6 +289,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 			},
+
+			logout:()=>{
+				setStore({is_loged:false})
+				localStorage.clear();
+			},
+
+			get_all_users: async ()=>{
+
+				const response = await fetch(process.env.BACKEND_URL + '/user', {
+					method: 'GET'
+				})
+				const result = await response.json()
+				setStore({users: result.Users})
+
+			},
+
+			get_all_clients: async ()=>{
+				const store = getStore()
+				const response = await fetch(process.env.BACKEND_URL + '/client', {
+					method: 'GET'
+				})
+				const result = await response.json()
+				setStore({clients: result.clients})
+			},
+
+			get_all_jobs: async ()=>{
+				const store = getStore()
+				const response = await fetch(process.env.BACKEND_URL + '/job', {
+					method: 'GET'
+				})
+				const result = await response.json()
+				setStore({jobs: result.Jobs})
+			},
+
 			handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })
 			}
