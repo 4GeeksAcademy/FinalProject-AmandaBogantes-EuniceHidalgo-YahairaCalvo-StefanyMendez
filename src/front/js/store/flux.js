@@ -26,7 +26,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			technical_id: null,
 			client_id: null,
 
-
 			jobs: [],
 			clients: [],
 			users: [],
@@ -42,11 +41,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			password_changed: false,
 
 			buttons_admin_tech:{
-				users:true,
-				clients:true,
-				jobs: true,
-				login:false,
-				account:true
+				users:JSON.parse(localStorage.getItem("btnUsers")) == undefined ? true : JSON.parse(localStorage.getItem("btnUsers")),
+				clients:JSON.parse(localStorage.getItem("btnClients")) == undefined ? true : JSON.parse(localStorage.getItem("btnClients")),
+				jobs: JSON.parse(localStorage.getItem("btnJobs")) == undefined ? true : JSON.parse(localStorage.getItem("btnjobs")),
+				login:JSON.parse(localStorage.getItem("btnLogin")) == undefined ? false : JSON.parse(localStorage.getItem("btnLogin")),
+				account:JSON.parse(localStorage.getItem("btnAccount")) == undefined ? true : JSON.parse(localStorage.getItem("btnAccount"))
 			}
 		},
 		actions: {
@@ -81,7 +80,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login_user: async () => {
 				
 				const store = getStore()
-				console.log(store.buttons_admin_tech.login);
 				const actions = getActions()
 				try {
 					let user = {}
@@ -121,8 +119,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 							timer: 2000
 						})
 						localStorage.setItem("jwt-token", result.access_token);
-						setStore({ isloged: true })
+						setStore({ is_logued: true })
 						setStore({user_login: result.User})
+						
 						actions.active_buttons_by_role()
 					} else {
 						Swal.fire({
@@ -145,9 +144,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			active_buttons_by_role: () =>{
 				const store = getStore()
 				if (store.user_login.role == "admin"){
-					setStore({buttons_admin_tech:{users:false, jobs:false, clients:false,login:true,account:false}})
+					localStorage.setItem("btnUsers", false)
+					localStorage.setItem("btnJobs", false)
+					localStorage.setItem("btnClients", false)
+					localStorage.setItem("btnLogin", true)
+					localStorage.setItem("btnAccount", false)
+
 				}else if (store.user_login.role=="technical"){
-					setStore({buttons_admin_tech:{users:true, jobs:false, clients:true,login:true,account:false}})
+					localStorage.setItem("btnUsers", true)
+					localStorage.setItem("btnJobs", false)
+					localStorage.setItem("btnClients", true)
+					localStorage.setItem("btnLogin", true)
+					localStorage.setItem("btnAccount", false)
 
 				}
 			},
@@ -269,7 +277,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 								background: '#41206C',
 								timer: 1500
 							})
-
 						}
 					} catch (error) {
 						console.log(error + " Error in change_password backEnd")
@@ -286,6 +293,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						timer: 1500
 					})
 				}
+			},
+			logout:()=>{
+				setStore({is_loged:false})
+				localStorage.clear();
 			},
 			handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })

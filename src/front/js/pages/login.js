@@ -8,7 +8,7 @@ const Login = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate()
 
-    store.is_logued ? navigate('/'):null
+    store.is_logued ? navigate('/') : null
     return (
         <div className='container-login my-5 ' >
             <h1 className='lh1'>LOGIN</h1>
@@ -19,7 +19,6 @@ const Login = () => {
                 actions.login_user()
             }
             }>
-
                 <input
                     className='form-control mb-3'
                     type='text'
@@ -46,12 +45,7 @@ const Login = () => {
                 <br></br>
 
                 <div className='text-center'>
-                    <button className='btnLogin btn' 
-                    /* onClick={()=>{
-                       store.user_login.role == "admin" ? actions.active_buttons_by_role(false, false, false, true, false):null
-                       store.user_login.role == "technical" ? actions.active_buttons_by_role(true, true, true, true, false):null
-                    }} */
-                    >Login</button>
+                    <button className='btnLogin btn'>Login</button>
                 </div>
 
 
