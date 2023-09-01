@@ -10,13 +10,11 @@ class role(enum.Enum):
     admin = "admin"
     technical = "technical"
 
-
 class questions(enum.Enum):
     pet = "What is the name of your first pet?"
     color = "What is your favorite color?"
     movie = "What is your favorite movie?"
     food = "What is your favorite food?"
-
 
 class User(db.Model):
 

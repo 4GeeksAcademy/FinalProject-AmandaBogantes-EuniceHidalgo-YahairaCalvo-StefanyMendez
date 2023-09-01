@@ -47,8 +47,6 @@ const Login = () => {
                 <div className='text-center'>
                     <button className='btnLogin btn'>Login</button>
                 </div>
-
-
             </form>
 
         </div>
