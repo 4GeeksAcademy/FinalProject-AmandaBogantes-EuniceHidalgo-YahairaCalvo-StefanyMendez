@@ -9,7 +9,7 @@ export const ClientsButtons = () => {
                         <div className="card clientsCard">
                             <div className="card-body pb-0 pt-0">
                                 <div className="d-flex align-items-center py-2">
-                                    <input type="text" id="inputSearch" className="form-control" autoComplete="off" aria-describedby="passwordHelpInline" />
+                                    <input type="text" id="inputSearch" className="form-control formControlSearchButton" autoComplete="off" aria-describedby="passwordHelpInline" />
                                     <button className="btn btn-login my-1 fw-bold d-flex align-items-center">
                                         <i className="fa-solid fa-magnifying-glass me-2"></i>Search
                                     </button>

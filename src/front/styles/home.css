@@ -103,7 +103,7 @@ h6 {
     }
 }
 
-.form-control {
+.formControlSearchCode {
     width: 30rem;
     height: 3rem;
     max-width: 100%;
@@ -182,7 +182,7 @@ h6 {
         border-radius: 0;
     }
 
-    .form-control {
+    .formControlSearchCode {
         width: 100%;
     }
 

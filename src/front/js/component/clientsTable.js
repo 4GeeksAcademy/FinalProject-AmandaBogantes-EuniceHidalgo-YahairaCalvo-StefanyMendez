@@ -13,7 +13,7 @@ export const ClientsTable = (...props) => {
                         <div className="row justify-content-center">
                             <div className="col-12">
                                 <div className="card tableItems text-center">
-                                    <div className="card-body">
+                                    <div className="card-body cardBodyClients">
                                         <div className="table-responsive">
                                             <table className="table table-hover mb-0">
                                                 <tbody>
