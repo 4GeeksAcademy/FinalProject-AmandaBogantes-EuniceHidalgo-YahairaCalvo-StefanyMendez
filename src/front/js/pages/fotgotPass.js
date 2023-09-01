@@ -21,7 +21,7 @@ const ForgotPass = () => {
                 actions.forgot_password()
             }}>
                 <input
-                    className='form-control mb-3'
+                    className='form-control formControlForgotPassword mb-3'
                     type='text'
                     placeholder='Username'
                     name='username'
@@ -55,7 +55,7 @@ const ForgotPass = () => {
 
                 {/* Respuesta */}
                 <input
-                    className='form-control mb-3'
+                    className='form-control formControlForgotPassword mb-3'
                     type='text'
                     placeholder='Answer'
                     name='answer_security'
