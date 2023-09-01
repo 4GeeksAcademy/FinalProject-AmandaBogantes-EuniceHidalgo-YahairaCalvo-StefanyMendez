@@ -124,7 +124,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ isloged: true })
 						setStore({user_login: result.User})
 						actions.active_buttons_by_role()
-
 					} else {
 						Swal.fire({
 							position: 'top-end',
@@ -152,7 +151,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
-
 			forgot_password: async () => {
 				const store = getStore()
 				try {

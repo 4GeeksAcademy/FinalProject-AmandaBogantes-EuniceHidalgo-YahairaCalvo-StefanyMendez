@@ -131,7 +131,6 @@ def getUserByUsername(user_username):
 
     if user is None:
         raise APIException("User not found", status_code=404)
-    
 
     response_body = {
         "msg": "ok",
@@ -221,7 +220,7 @@ def updateUser(user_id):
 
     if request_body is None:
         raise APIException("You must send information", status_code=404)
-    
+
     pw_hash = bcrypt.generate_password_hash(
         request_body['password']).decode("utf-8")
 
@@ -291,10 +290,10 @@ def addLogin():
         raise APIException('The password is incorrect', 401)
 
     access_token = create_access_token(identity=request_body['username'])
-    
-    response_body ={
+
+    response_body = {
         "msg": "ok",
-        "access_token":access_token,
+        "access_token": access_token,
         "User": user_data.serialize()
     }
 
@@ -309,7 +308,7 @@ def protected():
 
     if user is None:
         return jsonify({"message": "User not found"}), 404
-    
+
     response_body = {
         "id": user.id,
         "username": user.username,

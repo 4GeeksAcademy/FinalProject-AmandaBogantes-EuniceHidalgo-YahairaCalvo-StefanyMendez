@@ -29,7 +29,6 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			
-
 			// <---- calling this function from the flux.js actions
 		}, []);
 

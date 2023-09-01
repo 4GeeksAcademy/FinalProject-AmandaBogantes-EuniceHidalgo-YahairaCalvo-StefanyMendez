@@ -11,11 +11,8 @@ const Login = () => {
     store.is_logued ? navigate('/'):null
     return (
         <div className='container-login my-5 ' >
-
             <h1 className='lh1'>LOGIN</h1>
-
             <img src={logo} alt='logo' className='logo1 w-75' />
-
 
             <form className=" login mt-3  " onSubmit={e => {
                 e.preventDefault()

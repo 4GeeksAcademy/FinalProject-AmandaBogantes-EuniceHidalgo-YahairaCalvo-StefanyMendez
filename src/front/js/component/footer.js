@@ -77,7 +77,6 @@ export const Footer = () => {
 					<a className="icon" href="https://youtube.com">
 						<i className="fa-brands fa-youtube ms-2 fs-5"></i>
 					</a>
-
 				</div>
 			</div>
 			<hr className="mt-2 hr-footer"></hr>

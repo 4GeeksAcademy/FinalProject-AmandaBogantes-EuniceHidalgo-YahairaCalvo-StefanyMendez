@@ -52,7 +52,6 @@ export const Navbar = () => {
 								<button className="btn btn-login my-1"><i className="fa-regular fa-user me-2"></i>Login</button>
 							</Link>
 						</li>
-
 						<li className="nav-item ms-3 me-2 mb-1">
 							<div className="dropdown">
 								<button className="btn btn-account dropdown-toggle my-1" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false"  hidden={store.buttons_admin_tech.account}>

@@ -10,18 +10,14 @@ body{
 
   line-height: 140%;
 }
-
 .nav-link{
   color: rgb(255, 255, 255);
-  
-
   &:hover{
     color: #22B5BE;
     -webkit-transform: translateY(-0.25em);
     transform: translateY(-0.25em);
   }
 }
-
 .btn-login, .btn-account{
   color: white;
   height: 2.8rem;
