@@ -1,0 +1,94 @@
+/* users.css */
+
+html,
+body,
+.intro {
+    height: 100%;
+}
+
+table {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: none;
+    outline: none;
+}
+
+.cell-question {
+    white-space: pre-line;
+}
+
+.cardBodyUsers {
+    padding: 0.5rem;
+}
+
+.users-cell-size {
+    width: 16%;
+}
+
+.tableUsersItems {
+    border: none;
+    outline: none;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background: var(--gradient-2, linear-gradient(129deg, #2cd7e0 0%, #6743CC 100%));
+    font-family: "Work Sans";
+}
+
+.tableUsersHeader {
+    margin-bottom: 1rem;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    font-family: "Work Sans";
+    background-color: transparent;
+    color: white;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
+.usersButtons {
+    color: rgb(255, 255, 255);
+    font-family: "Work Sans";
+    border: none;
+    outline: none;
+}
+
+.usersCard {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.formControlUsersButtons {
+    margin-right: 2rem;
+    border: 2px solid;
+    background-color: white;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.usersModalContent {
+    background: #1C1C1C !important;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+}
+
+.formModalUsers {
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    border-radius: 0;
+}
+
+.modal-label-input {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}

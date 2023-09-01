@@ -20,7 +20,7 @@ const Login = () => {
             }
             }>
                 <input
-                    className='form-control mb-3'
+                    className='form-control formControlLogin mb-3'
                     type='text'
                     placeholder='Username'
                     name='username'
@@ -29,7 +29,7 @@ const Login = () => {
 
                 {/* password */}
                 <input
-                    className='form-control '
+                    className='form-control formControlLogin '
                     type='password'
                     placeholder='Password'
                     name='password'
@@ -45,7 +45,9 @@ const Login = () => {
                 <br></br>
 
                 <div className='text-center'>
+
                     <button className='btnLogin btn'>Login</button>
+
                 </div>
             </form>
 

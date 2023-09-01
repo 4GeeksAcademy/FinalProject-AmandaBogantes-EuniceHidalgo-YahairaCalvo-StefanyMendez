@@ -22,7 +22,7 @@ const ChangePass = () => {
             }}>
 
                 <input
-                    className='form-control mb-3'
+                    className='form-control formControlChangePassword mb-3'
                     type='password'
                     placeholder='NewPassword'
                     name='password'
@@ -30,7 +30,7 @@ const ChangePass = () => {
                 />
 
                 <input
-                    className='form-control mb-3'
+                    className='form-control formControlChangePassword mb-3'
                     type='password'
                     placeholder='ConfirmPassword'
                     name='confirm_password'
