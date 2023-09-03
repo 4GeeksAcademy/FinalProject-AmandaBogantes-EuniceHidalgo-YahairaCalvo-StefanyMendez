@@ -17,19 +17,19 @@ export const Footer = () => {
 					<span className="fs-4 footer-title">Explore</span>
 				</div>
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.users}>
+					<Link to="/users" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.users}>
 						<span className="footer-span">Users</span>
 					</Link>
 				</div>
 
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.clients}>
+					<Link to="/clients" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.clients}>
 						<span className="footer-span">Clients</span>
 					</Link>
 				</div>
 
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
+					<Link to="/jobs" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
 						<span className="footer-span">Jobs</span>
 					</Link>
 				</div>

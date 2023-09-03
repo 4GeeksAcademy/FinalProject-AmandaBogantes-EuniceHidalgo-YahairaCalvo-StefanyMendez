@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			clients: [],
 			users: [],
 
-			user_login: {},
+			user_login: JSON.parse(localStorage.getItem("user_login")) == undefined ? {} : JSON.parse(localStorage.getItem("user_login")),
 			user_question: {},
 			is_logued: false,
 			job_search: {},
@@ -39,10 +39,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			buttons_admin_tech:{
 				users:JSON.parse(localStorage.getItem("btnUsers")) == undefined ? true : JSON.parse(localStorage.getItem("btnUsers")),
 				clients:JSON.parse(localStorage.getItem("btnClients")) == undefined ? true : JSON.parse(localStorage.getItem("btnClients")),
-				jobs: JSON.parse(localStorage.getItem("btnJobs")) == undefined ? true : JSON.parse(localStorage.getItem("btnjobs")),
+				jobs: JSON.parse(localStorage.getItem("btnJobs")) == undefined ? true : JSON.parse(localStorage.getItem("btnJobs")),
 				login:JSON.parse(localStorage.getItem("btnLogin")) == undefined ? false : JSON.parse(localStorage.getItem("btnLogin")),
 				account:JSON.parse(localStorage.getItem("btnAccount")) == undefined ? true : JSON.parse(localStorage.getItem("btnAccount"))
 			}
+
 		},
 		actions: {
 			/* addJob: async()=>{
@@ -113,10 +114,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 							timer: 2000
 						})
 						localStorage.setItem("jwt-token", result.access_token);
-						setStore({ is_logued: true })
-						setStore({user_login: result.User})
-						setStore({user_question: result.User})
+						localStorage.setItem("user_login", JSON.stringify(result.User))
+						setStore({user_login:result.User})
 						actions.active_buttons_by_role()
+						setStore({ is_logued: true })
 
 					} else {
 						Swal.fire({
@@ -133,7 +134,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				} catch (error) {
 					console.log(error + " Error in login_user backEnd")
-					setStore({ isloged: false })
+					setStore({ is_logued: false })
 				}
 			},
 			active_buttons_by_role: () =>{
@@ -144,6 +145,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.setItem("btnClients", false)
 					localStorage.setItem("btnLogin", true)
 					localStorage.setItem("btnAccount", false)
+					setStore({buttons_admin_tech:{users:false, jobs:false,
+						clients:false, login:true, account:false}})
 
 				}else if (store.user_login.role=="technical"){
 					localStorage.setItem("btnUsers", true)
@@ -151,9 +154,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.setItem("btnClients", true)
 					localStorage.setItem("btnLogin", true)
 					localStorage.setItem("btnAccount", false)
-
+					setStore({buttons_admin_tech:{users:true, jobs:false,
+						clients:true, login:true, account:false}})
 				}
 			},
+
 			forgot_password: async () => {
 				const store = getStore()
 				try {
@@ -291,7 +296,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			logout:()=>{
-				setStore({is_loged:false})
+				setStore({is_logued:false})
+				setStore({buttons_admin_tech:{users:true, jobs:true,
+					clients:true, login:false, account:true}})
+				setStore({user_login:{}})
 				localStorage.clear();
 			},
 
@@ -302,6 +310,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				setStore({users: result.Users})
+
+			},
+			get_user_by_id : async (user_id)=>{
+				
 
 			},
 

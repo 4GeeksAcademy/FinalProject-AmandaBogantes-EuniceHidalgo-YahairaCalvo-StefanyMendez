@@ -1,15 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../../styles/forgotPass.css'
 import logo from "../../img/logo.png"
 import { Link, useNavigate} from 'react-router-dom'
 import { Context } from '../store/appContext'
 
-
 const ForgotPass = () => {
     const { store, actions } = useContext(Context)
     const navigate = useNavigate()
 
-    store.correct_answer ? navigate('/changePass'):null
+    useEffect(()=>{
+        store.correct_answer ? navigate('/changePass'):null
+    })
 
     return (
         <div className='container-forgot my-5'>
@@ -27,7 +28,6 @@ const ForgotPass = () => {
                     name='username'
                     onChange={actions.handle_change}
                 />
-
                 <div className='text-center'>
                     <button className='btnforgot btn'>Check</button>
                     <Link to="/login">
@@ -35,14 +35,11 @@ const ForgotPass = () => {
                     </Link>
                 </div>
             </form>
-
             <form className=" forgot mt-3" hidden={store.hidden_questions_answer} onSubmit={(e) => {
                 e.preventDefault()
                 actions.check_question_answer()
             }}>
-
                 {/*Dop */}
-
                 <div className="input-group mb-3 input-select">
                     <select className="form-select" id="inputGroupQuestions" onChange={actions.handle_change} name='question_security'>
                         <option defaultValue="null">Select the question</option>
