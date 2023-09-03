@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../../styles/login.css'
 import logo from "../../img/logo.png"
 import { Link, useNavigate } from 'react-router-dom'
@@ -8,7 +8,10 @@ const Login = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate()
 
-    store.is_logued ? navigate('/') : null
+    useEffect(()=>{
+        store.is_logued ? navigate('/') : null
+    },[store.is_logued])
+
     return (
         <div className='container-login my-5 ' >
             <h1 className='lh1'>LOGIN</h1>

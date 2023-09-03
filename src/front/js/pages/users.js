@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import "../../styles/users.css";
 import { UsersTable } from '../component/usersTable';
 import { UsersTableHeader } from '../component/usersTableHeader';
 import { UsersButtons } from '../component/usersButtons';
 import { UsersModal } from '../component/usersModal';
+import { Context } from '../store/appContext';
 
 export const Users = () => {
+    const {store, actions} = useContext(Context)
+
+    useEffect(()=>{
+        actions.get_all_users()
+    },[])
+    
     return (
         <>
             <UsersButtons />
             <UsersTableHeader />
-            <UsersTable />
-            <UsersModal />
+            {!!store.users && store.users.map((user, index) =>{
+                return (
+                    <UsersTable key={index} user={user} />
+                )
+            })}
+
+           {/*  <UsersModal /> */}
         </>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from "prop-types"
 
-export const UsersTable = () => {
+export const UsersTable = ({user}, ...props) => {
   return (
     <section className="intro">
       <div className="h-100">
@@ -14,10 +15,10 @@ export const UsersTable = () => {
                       <table className="table table-hover mb-0">
                         <tbody>
                           <tr>
-                            <th scope="row" className="text-center users-cell-size align-middle">01</th>
-                            <td className="text-center users-cell-size align-middle">Stefany María</td>
-                            <td className="text-center users-cell-size align-middle">Méndez Salas</td>
-                            <td className="text-center users-cell-size align-middle">admi</td>
+                            <th scope="row" className="text-center users-cell-size align-middle">{user.id}</th>
+                            <td className="text-center users-cell-size align-middle">{user.first_name}</td>
+                            <td className="text-center users-cell-size align-middle">{user.last_name}</td>
+                            <td className="text-center users-cell-size align-middle">{user.role}</td>
                             <td className="text-center users-cell-size align-middle">
                               <button className="btn btn-login fw-bold text-center">
                                 <i class="fa-solid fa-circle-info me-2"></i>View Details
@@ -41,4 +42,7 @@ export const UsersTable = () => {
       </div>
     </section >
   )
+}
+UsersTable.propTypes ={
+  user: PropTypes.object
 }

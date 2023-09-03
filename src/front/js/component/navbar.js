@@ -19,17 +19,17 @@ export const Navbar = () => {
 				<div className="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul className="navbar-nav ms-auto mb-lg-0">
 						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.users}>
+							<Link to="/users" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.users}>
 								<span className="nav-span">Users</span>
 							</Link>
 						</li>
 						<li className="nav-link nav-item nav-menu ms-3" hidden={store.buttons_admin_tech.clients}>
-							<Link to="/" className="nav-link text-decoration-none">
+							<Link to="/clients" className="nav-link text-decoration-none">
 								<span className="nav-span">Clients</span>
 							</Link>
 						</li>
 						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
+							<Link to="/jobs" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
 								<span className="nav-span">Jobs</span>
 							</Link>
 						</li>
