@@ -503,8 +503,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const result = await response.json()
 				setStore({ clients: result.clients })
 			},
-
 			get_all_jobs: async () => {
+
 				const store = getStore()
 				const response = await fetch(process.env.BACKEND_URL + '/job', {
 					method: 'GET'

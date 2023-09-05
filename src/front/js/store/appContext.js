@@ -28,7 +28,6 @@ const injectContext = PassedComponent => {
 			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
 			 * store, instead use actions, like this:
 			 **/
-			
 			// <---- calling this function from the flux.js actions
 		}, []);
 
