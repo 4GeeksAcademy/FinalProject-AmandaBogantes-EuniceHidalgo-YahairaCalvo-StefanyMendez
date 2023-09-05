@@ -15,6 +15,8 @@ import Login from "./pages/login";
 import ForgotPass from "./pages/fotgotPass";
 import ChangePass from "./pages/changePass";
 import { Users } from "./pages/users";
+import { JobsAdmi } from "./pages/jobsAdmi";
+import { JobsTechnical } from "./pages/jobsTechnical";
 
 
 
@@ -25,6 +27,7 @@ const Layout = () => {
     const basename = process.env.BASENAME || "";
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
+
     const {store, actions} = useContext(Context)
     
     return (
@@ -39,6 +42,8 @@ const Layout = () => {
                         <Route element={<ChangePass />} path="/changepass" />
                         <Route element={<Clients />} path="/clients" />
                         <Route element={<Users />} path="/users" />
+                        <Route element={<JobsAdmi />} path="/jobs/admi" />
+                        <Route element={<JobsTechnical />} path="jobs/technical" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

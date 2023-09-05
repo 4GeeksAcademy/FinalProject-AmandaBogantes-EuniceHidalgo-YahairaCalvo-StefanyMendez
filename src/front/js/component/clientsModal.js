@@ -6,13 +6,13 @@ export const ClientsModal = () => {
     const { store, actions } = useContext(Context)
 
     return (
-        <div tabIndex="-1">
+        <form className="modal" tabIndex="-1">
             <div className="modal-dialog modal-dialog-centered p-1">
                 <div className="modal-content clientsModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold">Update Client</h5>
                         <button type="button" className="close btn btn-login fw-bold text-center fw-bold">
-                            <i class="fa-solid fa-xmark"></i>
+                            <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
                     <div className="modal-body">
@@ -60,6 +60,6 @@ export const ClientsModal = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     );
 };
