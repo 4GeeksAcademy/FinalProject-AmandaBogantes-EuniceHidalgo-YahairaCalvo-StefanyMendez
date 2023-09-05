@@ -156,22 +156,22 @@ def addUser():
     if request_body is None:
         raise APIException("You must send information", status_code=400)
 
-    if "username" not in request_body:
+    if "username" not in request_body or request_body["username"]=="":
         raise APIException("The username is required", status_code=404)
 
-    if "first_name" not in request_body:
+    if "first_name" not in request_body or request_body["first_name"]=="":
         raise APIException("The first name is required", status_code=404)
 
-    if "last_name" not in request_body:
+    if "last_name" not in request_body or request_body["last_name"]=="":
         raise APIException("The last name is required", status_code=404)
 
-    if "phone" not in request_body:
+    if "phone" not in request_body or request_body["phone"]=="":
         raise APIException("The phone is required", status_code=404)
 
-    if "password" not in request_body:
+    if "password" not in request_body or request_body["password"]=="":
         raise APIException("The password is required", status_code=404)
 
-    if "role" not in request_body:
+    if "role" not in request_body or request_body["role"]=="":
         raise APIException("The role is required", status_code=404)
 
     if "question_security" not in request_body:
@@ -221,22 +221,21 @@ def updateUser(user_id):
     if request_body is None:
         raise APIException("You must send information", status_code=404)
 
-    pw_hash = bcrypt.generate_password_hash(
-        request_body['password']).decode("utf-8")
-
-    if "first_name" in request_body:
+    if "first_name" in request_body or request_body["firts_name"]=="":
         user.first_name = request_body['first_name']
 
-    if "last_name" in request_body:
+    if "last_name" in request_body or request_body["last_name"]=="":
         user.last_name = request_body['last_name']
 
-    if "role" in request_body:
+    if "role" in request_body or request_body["role"]=="":
         user.role = request_body['role']
 
-    if "phone" in request_body:
+    if "phone" in request_body or request_body["phone"]=="":
         user.phone = request_body['phone']
 
-    if "password" in request_body:
+    if "password" in request_body or request_body["password"]=="":
+        pw_hash = bcrypt.generate_password_hash(
+        request_body['password']).decode("utf-8")
         user.password = pw_hash
 
     user.update()
@@ -275,10 +274,10 @@ def addLogin():
     if request_body is None:
         raise APIException("You must send information", status_code=404)
 
-    if "username" not in request_body:
+    if "username" not in request_body or request_body["username"]=="":
         raise APIException("The username is required", status_code=404)
 
-    if "password" not in request_body:
+    if "password" not in request_body or request_body["password"]=="":
         raise APIException("The password is required", status_code=404)
 
     user_data = User.query.filter_by(username=request_body['username']).first()
@@ -369,13 +368,13 @@ def addClient():
     if request_body is None:
         raise APIException("You must send information", 400)
 
-    if "first_name" not in request_body:
+    if "first_name" not in request_body or request_body["first_name"]=="":
         raise APIException("The first name is required", status_code=404)
 
-    if "last_name" not in request_body:
+    if "last_name" not in request_body or request_body["last_name"]=="":
         raise APIException("The last name is required")
 
-    if "phone" not in request_body:
+    if "phone" not in request_body or request_body["phone"]=="":
         raise APIException("The phone is required")
 
     client = Client(
@@ -538,31 +537,31 @@ def addJob():
     if request_body is None:
         raise APIException("You must send information", status_code=400)
 
-    if "code" not in request_body:
+    if "code" not in request_body or request_body["code"]=="":
         raise APIException("The code is required", status_code=404)
 
-    if "type" not in request_body:
+    if "type" not in request_body or request_body["type"]=="":
         raise APIException("The type is required", status_code=404)
 
-    if "brand" not in request_body:
+    if "brand" not in request_body or request_body["brand"]=="":
         raise APIException("The brand is required", status_code=404)
 
-    if "model" not in request_body:
+    if "model" not in request_body or request_body["model"]=="":
         raise APIException("The model is required", status_code=404)
 
-    if "serial_number" not in request_body:
+    if "serial_number" not in request_body or request_body["serial_number"]=="":
         raise APIException("The serial number is required", status_code=404)
 
-    if "status" not in request_body:
+    if "status" not in request_body or request_body["status"]=="":
         raise APIException("The status is required", status_code=404)
 
-    if "issues" not in request_body:
+    if "issues" not in request_body or request_body["issues"]=="":
         raise APIException("The issues are required", status_code=404)
 
-    if "id_technical" not in request_body:
+    if "id_technical" not in request_body or request_body["id_technical"]=="":
         raise APIException("The id technical is required", status_code=404)
 
-    if "id_client" not in request_body:
+    if "id_client" not in request_body or request_body["id_client"]=="":
         raise APIException("The id client is required", status_code=404)
 
     job_code_exist = Job.query.filter_by(code=request_body['code']).first()
@@ -608,25 +607,25 @@ def updateJob(job_id):
     if request_body is None:
         raise APIException("You must send information", status_code=404)
 
-    if "type" in request_body:
+    if "type" in request_body or request_body["type"]=="":
         job.type = request_body['type']
 
-    if "brand" in request_body:
+    if "brand" in request_body or request_body["brand"]=="":
         job.brand = request_body['brand']
 
-    if "model" in request_body:
+    if "model" in request_body or request_body["model"]=="":
         job.model = request_body['model']
 
-    if "serial_number" in request_body:
+    if "serial_number" in request_body or request_body["serial_number"]=="":
         job.serial_number = request_body['serial_number']
 
-    if "status" in request_body:
+    if "status" in request_body or request_body["status"]=="":
         job.status = request_body['status']
 
-    if "comments" in request_body:
+    if "comments" in request_body or request_body["comments"]=="":
         job.comments = request_body['comments']
 
-    if "id_technical" in request_body:
+    if "id_technical" in request_body or request_body["id_technical"]=="":
         job.id_technical = request_body['id_technical']
 
     job.update()
