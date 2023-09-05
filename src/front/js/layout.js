@@ -13,10 +13,16 @@ import { Clients } from "./pages/clients";
 
 import Login from "./pages/login";
 import ForgotPass from "./pages/fotgotPass";
+
+
+import AboutUs from "./pages/aboutUs";
+import OurServices from "./pages/ourServices";
+
 import ChangePass from "./pages/changePass";
 import { Users } from "./pages/users";
 import { JobsAdmi } from "./pages/jobsAdmi";
 import { JobsTechnical } from "./pages/jobsTechnical";
+
 
 
 
@@ -39,7 +45,9 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<ForgotPass />} path="/forgotPass" />
-                        <Route element={<ChangePass />} path="/changepass" />
+                        <Route element={<ChangePass />} path="/changePass" />
+                        <Route element={<AboutUs />} path="/aboutus" />
+                        <Route element={<OurServices />} path="/ourServices" />
                         <Route element={<Clients />} path="/clients" />
                         <Route element={<Users />} path="/users" />
                         <Route element={<JobsAdmi />} path="/jobs/admi" />
