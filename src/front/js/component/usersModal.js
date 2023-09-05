@@ -20,10 +20,10 @@ export const UsersModal = (...props) => {
             <div className="modal-dialog modal-dialog-centered p-1">
                 <div className="modal-content usersModalContent p-2">
                     <div className="modal-header">
-                        <h5 className="modal-title fw-bold">Update User</h5>
+                        <h5 className="modal-title fw-bold">User</h5>
                         <button type="button" className="close btn btn-login fw-bold text-center fw-bold"
                             onClick={() => actions.handle_delete_modal()}>
-                            <i class="fa-solid fa-xmark"></i>
+                            <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
                     <div className="modal-body">
@@ -78,7 +78,7 @@ export const UsersModal = (...props) => {
                         <div className="form-group mb-2">
                             <label htmlFor="role" className="modal-label-input">Role</label>
                             <div className="input-group group-user-modal mb-3 input-select">
-                                <select className="form-select select-user-modal " id="inputGroupRoles" onChange={actions.handle_change} name='role'>
+                                <select className="form-select select-user-modal" id="inputGroupRoles" onChange={actions.handle_change} name='role'>
                                     <option className='option-user-modal' defaultValue="null">Select the role</option>
                                     <option className='option-user-modal' selected = {!!store.user_id && store.user_id.role == "admin"?true:false} value="admin" >Admin</option>
                                     <option className='option-user-modal' selected = {!!store.user_id && store.user_id.role == "technical"?true:false} value="technical">Technical</option>
@@ -98,7 +98,7 @@ export const UsersModal = (...props) => {
                         <div className="form-group mb-2" hidden={store.hidden_input_question_answer}>
                             <label htmlFor="securityQuestion" className="modal-label-input"  >Security Question</label>
                             <div className="input-group group-user-modal mb-3 input-select">
-                                <select className="form-select select-user-modal " id="inputGroupQuestions" onChange={actions.handle_change} name='question_security'>
+                                <select className="form-select select-user-modal" id="inputGroupQuestions" onChange={actions.handle_change} name='question_security'>
                                     <option className='option-user-modal' defaultValue="null">Select the question</option>
                                     <option className='option-user-modal' value="pet" >What is the name of your first pet?</option>
                                     <option className='option-user-modal' value="color">What is your favorite color?</option>
@@ -137,5 +137,5 @@ UsersModal.propTypes = {
     show: PropTypes.bool
 }
 UsersModal.defaultProps = {
-    show: false,
+    show: false
 }

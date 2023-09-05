@@ -23,11 +23,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			client_id: null,
 
 			jobs: [],
-			clients: [],
+
 			users: [],
 			users_search: [],
-
 			user_id: null,
+			read_only_username: true,
+			user_deleted: false,
+
+			clients: [],
+			clients_search: [],
+			client_id: null,
 
 			user_login: JSON.parse(localStorage.getItem("user_login")) == undefined ? {} : JSON.parse(localStorage.getItem("user_login")),
 			user_question: {},
@@ -49,9 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				account: JSON.parse(localStorage.getItem("btnAccount")) == undefined ? true : JSON.parse(localStorage.getItem("btnAccount"))
 			},
 
-			hidden_input_question_answer: true,
-			read_only_username: true,
-			delete_user: false
+			hidden_input_question_answer: true
 
 		},
 		actions: {
@@ -175,7 +178,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 			},
-
 			forgot_password: async () => {
 				const store = getStore()
 				try {
@@ -224,7 +226,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ hidden_questions_answer: questions_answer })
 				setStore({ correct_answer: false })
 			},
-
 			check_question_answer: () => {
 				const store = getStore()
 				if (store.question_security == null || store.answer_security == null || store.answer_security == "") {
@@ -254,7 +255,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 			},
-
 			change_password: async () => {
 				const store = getStore()
 				if (store.password == store.confirm_password) {
@@ -311,7 +311,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 			},
-
 			logout: () => {
 				setStore({ is_logued: false })
 				setStore({
@@ -335,7 +334,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			get_user_by_id: async (user_id) => {
-				const store = getStore()
+
 				setStore({ show_modal: true })
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
 					method: 'GET',
@@ -386,7 +385,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 				const result = await response.json()
-
 
 				if (result.msg == "ok") {
 					actions.handle_delete_modal()
@@ -452,6 +450,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
+					actions.handle_delete_modal()
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
@@ -462,7 +461,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 1500
 					})
-					actions.handle_delete_modal()
 					setStore({ first_name: null })
 					setStore({ last_name: null })
 					setStore({ role: null })
@@ -483,16 +481,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-
 			delete_user_by_id: async (user_id) => {
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
 					method: 'DELETE'
 				})
 				const result = await response.json()
-				setStore({ delete_user: true })
+				setStore({ user_deleted: true })
+			},
+			search_users: (input) => {
+				const store = getStore();
+
+				const newUser = store.users_search.filter(user => {
+					if (user.first_name.toLowerCase().includes(input.toLowerCase()) ||
+						user.last_name.toLowerCase().includes(input.toLowerCase()) ||
+						user.role.toLowerCase().includes(input.toLowerCase()) ||
+						user.id.toString().includes(input)) {
+						return user
+					}
+				})
+				setStore({ users: newUser })
 			},
 			delete_user_change: () => {
-				setStore({ delete_user: false })
+				setStore({ user_deleted: false })
 			},
 
 			get_all_clients: async () => {
@@ -502,10 +512,135 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				setStore({ clients: result.clients })
+				setStore({ clients_search: result.clients })
 			},
-			get_all_jobs: async () => {
+			get_client_by_id: async (client_id) => {
+				setStore({ show_modal: true })
+				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
+					method: 'GET'
+				})
+				const result = await response.json()
+				setStore({ client_id: result.Client })
 
+			},
+			add_client: async () => {
+				setStore({ show_modal: true })
 				const store = getStore()
+				const actions = getActions()
+
+				let client = {}
+				if (store.first_name != null) {
+					client.first_name = store.first_name
+				}
+				if (store.last_name != null) {
+					client.last_name = store.last_name
+				}
+				if (store.phone != null) {
+					client.phone = store.phone
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + '/client', {
+					method: 'POST',
+					body: JSON.stringify(client),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				const result = await response.json()
+
+				if (result.msg == "ok") {
+					actions.handle_delete_modal()
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Add',
+						text: `The Client ${result.client.first_name} ${result.client.last_name} was added`,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 2000
+					})
+					setStore({ first_name: null })
+					setStore({ last_name: null })
+					setStore({ phone: null })
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 1500
+					})
+				}
+
+			},
+			update_client_by_id: async (client_id) => {
+				const store = getStore()
+				const actions = getActions()
+
+				let client = {}
+				if (store.first_name != null) {
+					client.first_name = store.first_name
+				}
+				if (store.last_name != null) {
+					client.last_name = store.last_name
+				}
+				if (store.phone != null) {
+					client.phone = store.phone
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
+					method: 'PUT',
+					body: JSON.stringify(client),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				const result = await response.json()
+				if (result.msg == "ok") {
+					actions.handle_delete_modal()
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Done',
+						text: `The client ${store.client_id.first_name} ${store.client_id.last_name} was updated`,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 1500
+					})
+					setStore({ first_name: null })
+					setStore({ last_name: null })
+					setStore({ phone: null })
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 1500
+					})
+				}
+			},
+			search_clients: (input) => {
+				const store = getStore()
+				const newClient = store.clients_search.filter(client => {
+					if (client.id.toString().includes(input) ||
+						client.first_name.toLowerCase().includes(input.toLowerCase()) ||
+						client.last_name.toLowerCase().includes(input.toLowerCase())) {
+						return client
+					}
+				})
+				setStore({clients: newClient})
+			},
+
+			get_all_jobs: async () => {
 				const response = await fetch(process.env.BACKEND_URL + '/job', {
 					method: 'GET'
 				})
@@ -525,25 +660,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handle_delete_modal: () => {
 				setStore({ show_modal: false })
 				setStore({ user_id: null })
+				setStore({ client_id: null })
+
 			},
 
 			handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })
 			},
 
-			search_user_name: (input) => {
-				const store = getStore();
 
-				const newUser = store.users_search.filter(user => {
-					if (user.first_name.toLowerCase().includes(input.toLowerCase()) ||
-						user.last_name.toLowerCase().includes(input.toLowerCase()) ||
-						user.role.toLowerCase().includes(input.toLowerCase()) ||
-						user.id.toString().toLowerCase().includes(input.toLowerCase())) {
-						return user
-					}
-				})
-				setStore({ users: newUser })
-			}
 		}
 	};
 };

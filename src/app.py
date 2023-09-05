@@ -221,19 +221,19 @@ def updateUser(user_id):
     if request_body is None:
         raise APIException("You must send information", status_code=404)
 
-    if "first_name" in request_body or request_body["firts_name"]=="":
+    if "first_name" in request_body:
         user.first_name = request_body['first_name']
 
-    if "last_name" in request_body or request_body["last_name"]=="":
+    if "last_name" in request_body:
         user.last_name = request_body['last_name']
 
-    if "role" in request_body or request_body["role"]=="":
+    if "role" in request_body :
         user.role = request_body['role']
 
-    if "phone" in request_body or request_body["phone"]=="":
+    if "phone" in request_body:
         user.phone = request_body['phone']
 
-    if "password" in request_body or request_body["password"]=="":
+    if "password" in request_body:
         pw_hash = bcrypt.generate_password_hash(
         request_body['password']).decode("utf-8")
         user.password = pw_hash
@@ -607,25 +607,25 @@ def updateJob(job_id):
     if request_body is None:
         raise APIException("You must send information", status_code=404)
 
-    if "type" in request_body or request_body["type"]=="":
+    if "type" in request_body:
         job.type = request_body['type']
 
-    if "brand" in request_body or request_body["brand"]=="":
+    if "brand" in request_body:
         job.brand = request_body['brand']
 
-    if "model" in request_body or request_body["model"]=="":
+    if "model" in request_body:
         job.model = request_body['model']
 
-    if "serial_number" in request_body or request_body["serial_number"]=="":
+    if "serial_number" in request_body:
         job.serial_number = request_body['serial_number']
 
-    if "status" in request_body or request_body["status"]=="":
+    if "status" in request_body:
         job.status = request_body['status']
 
-    if "comments" in request_body or request_body["comments"]=="":
+    if "comments" in request_body:
         job.comments = request_body['comments']
 
-    if "id_technical" in request_body or request_body["id_technical"]=="":
+    if "id_technical" in request_body:
         job.id_technical = request_body['id_technical']
 
     job.update()

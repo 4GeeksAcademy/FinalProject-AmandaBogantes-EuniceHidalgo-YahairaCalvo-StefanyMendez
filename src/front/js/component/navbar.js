@@ -29,7 +29,7 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/jobs" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
+							<Link to="/jobs/admi" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
 								<span className="nav-span">Jobs</span>
 							</Link>
 						</li>
@@ -39,7 +39,7 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/" className="nav-link text-decoration-none">
+							<Link to="/aboutus" className="nav-link text-decoration-none">
 								<span className="nav-span">About</span>
 							</Link>
 						</li>

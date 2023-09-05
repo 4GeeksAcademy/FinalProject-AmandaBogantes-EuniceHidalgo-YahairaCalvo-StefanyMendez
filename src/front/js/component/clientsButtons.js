@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../store/appContext';
 
 export const ClientsButtons = () => {
+    const {store, actions} = useContext(Context)
     return (
         <div>
             <div className="container clientsButtons my-3">
@@ -9,7 +11,11 @@ export const ClientsButtons = () => {
                         <div className="card clientsCard">
                             <div className="card-body pb-0 pt-0">
                                 <div className="d-flex align-items-center py-2">
-                                    <input type="text" id="inputSearch" className="form-control formControlSearchButton" autoComplete="off" aria-describedby="passwordHelpInline" />
+                                    <input type="text" id="inputSearch" className="form-control formControlSearchButton" 
+                                    autoComplete="off" aria-describedby="passwordHelpInline" placeholder='Search by Data'
+                                    onKeyUp={(e)=>{
+                                        actions.search_clients(e.target.value)
+                                    }}/>
                                     <button className="btn btn-login my-1 fw-bold d-flex align-items-center">
                                         <i className="fa-solid fa-magnifying-glass me-2"></i>Search
                                     </button>
@@ -20,7 +26,8 @@ export const ClientsButtons = () => {
                     <div className="col-md-3 col-sm-3 my-4">
                         <div className="card clientsCard d-flex justify-content-center align-items-center">
                             <div className="card-body pb-0 pt-0">
-                                <button className="btn btn-login my-1 fw-bold"><i className="fa-solid fa-user-plus me-2"></i>Add Client</button>
+                                <button className="btn btn-login my-1 fw-bold" onClick={() => {actions.handle_show_modal()}}>
+                                    <i className="fa-solid fa-user-plus me-2"></i>Add</button>
                             </div>
                         </div>
                     </div>

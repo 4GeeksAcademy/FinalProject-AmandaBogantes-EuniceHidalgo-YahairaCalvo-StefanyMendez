@@ -24,7 +24,7 @@ export const UsersTable = ({ user }, ...props) => {
                             <td className="text-center users-cell-size align-middle">{user.role}</td>
                             <td className="text-center users-cell-size align-middle">
                               <button className="btn btn-login fw-bold text-center" onClick={() => actions.get_user_by_id(user.id)}>
-                                <i class="fa-solid fa-circle-info me-2"></i>View Details
+                                <i className="fa-solid fa-circle-info me-2"></i>View Details
                               </button>
                             </td>
                             <td className="text-center users-cell-size align-middle">
@@ -55,7 +55,7 @@ export const UsersTable = ({ user }, ...props) => {
                                     })
                                   }
                                 })}>
-                                <i class="fa-solid fa-trash"></i>
+                                <i className="fa-solid fa-trash"></i>
                               </button>
                             </td>
                           </tr>
