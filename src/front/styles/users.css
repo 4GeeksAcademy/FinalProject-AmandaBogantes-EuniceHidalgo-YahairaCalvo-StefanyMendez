@@ -92,3 +92,11 @@ thead {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
+.option-user-modal{
+    background: #1C1C1C;
+    color: white;
+}
+
+.select-user-modal{
+    border-radius: 0;
+}
