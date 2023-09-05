@@ -314,6 +314,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({clients: result.clients})
 			},
 
+
 			get_all_jobs: async ()=>{
 				const store = getStore()
 				const response = await fetch(process.env.BACKEND_URL + '/job', {

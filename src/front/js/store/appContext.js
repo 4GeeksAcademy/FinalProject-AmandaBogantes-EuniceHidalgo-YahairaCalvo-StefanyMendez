@@ -29,7 +29,7 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			state.actions.get_all_users()
-			state.actions.get_all_clients()
+			/* state.actions.get_all_clients() */
 			state.actions.get_all_jobs()
 			// <---- calling this function from the flux.js actions
 		}, []);
