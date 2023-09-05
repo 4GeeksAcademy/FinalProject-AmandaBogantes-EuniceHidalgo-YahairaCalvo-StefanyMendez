@@ -27,12 +27,9 @@ const Layout = () => {
     const basename = process.env.BASENAME || "";
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
-    const { store, actions } = useContext(Context)
 
-    useEffect(() => {
-
-    }, [])
-
+    const {store, actions} = useContext(Context)
+    
     return (
         <div>
             <BrowserRouter basename={basename}>
