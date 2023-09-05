@@ -2,16 +2,16 @@ import React from 'react'
 
 export const UsersTableHeader = () => {
   return (
-    <section class="intro">
-      <div class="h-100">
-        <div class="mask d-flex align-items-center h-100">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                <div class="card tableUsersHeader text-center">
-                  <div class="card-body cardBodyUsers">
-                    <div class="table-responsive">
-                      <table class="table mb-0">
+    <section className="intro">
+      <div className="h-100">
+        <div className="mask d-flex align-items-center h-100">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12">
+                <div className="card tableUsersHeader text-center">
+                  <div className="card-body cardBodyUsers">
+                    <div className="table-responsive">
+                      <table className="table mb-0">
                         <thead>
                           <tr>
                             <th scope="col" className="text-white text-center users-cell-size">User ID</th>

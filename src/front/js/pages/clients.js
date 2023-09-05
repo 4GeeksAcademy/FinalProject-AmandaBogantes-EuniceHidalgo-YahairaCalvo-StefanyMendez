@@ -4,6 +4,7 @@ import { ClientsTable } from '../component/clientsTable';
 import { ClientsTableHeader } from '../component/clientsTableHeader';
 import { ClientsButtons } from '../component/clientsButtons';
 import { Context } from '../store/appContext';
+import { ClientsModal } from '../component/clientsModal';
 
 export const Clients = () => {
 
@@ -11,7 +12,7 @@ export const Clients = () => {
 
     useEffect(() => {
         actions.get_all_clients()
-    }, [])
+    }, [store.show_modal])
 
     return (
         <>
@@ -22,6 +23,7 @@ export const Clients = () => {
                     <ClientsTable key={index} client={client} />
                 )
             })}
+            <ClientsModal show={store.show_modal}/>
         </>
     )
 }

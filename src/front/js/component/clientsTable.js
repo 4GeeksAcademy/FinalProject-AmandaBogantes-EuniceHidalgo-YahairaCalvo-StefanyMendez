@@ -26,7 +26,7 @@ export const ClientsTable = ({ client }, ...props) => {
                                                         <td className="text-center cell-size align-middle">{client.last_name}</td>
                                                         <td className="text-center cell-size align-middle">{client.phone}</td>
                                                         <td className="text-center cell-size align-middle">
-                                                            <button className="btn btn-login fw-bold text-center">
+                                                            <button className="btn btn-login fw-bold text-center" onClick={() => {actions.get_client_by_id(client.id)}}>
                                                                 <i className="fa-regular fa-pen-to-square me-2"></i>Edit
                                                             </button>
                                                         </td>
@@ -41,7 +41,6 @@ export const ClientsTable = ({ client }, ...props) => {
                     </div>
                 </div>
             </div>
-            <ClientsModal />
         </section >
     );
 };

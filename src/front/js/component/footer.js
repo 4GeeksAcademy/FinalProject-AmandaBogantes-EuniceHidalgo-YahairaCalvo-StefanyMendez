@@ -29,7 +29,7 @@ export const Footer = () => {
 				</div>
 
 				<div className="col">
-					<Link to="/jobs" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
+					<Link to="/jobs/admi" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
 						<span className="footer-span">Jobs</span>
 					</Link>
 				</div>
@@ -41,7 +41,7 @@ export const Footer = () => {
 				</div>
 
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/aboutus" className="link-footer text-decoration-none">
 						<span className="footer-span">About</span>
 					</Link>
 				</div>

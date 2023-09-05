@@ -12,8 +12,9 @@ export const UsersButtons = () => {
               <div className="card-body pb-0 pt-0">
                 <div className="d-flex align-items-center py-2">
                 <input type="text" id="inputUsersSearch" className="form-control formControlUsersButtons" 
-                autoComplete="off" aria-describedby="passwordHelpInline" placeholder='Search by Data' onKeyUp={(e)=>{
-                  actions.search_user_name(e.target.value)
+                autoComplete="off" aria-describedby="passwordHelpInline" placeholder='Search by Data' 
+                onKeyUp={(e)=>{
+                  actions.search_users(e.target.value)
                 }} />
                   <button className="btn btn-login my-1 fw-bold d-flex align-items-center">
                     <i className="fa-solid fa-magnifying-glass me-2"></i>Search
@@ -25,7 +26,7 @@ export const UsersButtons = () => {
           <div className="col-md-3 col-sm-3 my-4">
             <div className="card usersCard d-flex justify-content-center align-items-center">
               <div className="card-body pb-0 pt-0">
-                <button className="btn btn-login my-1 fw-bold" onClick={()=>{actions.handle_show_modal()}}><i class="fa-solid fa-user-plus me-2"></i>Add Client</button>
+                <button className="btn btn-login my-1 fw-bold" onClick={()=>{actions.handle_show_modal()}}><i className="fa-solid fa-user-plus me-2"></i>Add</button>
               </div>
             </div>
           </div>
