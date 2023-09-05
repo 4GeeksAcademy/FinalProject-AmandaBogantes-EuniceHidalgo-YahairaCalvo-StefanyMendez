@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/ourServices.css'
 
 const OurServices = () => {
-
+    
     return (
         <div className='body1'>
 

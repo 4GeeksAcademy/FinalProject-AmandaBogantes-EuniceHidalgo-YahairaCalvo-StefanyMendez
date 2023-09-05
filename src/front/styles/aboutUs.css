@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.body-about{
+.body-about {
     margin: 0;
     min-height: 100vh;
     background-image: url("https://img.freepik.com/fotos-premium/tecnico-reparacion-computadora-portatil-rota-destornillador_185126-1339.jpg ");
@@ -15,7 +15,6 @@
 
 
 .about-1 {
-   
     padding: 1rem;
 }
 
@@ -44,16 +43,15 @@
 }
 
 .about-1 {
-   
     text-align: center;
     padding: 1rem;
     color: white;
     background: linear-gradient(135deg, rba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0);
-    backdrop-filter:  blur(10px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 2rem;
     border: 1px solid rga(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);  
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .about-item {
@@ -88,6 +86,7 @@
     font-size: 15px;
     color: whitesmoke;
 }
+
 
 .about-item:hover {
     background-color: #6743CC;
