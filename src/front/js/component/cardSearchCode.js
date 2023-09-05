@@ -12,7 +12,7 @@ const CardSearchCode = () => {
             <form className="form mt-auto mb-5">
                 <div className="row mb-3">
                     <div className="col-xs-12">
-                        <input type="code" className="form-control" id="Code" placeholder="Your Code Here" />
+                        <input type="code" className="form-control formControlSearchCode" id="Code" placeholder="Your Code Here" />
                     </div>
                 </div>
                 <div className="row">
