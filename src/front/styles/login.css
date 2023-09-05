@@ -20,14 +20,11 @@
 
 
 
-.form-control{
-   
+.form-control{ 
     border-radius: 20px;
-   
 }
 
 .btnLogin{
-   
    height: 2.8rem;
    padding: 0px 30px;
     color: white;

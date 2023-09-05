@@ -7,7 +7,7 @@
 .body1 {
     margin: 0;
     min-height: 100vh;
-    background-image: url("https://e1.pxfuel.com/desktop-wallpaper/851/388/desktop-wallpaper-hardware-electric-computer-repair-for.jpg ");
+    background-image: url("https://watermark.lovepik.com/photo/20211123/large/lovepik-material-for-computer-maintenance-picture_500824720.jpg ");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -43,6 +43,11 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
+.services {
+    margin:0;
+    padding: 5px;
+}
+
 .item-service {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -52,33 +57,33 @@
     border-radius: 9px;
 }
 
-.icon-service {
-    font-size: 25px;
+.fa {
+    font-size: 30px;
     margin: 10px;
     color: black;
 }
 
 .tituloH2 {
     color: whitesmoke;
-    font-size: 33px;
+    font-size: 30px;
     margin-bottom: 10px;
 }
-.item-service hr{
+
+.item-service hr {
     width: 46px;
     height: 3px;
     background-color: #108288;
     margin: 0 auto;
     border: none;
 }
-.item-service p{
-    margin-top: 20px;
-    color: aliceblue; 
+
+.item-service p {
+    margin-top: 15px;
+    color: aliceblue;
 }
 
-
-
-.item-service:hover{
-    background-color:  #6743CC;
+.item-service:hover {
+    background-color: #6743CC;
 }
 
 

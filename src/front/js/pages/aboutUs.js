@@ -4,16 +4,22 @@ import '../../styles/aboutUs.css'
 const AboutUs = () => {
 
     return (
-        
-        <div className='body'>
 
-            <div className='about-1'>
-                <h1 className="fw-bold">AboutUs</h1>
-                <p>Every single company has a story, so tell yours! Your customers will want to know about your backstory,
-                    and what made you want to start your business in the first place. Talk about your breakthroughs,
-                    your milestones, and your evolution. Basically, how your business got to become what it is today.
-                    Sharing your company story will help your clients to empathize with you and your business.</p>
+        <div className='body-about '>
+
+
+            <div className='container '>
+                <div className='row  '>
+                    <div className='about-1 ms-auto mt-5'>
+                        <h1 className="fw-bold">AboutUs</h1>
+                        <p>Every single company has a story, so tell yours! Your customers will want to know about your backstory,
+                            and what made you want to start your business in the first place. Talk about your breakthroughs,
+                            your milestones, and your evolution and what made you want to start your.</p>
+                    </div>
+                </div>
             </div>
+
+
 
             <div id='about-2'>
                 <div className='content-box-lg'>
@@ -49,8 +55,6 @@ const AboutUs = () => {
                                         Lorem Ipsum has been the industry's standard dummy</p>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
