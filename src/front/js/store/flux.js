@@ -25,6 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			jobs: [],
 			clients: [],
 			users: [],
+			
 
 			user_login: JSON.parse(localStorage.getItem("user_login")) == undefined ? {} : JSON.parse(localStorage.getItem("user_login")),
 			user_question: {},
