@@ -1,43 +1,51 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 
 
 export const ContactUsTable = () => {
     const {store, actions} = useContext(Context)
+    const [formData, setFormData] = useState({})
+    const handleChange = (e) =>{
+        e.preventDefault() 
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
     return (
         <div className="container">
             <h5 className='title-contactUs md-3'>We Are For You</h5>
             <p className='text-contactus'>Our team are here to help <i className="fa-solid fa-heart"></i></p>
             <div className="row">
                 <div className="col-md-6">
-                    <form onSubmit={actions.handleSubmit}>
+                    <form onSubmit={(e)=>{actions.handleSubmit(e,formData)}}>
                         <div className="row mb-4">
                             <div className="col">
                                 <label for="Name" className="form-label">Name</label>
-                                <input type="text" className="form-control" id="ID" placeholder="Juan" />
+                                <input type="text" className="form-control" id="ID" placeholder="Juan" name="name" onChange={handleChange}/>
                             </div>
                             <div className="col">
                                 <label for="lastName" className="form-label">Last Name</label>
-                                <input type="text" className="form-control" id="lastName" placeholder="Pérez" />
+                                <input type="text" className="form-control" id="lastName" placeholder="Pérez" name="lastName" onChange={handleChange}/>
                             </div>
                         </div>
                         <div className="row mb-4">
                             <div className="col">
                                 <label for="phone" className="form-label">Phone</label>
-                                <input type="tel" className="form-control" id="phone" placeholder="(123) 456-7890" />
+                                <input type="tel" className="form-control" id="phone" placeholder="(123) 456-7890" name="phone" onChange={handleChange}/>
                             </div>
                             <div className="col">
                                 <label for="mail" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="mail" placeholder="mail@example.com" />
+                                <input type="email" className="form-control" id="mail" placeholder="mail@example.com" name="email" onChange={handleChange} />
                             </div>
                         </div>
                         <div className="mb-4">
                             <label for="consult" className="form-label">Topic</label>
-                            <input type="text" className="form-control" id="consult" placeholder="Question" />
+                            <input type="text" className="form-control" id="consult" placeholder="Question" name="question" onChange={handleChange}/>
                         </div>
                         <div className="mb-4">
                             <label for="message" className="form-label">Message</label>
-                            <textarea className="form-control" id="message" rows="4" placeholder="Your Message Here"></textarea>
+                            <textarea className="form-control" id="message" rows="4" placeholder="Your Message Here" name="message" onChange={handleChange}/>
                         </div>
                         <button type="submit" className="btn-contact">Send</button>
                     </form>

@@ -336,14 +336,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({jobs: result.Jobs})
 			},
 
-			handleSubmit:  async (e) => {
+			handleSubmit:  async (e,data) => {
 				e.preventDefault();
 				const response = await fetch(process.env.BACKEND_URL + '/send_email', {
-					method: 'GET'
-					// headers: {
-					// 	mode: 'cors',
-					// 	credentials: 'include'
-				    // }
+					method: 'POST',
+					headers: {
+						"Content-Type":"application/json"
+				    },
+					body:JSON.stringify(data)
 				})
 				// const result = await response.json()
 			 

@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, request, jsonify, url_for, send_from_directory,render_template
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
@@ -47,8 +47,17 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/test.db"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'dev.solutions.team23@gmail.com'
+app.config['MAIL_PASSWORD'] = 'jfihzvwnbjmzgnkt'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 MIGRATE = Migrate(app, db, compare_type=True)
+
 db.init_app(app)
+# <----------------- NODEMAILER----------------------->
+mail = Mail(app)
 
 # Allow CORS requests to this API
 CORS(app)
@@ -659,29 +668,15 @@ def deleteJob(job_id):
 
     return jsonify(response_body), 200
 
-
 # <----------------- NODEMAILER----------------------->
-# app = Flask(__name__)
 
-mail = Mail(app)
-
-
-# cors = CORS(app, resources={r"/send_email*": {"origins": "http://localhost:3000"}})
-
-
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'dev.solutions.team23@gmail.com'
-app.config['MAIL_PASSWORD'] = 'jfihzvwnbjmzgnkt'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-
-
-@app.route('/send_email', methods=['GET'])
+@app.route('/send_email', methods=['POST'])
 def send_email():
-    msg = Message('Asunto del correo', sender='dev.solutions.team23@gmail.com',
+    request_body = request.json
+    print(request_body)
+    msg = Message('Message from contact form', sender='dev.solutions.team23@gmail.com',
                   recipients=['dev.solutions.team23@gmail.com'])
-    msg.body = 'Cuerpo del correo'
+    msg.html=render_template("contact.html",question=request_body["question"],message=request_body["message"],email=request_body["email"],phone=request_body["phone"])
     mail.send(msg)
     return 'Correo enviado con éxito!'
 
