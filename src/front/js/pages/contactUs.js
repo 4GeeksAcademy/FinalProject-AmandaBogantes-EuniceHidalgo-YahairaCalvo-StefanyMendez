@@ -6,6 +6,7 @@ import { Context } from '../store/appContext'
 
 export const ContactUs = () => {
     const { store, actions } = useContext(Context)
+    
 
     return (
         <div>

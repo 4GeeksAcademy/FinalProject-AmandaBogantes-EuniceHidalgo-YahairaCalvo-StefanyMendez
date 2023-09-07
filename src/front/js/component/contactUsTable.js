@@ -1,15 +1,16 @@
-import React from 'react'
-// import React, { useContext, useEffect } from "react";
-// import { Context } from "../store/appContext";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+
 
 export const ContactUsTable = () => {
+    const {store, actions} = useContext(Context)
     return (
         <div className="container">
             <h5 className='title-contactUs md-3'>We Are For You</h5>
             <p className='text-contactus'>Our team are here to help <i className="fa-solid fa-heart"></i></p>
             <div className="row">
                 <div className="col-md-6">
-                    <form>
+                    <form onSubmit={actions.handleSubmit}>
                         <div className="row mb-4">
                             <div className="col">
                                 <label for="Name" className="form-label">Name</label>

@@ -18,6 +18,11 @@ from flask_jwt_extended import (
     create_access_token,
     JWTManager,
 )
+from flask import Flask
+from flask_mail import Mail, Message
+from flask import Flask, make_response
+
+
 
 # from models import Person
 
@@ -655,7 +660,34 @@ def deleteJob(job_id):
     return jsonify(response_body), 200
 
 
+# <----------------- NODEMAILER----------------------->
+# app = Flask(__name__)
+
+mail = Mail(app)
+
+
+# cors = CORS(app, resources={r"/send_email*": {"origins": "http://localhost:3000"}})
+
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'dev.solutions.team23@gmail.com'
+app.config['MAIL_PASSWORD'] = 'jfihzvwnbjmzgnkt'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+
+@app.route('/send_email', methods=['GET'])
+def send_email():
+    msg = Message('Asunto del correo', sender='dev.solutions.team23@gmail.com',
+                  recipients=['dev.solutions.team23@gmail.com'])
+    msg.body = 'Cuerpo del correo'
+    mail.send(msg)
+    return 'Correo enviado con éxito!'
+
+
 # this only runs if `$ python src/main.py` is executed
 if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 3001))
     app.run(host="0.0.0.0", port=PORT, debug=True)
+

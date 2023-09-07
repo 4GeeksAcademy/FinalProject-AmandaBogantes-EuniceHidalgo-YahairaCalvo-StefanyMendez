@@ -336,7 +336,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({jobs: result.Jobs})
 			},
 
-			handle_change: e => {
+			handleSubmit:  async (e) => {
+				e.preventDefault();
+				const response = await fetch(process.env.BACKEND_URL + '/send_email', {
+					method: 'GET'
+					// headers: {
+					// 	mode: 'cors',
+					// 	credentials: 'include'
+				    // }
+				})
+				// const result = await response.json()
+			 
+				if (response.ok) {
+				   alert('Send Message...');
+				} else {
+				   alert('Error');
+				}
+			},
+
+			 handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })
 			}
 		}
