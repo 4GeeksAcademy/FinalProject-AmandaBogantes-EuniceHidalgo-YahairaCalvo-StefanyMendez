@@ -80,3 +80,8 @@ database.database
 database.db
 diagram.png
 __pycache__/
+
+
+# ignore vscode folder
+.vscode/
+.vscode/settings.json
