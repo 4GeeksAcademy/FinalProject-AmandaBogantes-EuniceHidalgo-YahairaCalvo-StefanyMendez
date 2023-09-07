@@ -1,10 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+
 
 .body1 {
-    margin: 0;
     min-height: 100vh;
     background-image: url("https://watermark.lovepik.com/photo/20211123/large/lovepik-material-for-computer-maintenance-picture_500824720.jpg ");
     background-repeat: no-repeat;
@@ -13,11 +9,9 @@
     background-attachment: fixed;
 }
 
-
 .tituloH1 {
     font-size: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin: 3rem 2rem;
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -27,19 +21,16 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
     display: inline-block;
     text-align: center;
     animation: moveLeftRight 5s ease forwards;
-}
-
-.tituloH1 {
     background: linear-gradient(135deg, rba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
     border: 1px solid rga(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 2.5rem;
 }
 
 .services {
@@ -84,7 +75,6 @@
 .item-service:hover {
     background-color: #6743CC;
 }
-
 
 .item-service {
     box-shadow: 5px 7px 9px -3px #41206C;

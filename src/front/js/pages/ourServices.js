@@ -5,11 +5,9 @@ const OurServices = () => {
     
     return (
         <div className='body1'>
-
             <div className='services'>
-                <h1 className='tituloH1'>Our Services</h1>
+                <h1 className='tituloH1'>Services</h1>
             </div>
-
             <div className='content-box-lg'>
                 <div className='container'>
                     <div className='row'>

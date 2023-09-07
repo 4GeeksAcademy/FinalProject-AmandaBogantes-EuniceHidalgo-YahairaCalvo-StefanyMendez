@@ -28,13 +28,18 @@ export const Navbar = () => {
 								<span className="nav-span">Clients</span>
 							</Link>
 						</li>
-						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/jobs/admi" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
+						<li className="nav-link nav-item nav-menu ms-3" hidden={store.buttons_admin_tech.jobs_admin}>
+							<Link to="/jobs/admi" className="nav-link text-decoration-none">
 								<span className="nav-span">Jobs</span>
 							</Link>
 						</li>
+						<li className="nav-link nav-item nav-menu ms-3" hidden={store.buttons_admin_tech.jobs_technical}>
+							<Link to="/jobs/technical" className="nav-link text-decoration-none" >
+								<span className="nav-span">My Jobs</span>
+							</Link>
+						</li>
 						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/" className="nav-link text-decoration-none">
+							<Link to="/ourServices" className="nav-link text-decoration-none">
 								<span className="nav-span">Services</span>
 							</Link>
 						</li>

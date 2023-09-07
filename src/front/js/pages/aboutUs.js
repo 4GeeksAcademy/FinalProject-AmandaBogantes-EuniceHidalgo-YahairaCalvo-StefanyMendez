@@ -11,7 +11,7 @@ const AboutUs = () => {
             <div className='container '>
                 <div className='row  '>
                     <div className='about-1 ms-auto mt-5'>
-                        <h1 className="fw-bold">AboutUs</h1>
+                        <h1 className="fw-bold">About Us</h1>
                         <p>Every single company has a story, so tell yours! Your customers will want to know about your backstory,
                             and what made you want to start your business in the first place. Talk about your breakthroughs,
                             your milestones, and your evolution and what made you want to start your.</p>
