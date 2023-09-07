@@ -8,7 +8,7 @@ export const ClientsModal = (...props) => {
     const { store, actions } = useContext(Context)
 
     return (
-        <form className="modal" tabIndex="-1"  style={{ display: store.show_modal ? "inline-block" : "none" }} onSubmit={(e) => {
+        <form className="modal" tabIndex="-1" style={{ display: store.show_modal ? "inline-block" : "none" }} onSubmit={(e) => {
             e.preventDefault()
             if (!!store.client_id) {
                 actions.update_client_by_id(store.client_id.id)
@@ -19,13 +19,13 @@ export const ClientsModal = (...props) => {
                 e.target.reset()
             }
         }
-            }>
+        }>
             <div className="modal-dialog modal-dialog-centered p-1">
                 <div className="modal-content clientsModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold">Client</h5>
                         <button type="button" className="close btn btn-login fw-bold text-center fw-bold"
-                        onClick={() => {actions.handle_delete_modal()}}>
+                            onClick={() => { actions.handle_delete_modal() }}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
@@ -41,7 +41,7 @@ export const ClientsModal = (...props) => {
                                 id="firstName"
                                 name="first_name"
                                 onChange={actions.handle_change}
-                                defaultValue={!!store.client_id ? store.client_id.first_name:""}
+                                defaultValue={!!store.client_id ? store.client_id.first_name : ""}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -52,7 +52,7 @@ export const ClientsModal = (...props) => {
                                 id="lastName"
                                 name="last_name"
                                 onChange={actions.handle_change}
-                                defaultValue={!!store.client_id ? store.client_id.last_name:""}
+                                defaultValue={!!store.client_id ? store.client_id.last_name : ""}
                             />
                         </div>
                         <div className="form-group mb-2">
@@ -63,7 +63,7 @@ export const ClientsModal = (...props) => {
                                 id="phone"
                                 name="phone"
                                 onChange={actions.handle_change}
-                                defaultValue={!!store.client_id ? store.client_id.phone:""}
+                                defaultValue={!!store.client_id ? store.client_id.phone : ""}
                             />
                         </div>
                     </div>
@@ -79,9 +79,9 @@ export const ClientsModal = (...props) => {
         </form>
     );
 };
-ClientsModal.propTypes ={
+ClientsModal.propTypes = {
     show: PropTypes.bool
 }
 ClientsModal.defaultProps = {
-    show:false
+    show: false
 }

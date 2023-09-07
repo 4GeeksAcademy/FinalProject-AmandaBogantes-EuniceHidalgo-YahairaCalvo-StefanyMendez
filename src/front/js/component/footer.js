@@ -29,13 +29,19 @@ export const Footer = () => {
 				</div>
 
 				<div className="col">
-					<Link to="/jobs/admi" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs}>
+					<Link to="/jobs/admi" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs_admin}>
 						<span className="footer-span">Jobs</span>
+					</Link>
+				</div>
+				
+				<div className="col">
+					<Link to="/jobs/technical" className="link-footer text-decoration-none" hidden={store.buttons_admin_tech.jobs_technical}>
+						<span className="footer-span">My Jobs</span>
 					</Link>
 				</div>
 
 				<div className="col">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/ourServices" className="link-footer text-decoration-none">
 						<span className="footer-span">Services</span>
 					</Link>
 				</div>

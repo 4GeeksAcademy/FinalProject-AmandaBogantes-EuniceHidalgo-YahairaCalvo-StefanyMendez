@@ -49,7 +49,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			buttons_admin_tech: {
 				users: JSON.parse(localStorage.getItem("btnUsers")) == undefined ? true : JSON.parse(localStorage.getItem("btnUsers")),
 				clients: JSON.parse(localStorage.getItem("btnClients")) == undefined ? true : JSON.parse(localStorage.getItem("btnClients")),
-				jobs: JSON.parse(localStorage.getItem("btnJobs")) == undefined ? true : JSON.parse(localStorage.getItem("btnJobs")),
+				jobs_admin: JSON.parse(localStorage.getItem("btnJobsAdmin")) == undefined ? true : JSON.parse(localStorage.getItem("btnJobsAdmin")),
+				jobs_technical: JSON.parse(localStorage.getItem("btnJobsTechnical")) == undefined ? true : JSON.parse(localStorage.getItem("btnJobsTechnical")),
 				login: JSON.parse(localStorage.getItem("btnLogin")) == undefined ? false : JSON.parse(localStorage.getItem("btnLogin")),
 				account: JSON.parse(localStorage.getItem("btnAccount")) == undefined ? true : JSON.parse(localStorage.getItem("btnAccount"))
 			},
@@ -153,26 +154,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore()
 				if (store.user_login.role == "admin") {
 					localStorage.setItem("btnUsers", false)
-					localStorage.setItem("btnJobs", false)
+					localStorage.setItem("btnJobsAdmin", false)
+					localStorage.setItem("btnJobsTechnical", true)
 					localStorage.setItem("btnClients", false)
 					localStorage.setItem("btnLogin", true)
 					localStorage.setItem("btnAccount", false)
 					setStore({
 						buttons_admin_tech: {
-							users: false, jobs: false,
+							users: false, jobs_admin: false, jobs_technical: true,
 							clients: false, login: true, account: false
 						}
 					})
 
 				} else if (store.user_login.role == "technical") {
 					localStorage.setItem("btnUsers", true)
-					localStorage.setItem("btnJobs", false)
+					localStorage.setItem("btnJobsAdmin", true)
+					localStorage.setItem("btnJobsTechnical", false)
 					localStorage.setItem("btnClients", true)
 					localStorage.setItem("btnLogin", true)
 					localStorage.setItem("btnAccount", false)
 					setStore({
 						buttons_admin_tech: {
-							users: true, jobs: false,
+							users: true, jobs_admin: true, jobs_technical: false,
 							clients: true, login: true, account: false
 						}
 					})
@@ -315,7 +318,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ is_logued: false })
 				setStore({
 					buttons_admin_tech: {
-						users: true, jobs: true,
+						users: true, jobs_admin: true, jobs_technical:true,
 						clients: true, login: false, account: true
 					}
 				})
@@ -637,7 +640,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return client
 					}
 				})
-				setStore({clients: newClient})
+				setStore({ clients: newClient })
 			},
 
 			get_all_jobs: async () => {
@@ -667,8 +670,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })
 			},
-
-
 		}
 	};
 };

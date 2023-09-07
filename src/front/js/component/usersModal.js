@@ -16,7 +16,8 @@ export const UsersModal = (...props) => {
             else {
                 actions.add_user()
                 e.target.reset()
-            }}}>
+            }
+        }}>
             <div className="modal-dialog modal-dialog-centered p-1">
                 <div className="modal-content usersModalContent p-2">
                     <div className="modal-header">
@@ -80,8 +81,8 @@ export const UsersModal = (...props) => {
                             <div className="input-group group-user-modal mb-3 input-select">
                                 <select className="form-select select-user-modal" id="inputGroupRoles" onChange={actions.handle_change} name='role'>
                                     <option className='option-user-modal' defaultValue="null">Select the role</option>
-                                    <option className='option-user-modal' selected = {!!store.user_id && store.user_id.role == "admin"?true:false} value="admin" >Admin</option>
-                                    <option className='option-user-modal' selected = {!!store.user_id && store.user_id.role == "technical"?true:false} value="technical">Technical</option>
+                                    <option className='option-user-modal' selected={!!store.user_id && store.user_id.role == "admin" ? true : false} value="admin" >Admin</option>
+                                    <option className='option-user-modal' selected={!!store.user_id && store.user_id.role == "technical" ? true : false} value="technical">Technical</option>
                                 </select>
                             </div>
                         </div>
