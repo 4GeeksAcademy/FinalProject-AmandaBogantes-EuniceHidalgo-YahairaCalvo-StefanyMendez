@@ -81,6 +81,8 @@ database.db
 diagram.png
 __pycache__/
 
+# ignore migration folders 
+migrations/*
 
 # ignore vscode folder
 .vscode/
