@@ -6,9 +6,9 @@
     cursor: pointer;
     height: 100px;
     width: 100px;
-    background: white;
+    background: none;
     border: 3px solid #333;
-    display: flex;
+    display: none;
     justify-content: center;
     align-content: center;
 }
