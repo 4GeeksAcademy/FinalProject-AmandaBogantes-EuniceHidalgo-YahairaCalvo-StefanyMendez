@@ -6,8 +6,6 @@ import { Context } from '../store/appContext'
 
 export const ContactUs = () => {
     const { store, actions } = useContext(Context)
-    
-
     return (
         <div>
             <div>
@@ -16,5 +14,4 @@ export const ContactUs = () => {
         </div>
     )
 }
-
 export default ContactUs
