@@ -3,10 +3,10 @@ import { Context } from "../store/appContext";
 
 
 export const ContactUsTable = () => {
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
     const [formData, setFormData] = useState({})
-    const handleChange = (e) =>{
-        e.preventDefault() 
+    const handleChange = (e) => {
+        e.preventDefault()
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -18,21 +18,21 @@ export const ContactUsTable = () => {
             <p className='text-contactus'>Our team are here to help <i className="fa-solid fa-heart i-contactUs"></i></p>
             <div className="row">
                 <div className="col-md-6">
-                    <form  className="form-contactUs" onSubmit={(e)=>{actions.handleSubmit(e,formData)}}>
+                    <form className="form-contactUs" onSubmit={(e) => { actions.handleSubmit(e, formData) }}>
                         <div className="row mb-4">
                             <div className="col">
                                 <label for="Name" className="form-label form-labelContactUs">Name</label>
-                                <input type="text" className="form-control form-controlContactUs" id="ID" placeholder="Juan" name="name" onChange={handleChange}/>
+                                <input type="text" className="form-control form-controlContactUs" id="ID" placeholder="Juan" name="name" onChange={handleChange} />
                             </div>
                             <div className="col">
                                 <label for="lastName" className="form-label form-labelContactUs">Last Name</label>
-                                <input type="text" className="form-control form-controlContactUs" id="lastName" placeholder="Pérez" name="lastName" onChange={handleChange}/>
+                                <input type="text" className="form-control form-controlContactUs" id="lastName" placeholder="Pérez" name="lastName" onChange={handleChange} />
                             </div>
                         </div>
                         <div className="row mb-4">
                             <div className="col">
                                 <label for="phone" className="form-label form-labelContactUs">Phone</label>
-                                <input type="tel" className="form-control form-controlContactUs" id="phone" placeholder="(123) 456-7890" name="phone" onChange={handleChange}/>
+                                <input type="tel" className="form-control form-controlContactUs" id="phone" placeholder="(123) 456-7890" name="phone" onChange={handleChange} />
                             </div>
                             <div className="col">
                                 <label for="mail" className="form-label form-labelContactUs">Email</label>
@@ -41,11 +41,11 @@ export const ContactUsTable = () => {
                         </div>
                         <div className="mb-4">
                             <label for="consult" className="form-label form-labelContactUs">Topic</label>
-                            <input type="text" className="form-control form-controlContactUs" id="consult" placeholder="Question" name="question" onChange={handleChange}/>
+                            <input type="text" className="form-control form-controlContactUs" id="consult" placeholder="Question" name="question" onChange={handleChange} />
                         </div>
                         <div className="mb-4">
                             <label for="message" className="form-label form-labelContactUs">Message</label>
-                            <textarea className="form-control form-controlContactUs" id="message" rows="4" placeholder="Your Message Here" name="message" onChange={handleChange}/>
+                            <textarea className="form-control form-controlContactUs" id="message" rows="4" placeholder="Your Message Here" name="message" onChange={handleChange} />
                         </div>
                         <button type="submit" className="btn-contact">Send</button>
                     </form>
