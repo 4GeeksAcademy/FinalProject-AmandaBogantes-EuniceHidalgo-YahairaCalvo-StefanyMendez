@@ -49,7 +49,7 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-link nav-item nav-menu ms-3">
-							<Link to="/" className="nav-link text-decoration-none">
+							<Link to="/contactUs" className="nav-link text-decoration-none" hidden={store.buttons_admin_tech.contactUS}>
 								<span className="nav-span">Contact</span>
 							</Link>
 						</li>
