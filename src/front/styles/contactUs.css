@@ -15,7 +15,7 @@
     margin-bottom: 2rem;
 }
 /*------------------------------------------Container----------------------------------------*/
-.container{
+.container-contactUs{
     margin-top: 2rem;
 }
 
@@ -28,7 +28,7 @@
   }
 
 /*------------------------------------------Form----------------------------------------*/
-form{
+.form-contactUs{
     background-color: rgba(50, 50, 50, 0.2);
     padding: 2rem;
     border-radius: 3rem; 
@@ -43,11 +43,11 @@ form{
     margin:auto; 
   }
 
-  .form-label {
+  .form-labelContactUs {
     font-weight: bold;
   }
   
-  .form-control {
+  .form-controlContactUs {
     border-radius: 1rem;
   }
   
@@ -84,7 +84,7 @@ form{
     align-items: center;
     justify-content: center;
 }
-i{
+.i-contactUs{
     color: #D04E8D;
     margin: 0.5rem;
 }
