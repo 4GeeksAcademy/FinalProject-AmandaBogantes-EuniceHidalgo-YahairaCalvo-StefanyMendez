@@ -318,7 +318,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ is_logued: false })
 				setStore({
 					buttons_admin_tech: {
-						users: true, jobs_admin: true, jobs_technical:true,
+						users: true, jobs_admin: true, jobs_technical: true,
 						clients: true, login: false, account: true
 					}
 				})
@@ -649,6 +649,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
+			},
+
+			get_job_by_code: async (job_code) => {
+				const response = await fetch(process.env.BACKEND_URL + `/job/code/${job_code}`, {
+					method: 'GET'
+				})
+				const result = await response.json()
+				if (result.msg == "ok") {
+					Swal.fire({
+						title: 'Welcome ' + result.Job.client.first_name + ' ' + result.Job.client.last_name,
+						background: '#41206C',
+						color: '#FFFFFF',
+						width: 650,
+						html: `Code: ${result.Job.code}<br><br><h4>Status: ${result.Job.status}</h4>`,
+						footer: 'Thank you for choosing us!',
+						showClass: {
+							popup: 'animate__animated animate__swing'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutBottomRight'
+						}
+					})
+				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 2000,
+						showClass: {
+							popup: 'animate__animated animate__swing'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutBottomRight'
+						}
+					})
+				}
 			},
 
 			handle_show_modal: () => {
