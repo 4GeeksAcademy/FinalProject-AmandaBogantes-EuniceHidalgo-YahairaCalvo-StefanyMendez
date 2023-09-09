@@ -2,11 +2,17 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 body{
-  background: #1C1C1C;
+  background-image: url(https://wallpaperaccess.com/full/38123.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Raleway', sans-serif;
 }
 .navbar, .footer{
     background: #41206C;
-    font-family: 'Russo One', sans-serif;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.6rem;
 
   line-height: 140%;
 }
@@ -83,4 +89,29 @@ color: white;
     height: 80%;
   }
   
+}
+.input-search {
+  position: relative;
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  display: block;
+  bottom: .8rem;
+  right: 2.4rem;
+  color: grey;
+}
+input{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+textarea{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+}
+h5{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
 }

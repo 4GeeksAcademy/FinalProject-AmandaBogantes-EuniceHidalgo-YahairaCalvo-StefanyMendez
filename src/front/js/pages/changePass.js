@@ -14,12 +14,11 @@ const ChangePass = () => {
 
     return (
         <div className='container-forgot my-5'>
-            <h1 className='lh1'>Change Password</h1>
-            <img src={logo} alt='logo' className='logo1 w-75' />
+            <img src={logo} alt='logo' className='logo1 w-100' />
 
             <form className=" forgot mt-3" onSubmit={(e)=>{
                 e.preventDefault()
-                actions.change_password();
+                    actions.change_password();
             }}>
                 <input
                     className='form-control formControlChangePassword mb-3'

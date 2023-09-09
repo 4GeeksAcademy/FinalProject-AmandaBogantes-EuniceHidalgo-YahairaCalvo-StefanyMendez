@@ -9,7 +9,6 @@
 /*  ---------------------------------------up--------------------------*/
 .card-home-title {
     margin: 2rem;
-    font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 120%;
@@ -24,7 +23,6 @@ h3 {
     font-size: 3rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
-    font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 120%;
@@ -40,7 +38,6 @@ h3 {
 
 h6 {
     color: white;
-    font-family: Work Sans;
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
@@ -128,8 +125,8 @@ h6 {
 }
 
 /*------------------------------------------CARDOFFERS----------------------------------------*/
-.cardOffers {
-    width: 20rem;
+.card-offers {
+    margin: 8rem 0;
     color: aliceblue;
     overflow: inherit;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -141,7 +138,7 @@ h6 {
     max-width: 500rem;
     margin-bottom: 1.5rem;
     overflow: auto;
-    box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
+   
     padding: 3rem;
 }
 
@@ -155,7 +152,7 @@ h6 {
     margin-bottom: 1rem;
     border-radius: 1.25rem;
     background: #41206C;
-    box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
+   
 }
 
 .card-img-top {
@@ -168,7 +165,7 @@ h6 {
 }
 .card-img{
     height: 50rem;
-    margin-bottom: 5rem;
+    
 }
 
 /*------------------------------------------RESPONSIVE----------------------------------------*/

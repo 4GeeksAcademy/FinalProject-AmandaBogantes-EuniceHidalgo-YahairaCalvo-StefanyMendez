@@ -10,18 +10,21 @@ export const JobsAdmi = () => {
 
     const { store, actions } = useContext(Context)
 
-
     useEffect(() => {
         actions.get_all_jobs()
-    }, [])
-
+    }, [store.show_modal, store.job_deleted])
 
     return (
         <>
             <JobsAdmiButtons />
             <JobsAdmiTableHeader />
-            <JobsAdmiTable />
-            <JobsAdmiModal />
+            {!!store.jobs && store.jobs.map((job, index) => {
+                return(
+
+                    <JobsAdmiTable key={index} job={job}/>
+                    )
+                })}
+            <JobsAdmiModal show={store.show_modal}/>
         </>
     )
 }

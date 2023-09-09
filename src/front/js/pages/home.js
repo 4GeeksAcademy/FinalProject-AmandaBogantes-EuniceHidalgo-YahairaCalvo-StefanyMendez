@@ -13,8 +13,8 @@ export const Home = () => {
 
 		<div>
 			<CardSearchCode />
-			<CardProducts />
 			<CardInformation />
+			<CardProducts />
 			<CardOffers />
 		</div>
 

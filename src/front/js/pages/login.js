@@ -14,10 +14,10 @@ const Login = () => {
 
     return (
         <div className='container-login my-5 ' >
-            <h1 className='lh1'>LOGIN</h1>
-            <img src={logo} alt='logo' className='logo1 w-75' />
+            
+            <img src={logo} alt='logo' className='logo1 w-100' />
 
-            <form className=" login mt-3  " onSubmit={e => {
+            <form className=" login mt-3" onSubmit={e => {
                 e.preventDefault()
                 actions.login_user()
             }

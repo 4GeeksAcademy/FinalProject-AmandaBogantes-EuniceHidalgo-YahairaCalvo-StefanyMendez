@@ -1,7 +1,7 @@
 /* jobsAdmi.css */
 
 .titleJobsTable {
-    font-family: 'Work Sans';
+
     font-size: 2.5rem;
     font-weight: bolder;
     background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
@@ -9,7 +9,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: moveLeftRight 5s ease forwards;
-
 }
 
 html,
@@ -40,7 +39,7 @@ table td {
     margin-bottom: 1rem;
     font-weight: bold;
     background: var(--gradient-2, linear-gradient(129deg, #2cd7e0 0%, #6743CC 100%));
-    font-family: "Work Sans";
+
 }
 
 .tableJobsHeader {
@@ -48,7 +47,6 @@ table td {
     border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
     border-image-slice: 1;
     font-weight: bold;
-    font-family: "Work Sans";
     background-color: transparent;
     color: white;
 }
@@ -64,7 +62,6 @@ thead {
 
 .jobsButtons {
     color: rgb(255, 255, 255);
-    font-family: "Work Sans";
     border: none;
     outline: none;
 }
@@ -86,7 +83,6 @@ thead {
 
 .modal-dialog {
     padding: 1rem;
-    font-family: "Work Sans";
     font-weight: bold;
     color: white;
 }
@@ -106,4 +102,27 @@ thead {
 .modal-label-input {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+    font-family: 'Raleway', sans-serif;
+}
+input{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+textarea{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.option-job-modal {
+    background: #1C1C1C;
+    color: white;
+}
+
+.select-jobs-modal {
+    border-radius: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
 }
