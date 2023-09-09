@@ -40,13 +40,13 @@ const ForgotPass = () => {
                 actions.check_question_answer()
             }}>
                 {/*Dop */}
-                <div className="input-group mb-3 input-select">
-                    <select className="form-select" id="inputGroupQuestions" onChange={actions.handle_change} name='question_security'>
-                        <option defaultValue="null">Select the question</option>
-                        <option value="pet" >What is the name of your first pet?</option>
-                        <option value="color">What is your favorite color?</option>
-                        <option value="movie">What is your favorite movie?</option>
-                        <option value="food">What is your favorite food?</option>
+                <div className="input-group group-forgot-pass mb-3 input-select">
+                    <select className="form-select select-forgot-pass" id="inputGroupQuestions" onChange={actions.handle_change} name='question_security'>
+                        <option className='option-forgot-pass' defaultValue="null">Select the question</option>
+                        <option className='option-forgot-pass' value="pet" >What is the name of your first pet?</option>
+                        <option className='option-forgot-pass' value="color">What is your favorite color?</option>
+                        <option className='option-forgot-pass' value="movie">What is your favorite movie?</option>
+                        <option className='option-forgot-pass' value="food">What is your favorite food?</option>
                     </select>
                 </div>
 

@@ -11,7 +11,7 @@ export const Users = () => {
 
     useEffect(()=>{
         actions.get_all_users()
-    },[])
+    },[store.show_modal, store.delete_user])
     
     return (
         <>
@@ -22,8 +22,7 @@ export const Users = () => {
                     <UsersTable key={index} user={user} />
                 )
             })}
-
-           {/*  <UsersModal /> */}
+           <UsersModal show={store.show_modal}/>
         </>
     )
 }

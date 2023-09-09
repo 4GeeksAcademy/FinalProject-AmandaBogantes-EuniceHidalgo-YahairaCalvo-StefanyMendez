@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types"
-import { Link } from "react-router-dom";
-import { ClientsModal } from "./clientsModal";
 import { Context } from "../store/appContext";
 
-export const ClientsTable = ({ client }, ...props) => {
+export const JobsTechnicalTable = ({ job }, ...props) => {
 
     const { store, actions } = useContext(Context)
 
@@ -15,19 +13,19 @@ export const ClientsTable = ({ client }, ...props) => {
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-12">
-                                <div className="card tableItems text-center">
-                                    <div className="card-body cardBodyClients">
+                                <div className="card tableJobsItems text-center">
+                                    <div className="card-body cardBodyJobs">
                                         <div className="table-responsive">
                                             <table className="table table-hover mb-0">
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row" className="text-center align-middle">{client.id}</th>
-                                                        <td className="text-center cell-size align-middle">{client.first_name}</td>
-                                                        <td className="text-center cell-size align-middle">{client.last_name}</td>
-                                                        <td className="text-center cell-size align-middle">{client.phone}</td>
-                                                        <td className="text-center cell-size align-middle">
-                                                            <button className="btn btn-login fw-bold text-center" onClick={() => {actions.get_client_by_id(client.id)}}>
-                                                                <i className="fa-regular fa-pen-to-square me-2"></i>Edit
+                                                        <th scope="row" className="text-center cell-size-jobs align-middle fs-5">02</th>
+                                                        <td className="text-center cell-size-jobs align-middle fs-5">BB123</td>
+                                                        <td className="text-center cell-size-jobs align-middle fs-5">Laptop</td>
+                                                        <td className="text-center cell-size-jobs align-middle fs-5">1132654</td>
+                                                        <td className="text-center users-cell-size align-middle">
+                                                            <button className="btn btn-login fw-bold text-center">
+                                                                <i className="fa-solid fa-circle-info me-2"></i>View Details
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -45,6 +43,6 @@ export const ClientsTable = ({ client }, ...props) => {
     );
 };
 
-ClientsTable.propTypes = {
-    client: PropTypes.object
+JobsTechnicalTable.propTypes = {
+    job: PropTypes.object
 }

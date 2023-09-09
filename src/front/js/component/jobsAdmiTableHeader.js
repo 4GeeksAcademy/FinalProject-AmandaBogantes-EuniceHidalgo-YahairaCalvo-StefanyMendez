@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ClientsTableHeader = () => {
+export const JobsAdmiTableHeader = () => {
     return (
         <section className="intro">
             <div className="h-100">
@@ -8,17 +8,18 @@ export const ClientsTableHeader = () => {
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-12">
-                                <div className="card tableHeader text-center">
+                                <div className="card tableJobsHeader text-center fs-4">
                                     <div className="card-body cardBodyClients">
                                         <div className="table-responsive">
                                             <table className="table mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col" className="text-white text-center cell-size">Client ID</th>
-                                                        <th scope="col" className="text-white text-center cell-size">First Name</th>
-                                                        <th scope="col" className="text-white text-center cell-size">Full Name</th>
-                                                        <th scope="col" className="text-white text-center cell-size">Phone</th>
-                                                        <th scope="col" className="text-white text-center cell-size">Actions</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">Job ID</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">Code</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">Type</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">Status</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">Actions</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">Delete</th>
                                                     </tr>
                                                 </thead>
                                             </table>

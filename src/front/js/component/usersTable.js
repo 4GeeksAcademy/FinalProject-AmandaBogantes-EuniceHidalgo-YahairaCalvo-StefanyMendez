@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from "prop-types"
+import { Context } from '../store/appContext'
 
-export const UsersTable = ({user}, ...props) => {
+export const UsersTable = ({ user }, ...props) => {
+  const { store, actions } = useContext(Context)
+
   return (
     <section className="intro">
       <div className="h-100">
@@ -20,13 +23,39 @@ export const UsersTable = ({user}, ...props) => {
                             <td className="text-center users-cell-size align-middle">{user.last_name}</td>
                             <td className="text-center users-cell-size align-middle">{user.role}</td>
                             <td className="text-center users-cell-size align-middle">
-                              <button className="btn btn-login fw-bold text-center">
-                                <i class="fa-solid fa-circle-info me-2"></i>View Details
+                              <button className="btn btn-login fw-bold text-center" onClick={() => actions.get_user_by_id(user.id)}>
+                                <i className="fa-solid fa-circle-info me-2"></i>View Details
                               </button>
                             </td>
                             <td className="text-center users-cell-size align-middle">
-                              <button className="btn btn-login fw-bold text-center">
-                                <i class="fa-solid fa-trash me-2"></i>
+                              <button className="btn btn-login fw-bold text-center" onClick={() =>
+                                Swal.fire({
+                                  title: 'Are you sure?',
+                                  text: "You won't be able to revert this!",
+                                  icon: 'warning',
+                                  showCancelButton: true,
+                                  confirmButtonColor: '#d33',
+                                  cancelButtonColor: '#34AACB',
+                                  confirmButtonText: 'Yes, delete it!',
+                                  color: '#FFFFFF',
+                                  background: '#41206C'
+
+                                }).then((result) => {
+                                  if (result.isConfirmed) {
+                                    actions.delete_user_by_id(user.id)
+                                    actions.delete_user_change()
+                                    Swal.fire({
+                                      title: 'Deleted!',
+                                      text: `The user ${user.first_name} ${user.last_name} was deleted`,
+                                      icon: 'success',
+                                      showConfirmButton: false,
+                                      color: '#FFFFFF',
+                                      background: '#41206C',
+                                      timer: 2000
+                                    })
+                                  }
+                                })}>
+                                <i className="fa-solid fa-trash"></i>
                               </button>
                             </td>
                           </tr>
@@ -43,6 +72,6 @@ export const UsersTable = ({user}, ...props) => {
     </section >
   )
 }
-UsersTable.propTypes ={
+UsersTable.propTypes = {
   user: PropTypes.object
 }
