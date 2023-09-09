@@ -22,6 +22,7 @@ import ChangePass from "./pages/changePass";
 import { Users } from "./pages/users";
 import { JobsAdmi } from "./pages/jobsAdmi";
 import { JobsTechnical } from "./pages/jobsTechnical";
+import BackToTopBtn from "./component/backToTopBtn";
 
 
 
@@ -56,6 +57,7 @@ const Layout = () => {
                     </Routes>
                     <Footer />
                 </ScrollToTop>
+                <BackToTopBtn/>
             </BrowserRouter>
         </div>
     );
