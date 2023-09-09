@@ -14,8 +14,7 @@ const ForgotPass = () => {
 
     return (
         <div className='container-forgot my-5'>
-            <h1 className='lh1'>Forgot Password</h1>
-            <img src={logo} alt='logo' className='logo1 w-75' />
+            <img src={logo} alt='logo' className='logo1 w-100' />
 
             <form hidden={store.hidden_username} onSubmit={(e)=>{
                 e.preventDefault()

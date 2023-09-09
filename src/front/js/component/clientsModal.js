@@ -31,7 +31,7 @@ export const ClientsModal = (...props) => {
                     </div>
                     <div className="modal-body">
                         <div className="form-group mb-2">
-                            <label htmlFor="clientId" className="modal-label-input">Client ID</label>
+                            <label htmlFor="clientId" className="modal-label-input" hidden={store.hidden_id}>Client ID {!!store.client_id ? store.client_id.id : ""}</label>
                         </div>
                         <div className="form-group mb-2">
                             <label htmlFor="firstName" className="modal-label-input">First Name</label>
@@ -71,7 +71,7 @@ export const ClientsModal = (...props) => {
                         <button type="submit" className="btn btn-login fw-bold text-center">
                             Save
                         </button>
-                        <button type="button" className="btn btn-login fw-bold text-center">Clear
+                        <button type="reset" className="btn btn-login fw-bold text-center">Clear
                         </button>
                     </div>
                 </div>

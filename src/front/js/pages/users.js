@@ -11,7 +11,7 @@ export const Users = () => {
 
     useEffect(()=>{
         actions.get_all_users()
-    },[store.show_modal, store.delete_user])
+    },[store.show_modal, store.user_deleted])
     
     return (
         <>

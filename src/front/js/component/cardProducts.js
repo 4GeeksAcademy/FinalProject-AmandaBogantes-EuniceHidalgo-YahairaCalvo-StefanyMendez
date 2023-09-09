@@ -7,7 +7,7 @@ export const cardProducts = ({ }, ...props) => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="carousel-titles">
+    <div className="carousel-titles mb-5">
       <div className="titles-Products">
         <h3 className="text-break">Unveiling Technological Marvels:</h3>
         <h6 className="text-break"> Exploring the Latest Breakthroughs in Tech</h6>

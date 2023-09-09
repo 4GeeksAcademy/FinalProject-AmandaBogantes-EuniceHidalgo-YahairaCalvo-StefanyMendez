@@ -140,8 +140,10 @@ class Job(db.Model):
         }
 
     def save(self):
+        print(self.time_stamp)
         db.session.add(self)
         db.session.commit()
+        print(self.time_stamp)
 
     def update(self):
         db.session.commit()

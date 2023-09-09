@@ -10,18 +10,20 @@ export const JobsTechnical = () => {
 
     const { store, actions } = useContext(Context)
 
-
     useEffect(() => {
-        actions.get_all_jobs()
-    }, [])
-
+        actions.get_job_by_technical(store.user_login.id)
+    }, [store.show_modal])
 
     return (
         <>
             <JobsTechnicalButtons />
             <JobsTechnicalTableHeader />
-            <JobsTechnicalTable />
-            <JobsTechnicalModal />
+            {!!store.jobs && store.jobs.map((job, index) => {
+                return (
+                    <JobsTechnicalTable key={index} job={job} />
+                )
+            })}
+            <JobsTechnicalModal show={store.show_modal}/>
         </>
     )
 }

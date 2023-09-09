@@ -12,8 +12,7 @@ export const UsersModal = (...props) => {
             if (!!store.user_id) {
                 actions.update_user_by_id(store.user_id.id)
                 e.target.reset()
-            }
-            else {
+            }else {
                 actions.add_user()
                 e.target.reset()
             }
@@ -29,7 +28,8 @@ export const UsersModal = (...props) => {
                     </div>
                     <div className="modal-body">
                         <div className="form-group mb-1 fs-5">
-                            <label htmlFor="userId" className="modal-label-input">User ID {!!store.user_id ? store.user_id.id : null}</label>
+                            <label htmlFor="userId" className="modal-label-input" hidden={store.hidden_id}
+                            >User ID {!!store.user_id ? store.user_id.id : null}</label>
                         </div>
                         <div className="form-group mb-2">
                             <label htmlFor="username" className="modal-label-input">Username</label>
@@ -123,7 +123,7 @@ export const UsersModal = (...props) => {
                         <button type="submit" className="btn btn-login fw-bold text-center">
                             Save
                         </button>
-                        <button type="button" className="btn btn-login fw-bold text-center">
+                        <button type="reset" className="btn btn-login fw-bold text-center">
                             Clear
                         </button>
                     </div>
@@ -134,7 +134,6 @@ export const UsersModal = (...props) => {
     )
 }
 UsersModal.propTypes = {
-
     show: PropTypes.bool
 }
 UsersModal.defaultProps = {

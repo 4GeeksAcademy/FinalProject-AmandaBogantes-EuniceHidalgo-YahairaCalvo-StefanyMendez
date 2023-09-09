@@ -36,7 +36,6 @@ table td {
     margin-bottom: 1rem;
     font-weight: bold;
     background: var(--gradient-2, linear-gradient(129deg, #2cd7e0 0%, #6743CC 100%));
-    font-family: "Work Sans";
 }
 
 .tableUsersHeader {
@@ -44,7 +43,6 @@ table td {
     border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
     border-image-slice: 1;
     font-weight: bold;
-    font-family: "Work Sans";
     background-color: transparent;
     color: white;
 }
@@ -56,7 +54,6 @@ thead {
 
 .usersButtons {
     color: rgb(255, 255, 255);
-    font-family: "Work Sans";
     border: none;
     outline: none;
 }
@@ -99,4 +96,14 @@ thead {
 
 .select-user-modal{
     border-radius: 0;
+}
+.titleUsersTable {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveLeftRight 5s ease forwards;
+
 }

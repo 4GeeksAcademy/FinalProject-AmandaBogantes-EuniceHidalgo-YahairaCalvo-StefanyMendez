@@ -19,10 +19,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			serial_number: null,
 			status: null,
 			issues: null,
+			comments: null,
 			technical_id: null,
-			client_id: null,
 
 			jobs: [],
+			jobs_search: [],
+			job_id: null,
+			job_deleted: false,
 
 			users: [],
 			users_search: [],
@@ -37,10 +40,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user_login: JSON.parse(localStorage.getItem("user_login")) == undefined ? {} : JSON.parse(localStorage.getItem("user_login")),
 			user_question: {},
 			is_logued: false,
-			job_search: {},
 
 			hidden_username: null,
 			hidden_questions_answer: null,
+			hidden_id: null,
+			hidden_time_stamp: null,
+			hidden_input_question_answer: true,
+			hidden_btn_new_code: null,
+
 			correct_answer: false,
 			password_changed: false,
 
@@ -55,38 +62,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				account: JSON.parse(localStorage.getItem("btnAccount")) == undefined ? true : JSON.parse(localStorage.getItem("btnAccount"))
 			},
 
-			hidden_input_question_answer: true
-
 		},
 		actions: {
-			/* addJob: async()=>{
-							const body = {
-								"code":"lsdflknsdfj",
-								"type":"cpu",
-								"brand":"HP",
-								"model":"ljksdfsdsdf2313",
-								"serial_number":"jksdflan56",
-								"status":"finish",
-								"issues":"Tarjeta madre alzo fuego",
-								"comments":"Se le cambio la tarjeta",
-								"id_technical":"14",
-								"id_client":"1"
-							}
-			
-							const response = await fetch(process.env.BACKEND_URL + "/job",{
-			
-								method:'POST',
-								body: JSON.stringify(body),
-								headers: {
-									'Content-Type': 'application/json'
-								}
-							}
-							
-							)
-							const result = await response.json()
-			
-							console.log(result)
-						} */
 			login_user: async () => {
 
 				const store = getStore()
@@ -124,13 +101,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 							showConfirmButton: false,
 							color: '#FFFFFF',
 							background: '#41206C',
-							timer: 2000
+							timer: 3000
 						})
 						localStorage.setItem("jwt-token", result.access_token);
 						localStorage.setItem("user_login", JSON.stringify(result.User))
 						setStore({ user_login: result.User })
 						actions.active_buttons_by_role()
 						setStore({ is_logued: true })
+						setStore({ username: null })
+						setStore({ password: null })
 
 					} else {
 						Swal.fire({
@@ -141,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							showConfirmButton: false,
 							color: '#FFFFFF',
 							background: '#41206C',
-							timer: 1500
+							timer: 3000
 						})
 					}
 
@@ -198,7 +177,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							showConfirmButton: false,
 							color: '#FFFFFF',
 							background: '#41206C',
-							timer: 1500
+							timer: 3000
 						})
 					}
 					else if (result.msg == "ok") {
@@ -206,6 +185,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ hidden_username: true })
 						setStore({ hidden_questions_answer: false })
 						setStore({ password_changed: false })
+						setStore({ username: null })
 					}
 					else {
 						Swal.fire({
@@ -216,7 +196,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							showConfirmButton: false,
 							color: '#FFFFFF',
 							background: '#41206C',
-							timer: 1500
+							timer: 3000
 						})
 					}
 				} catch (error) {
@@ -240,11 +220,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
 				}
 				else if (store.user_question.question_security == store.question_security && store.user_question.answer_security == store.answer_security) {
 					setStore({ correct_answer: true })
+					setStore({ question_security: null })
+					setStore({ answer_security: null })
 				} else {
 					Swal.fire({
 						position: 'top-end',
@@ -254,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
 				}
 			},
@@ -271,7 +253,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								showConfirmButton: false,
 								color: '#FFFFFF',
 								background: '#41206C',
-								timer: 1500
+								timer: 3000
 							})
 						}
 						else {
@@ -295,8 +277,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 								showConfirmButton: false,
 								color: '#FFFFFF',
 								background: '#41206C',
-								timer: 1500
+								timer: 3000
 							})
+							setStore({ password: null })
 						}
 					} catch (error) {
 						console.log(error + " Error in change_password backEnd")
@@ -310,7 +293,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
 				}
 			},
@@ -318,7 +301,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ is_logued: false })
 				setStore({
 					buttons_admin_tech: {
-						users: true, jobs_admin: true, jobs_technical:true,
+						users: true, jobs_admin: true, jobs_technical: true,
 						clients: true, login: false, account: true
 					}
 				})
@@ -337,6 +320,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			get_user_by_id: async (user_id) => {
+				setStore({ hidden_input_question_answer: true })
+				setStore({ read_only_username: true })
+				setStore({ hidden_id: false })
 
 				setStore({ show_modal: true })
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
@@ -344,11 +330,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				setStore({ user_id: result.User })
-				setStore({ hidden_input_question_answer: true })
-				setStore({ read_only_username: true })
+
 			},
 			add_user: async () => {
-				setStore({ show_modal: true })
 				setStore({ hidden_input_question_answer: false })
 				setStore({ read_only_username: false })
 				const store = getStore()
@@ -399,7 +383,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 2000
+						timer: 3000
 					})
 					setStore({ username: null })
 					setStore({ first_name: null })
@@ -418,8 +402,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
+					setStore({ username: null })
+					setStore({ first_name: null })
+					setStore({ last_name: null })
+					setStore({ role: null })
+					setStore({ phone: null })
+					setStore({ password: null })
+					setStore({ question_security: null })
+					setStore({ answer_security: null })
 				}
 
 			},
@@ -453,7 +445,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
-					actions.handle_delete_modal()
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
@@ -462,8 +453,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
+					actions.handle_delete_modal()
 					setStore({ first_name: null })
 					setStore({ last_name: null })
 					setStore({ role: null })
@@ -479,8 +471,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
+					setStore({ first_name: null })
+					setStore({ last_name: null })
+					setStore({ role: null })
+					setStore({ phone: null })
+					setStore({ password: null })
 				}
 
 			},
@@ -519,6 +516,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			get_client_by_id: async (client_id) => {
 				setStore({ show_modal: true })
+				setStore({ hidden_id: false })
+
 				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
 					method: 'GET'
 				})
@@ -527,7 +526,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			add_client: async () => {
-				setStore({ show_modal: true })
 				const store = getStore()
 				const actions = getActions()
 
@@ -561,7 +559,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 2000
+						timer: 3000
 					})
 					setStore({ first_name: null })
 					setStore({ last_name: null })
@@ -575,8 +573,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
+					setStore({ first_name: null })
+					setStore({ last_name: null })
+					setStore({ phone: null })
 				}
 
 			},
@@ -604,7 +605,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
-					actions.handle_delete_modal()
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
@@ -613,8 +613,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
+					actions.handle_delete_modal()
 					setStore({ first_name: null })
 					setStore({ last_name: null })
 					setStore({ phone: null })
@@ -627,8 +628,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						showConfirmButton: false,
 						color: '#FFFFFF',
 						background: '#41206C',
-						timer: 1500
+						timer: 3000
 					})
+					setStore({ first_name: null })
+					setStore({ last_name: null })
+					setStore({ phone: null })
 				}
 			},
 			search_clients: (input) => {
@@ -649,24 +653,287 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
+				setStore({ jobs_search: result.Jobs })
+			},
+			get_job_by_id: async (job_id) => {
+				setStore({ show_modal: true })
+				setStore({ hidden_id: false })
+				setStore({ hidden_time_stamp: false })
+				setStore({ hidden_btn_new_code: true })
+				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
+					method: 'GET'
+				})
+				const result = await response.json()
+				setStore({ job_id: result.Job })
+			},
+			get_job_by_technical: async (user_login_id) => {
+
+				const response = await fetch(process.env.BACKEND_URL + `/job/technical/${user_login_id}`, {
+					method: 'GET'
+				})
+				const result = await response.json()
+				setStore({ jobs: result.Jobs })
+				setStore({ jobs_search: result.Jobs })
+			},
+			add_job: async () => {
+				const store = getStore()
+				const actions = getActions()
+
+				let job = {}
+
+				job.code = store.code
+
+				if (store.type != null) {
+					job.type = store.type
+				}
+				if (store.brand != null) {
+					job.brand = store.brand
+				}
+				if (store.model != null) {
+					job.model = store.model
+				}
+				if (store.serial_number != null) {
+					job.serial_number = store.serial_number
+				}
+				if (store.status != null) {
+					job.status = store.status
+				}
+				if (store.issues != null) {
+					job.issues = store.issues
+				}
+				if (store.comments != null) {
+					job.comments = store.comments
+				}
+				if (store.client_id != null) {
+					job.id_client = store.client_id
+				}
+				if (store.technical_id != null) {
+					job.id_technical = store.technical_id
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + "/job", {
+					method: 'POST',
+					body: JSON.stringify(job),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+
+				)
+				const result = await response.json()
+				if (result.msg == "ok") {
+					actions.handle_delete_modal()
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Add',
+						text: `The Job ${result.Job.code} was added`,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
+					setStore({ code: null })
+					setStore({ type: null })
+					setStore({ brand: null })
+					setStore({ model: null })
+					setStore({ serial_number: null })
+					setStore({ status: null })
+					setStore({ issues: null })
+					setStore({ comments: null })
+					setStore({ client_id: null })
+					setStore({ technical_id: null })
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
+					setStore({ code: null })
+					setStore({ type: null })
+					setStore({ brand: null })
+					setStore({ model: null })
+					setStore({ serial_number: null })
+					setStore({ status: null })
+					setStore({ issues: null })
+					setStore({ comments: null })
+					setStore({ client_id: null })
+					setStore({ technical_id: null })
+				}
+			},
+			update_job_by_id: async (job_id) => {
+
+				const store = getStore()
+				const actions = getActions()
+
+				let job = {}
+				if (store.type != null) {
+					job.type = store.type
+				}
+				if (store.brand != null) {
+					job.brand = store.brand
+				}
+				if (store.model != null) {
+					job.model = store.model
+				}
+				if (store.serial_number != null) {
+					job.serial_number = store.serial_number
+				}
+				if (store.status != null) {
+					job.status = store.status
+				}
+				if (store.issues != null) {
+					job.issues = store.issues
+				}
+				if (store.comments != null) {
+					job.comments = store.comments
+				}
+				if (store.client_id != null) {
+					job.id_client = store.client_id
+				}
+				if (store.technical_id != null) {
+					job.id_technical = store.technical_id
+				}
+
+				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
+					method: 'PUT',
+					body: JSON.stringify(job),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				const result = await response.json()
+				if (result.msg == "ok") {
+					actions.handle_delete_modal()
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Add',
+						text: `The Job ${result.Job.code} was updated`,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
+					setStore({ type: null })
+					setStore({ brand: null })
+					setStore({ model: null })
+					setStore({ serial_number: null })
+					setStore({ status: null })
+					setStore({ issues: null })
+					setStore({ comments: null })
+					setStore({ client_id: null })
+					setStore({ technical_id: null })
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
+					setStore({ type: null })
+					setStore({ brand: null })
+					setStore({ model: null })
+					setStore({ serial_number: null })
+					setStore({ status: null })
+					setStore({ issues: null })
+					setStore({ comments: null })
+					setStore({ client_id: null })
+					setStore({ technical_id: null })
+				}
+
+			},
+			delete_job_by_id: async (job_id) => {
+				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
+					method: 'DELETE'
+				})
+				const result = await response.json()
+				setStore({ job_deleted: true })
+			},
+			search_jobs: (input) => {
+				const store = getStore();
+
+				const newJob = store.jobs_search.filter(job => {
+					if (job.code.includes(input) ||
+						job.type.toLowerCase().includes(input.toLowerCase()) ||
+						job.status.toLowerCase().includes(input.toLowerCase()) ||
+						job.id.toString().includes(input)) {
+						return job
+					}
+				})
+				setStore({ jobs: newJob })
+			},
+			delete_job_change: () => {
+				setStore({ job_deleted: false })
+			},
+			random_code_job: () => {
+				const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+				const charactersLength = characters.length;
+				let result = "";
+				let ch;
+				while (result.length < 10) {
+					ch = characters.charAt(Math.floor(Math.random() * charactersLength));
+					if (!result.includes(ch)) {
+						result += ch;
+					}
+				}
+				setStore({ code: result })
 			},
 
 			handle_show_modal: () => {
 				const store = getStore()
+				const actions = getActions()
 				setStore({ show_modal: true })
 				if (!!store.user_id != true) {
 					setStore({ hidden_input_question_answer: false })
 					setStore({ read_only_username: false })
+					setStore({ hidden_id: true })
+				}
+				if (!!store.client_id != true) {
+					setStore({ hidden_id: true })
+				}
+				if (!!store.job_id != true) {
+					actions.random_code_job()
+					setStore({ hidden_id: true })
+					setStore({ hidden_time_stamp: true })
+					setStore({ hidden_btn_new_code: false })
 				}
 			},
-
 			handle_delete_modal: () => {
 				setStore({ show_modal: false })
 				setStore({ user_id: null })
 				setStore({ client_id: null })
+				setStore({ job_id: null })
 
+				setStore({ username: null })
+				setStore({ first_name: null })
+				setStore({ last_name: null })
+				setStore({ role: null })
+				setStore({ phone: null })
+				setStore({ password: null })
+				setStore({ question_security: null })
+				setStore({ answer_security: null })
+
+				setStore({ code: null })
+				setStore({ type: null })
+				setStore({ brand: null })
+				setStore({ model: null })
+				setStore({ serial_number: null })
+				setStore({ status: null })
+				setStore({ issues: null })
+				setStore({ comments: null })
+				setStore({ client_id: null })
+				setStore({ technical_id: null })
 			},
-
 			handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })
 			},
