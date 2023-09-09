@@ -2,26 +2,22 @@ import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
-
 import { Home } from "./pages/home";
 import injectContext, { Context } from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-
 import { Clients } from "./pages/clients";
-
 import Login from "./pages/login";
 import ForgotPass from "./pages/fotgotPass";
-
-
 import AboutUs from "./pages/aboutUs";
 import OurServices from "./pages/ourServices";
-
 import ChangePass from "./pages/changePass";
 import { Users } from "./pages/users";
+import { ContactUs } from "./pages/contactUs";
 import { JobsAdmi } from "./pages/jobsAdmi";
 import { JobsTechnical } from "./pages/jobsTechnical";
+import BackToTopBtn from "./component/backToTopBtn";
+
 
 
 
@@ -50,12 +46,14 @@ const Layout = () => {
                         <Route element={<OurServices />} path="/ourServices" />
                         <Route element={<Clients />} path="/clients" />
                         <Route element={<Users />} path="/users" />
+                        <Route element={<ContactUs />} path="/contactUs" />
                         <Route element={<JobsAdmi />} path="/jobs/admi" />
                         <Route element={<JobsTechnical />} path="jobs/technical" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
+                <BackToTopBtn/>
             </BrowserRouter>
         </div>
     );

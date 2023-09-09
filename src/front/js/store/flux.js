@@ -889,6 +889,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ code: result })
 			},
 
+			get_job_by_code: async (job_code) => {
+				const response = await fetch(process.env.BACKEND_URL + `/job/code/${job_code}`, {
+					method: 'GET'
+				})
+				const result = await response.json()
+				if (result.msg == "ok") {
+					Swal.fire({
+						title: 'Welcome ' + result.Job.client.first_name + ' ' + result.Job.client.last_name,
+						background: '#41206C',
+						color: '#FFFFFF',
+						width: 650,
+						html: `Code: ${result.Job.code}<br><br><h4>Status: ${result.Job.status}</h4>`,
+						footer: 'Thank you for choosing us!',
+						showClass: {
+							popup: 'animate__animated animate__swing'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutBottomRight'
+						}
+					})
+				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 2000,
+						showClass: {
+							popup: 'animate__animated animate__swing'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutBottomRight'
+						}
+					})
+				}
+			},
+
 			handle_show_modal: () => {
 				const store = getStore()
 				const actions = getActions()
@@ -934,7 +973,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ client_id: null })
 				setStore({ technical_id: null })
 			},
-			handle_change: e => {
+
+			handleSubmit:  async (e,data) => {
+				e.preventDefault();
+				const response = await fetch(process.env.BACKEND_URL + '/send_email', {
+					method: 'POST',
+					headers: {
+						"Content-Type":"application/json"
+				    },
+					body:JSON.stringify(data)
+				})
+				// const result = await response.json()
+			 
+				if (response.ok) {
+				   alert('Send Message...');
+				} else {
+				   alert('Error');
+				}
+			},
+      
+			 handle_change: e => {
 				setStore({ [e.target.name]: e.target.value })
 			},
 		}

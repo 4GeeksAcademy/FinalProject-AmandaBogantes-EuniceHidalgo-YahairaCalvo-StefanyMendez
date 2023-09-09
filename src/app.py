@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, request, jsonify, url_for, send_from_directory,render_template
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
@@ -18,6 +18,11 @@ from flask_jwt_extended import (
     create_access_token,
     JWTManager,
 )
+from flask import Flask
+from flask_mail import Mail, Message
+from flask import Flask, make_response
+
+
 
 # from models import Person
 
@@ -42,8 +47,17 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/test.db"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'dev.solutions.team23@gmail.com'
+app.config['MAIL_PASSWORD'] = 'jfihzvwnbjmzgnkt'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 MIGRATE = Migrate(app, db, compare_type=True)
+
 db.init_app(app)
+# <----------------- NODEMAILER----------------------->
+mail = Mail(app)
 
 # Allow CORS requests to this API
 CORS(app)
@@ -656,8 +670,21 @@ def deleteJob(job_id):
 
     return jsonify(response_body), 200
 
+# <----------------- NODEMAILER----------------------->
+
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    request_body = request.json
+    print(request_body)
+    msg = Message('Message from contact form', sender='dev.solutions.team23@gmail.com',
+                  recipients=['dev.solutions.team23@gmail.com'])
+    msg.html=render_template("contact.html",question=request_body["question"],message=request_body["message"],email=request_body["email"],phone=request_body["phone"])
+    mail.send(msg)
+    return 'Correo enviado con éxito!'
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 3001))
     app.run(host="0.0.0.0", port=PORT, debug=True)
+
