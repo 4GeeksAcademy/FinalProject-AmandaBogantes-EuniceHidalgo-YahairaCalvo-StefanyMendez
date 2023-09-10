@@ -115,7 +115,7 @@ class Job(db.Model):
     time_stamp = db.Column(db.DateTime, default=datetime.now(
         pytz.timezone("America/Costa_Rica")), nullable=False)
     id_technical = db.Column(
-        db.Integer, db.ForeignKey(User.id), nullable=False)
+        db.Integer, db.ForeignKey(User.id))
     id_client = db.Column(db.Integer, db.ForeignKey(Client.id), nullable=False)
     technical = db.relationship(User)
     client = db.relationship(Client)
@@ -140,10 +140,10 @@ class Job(db.Model):
         }
 
     def save(self):
-        print(self.time_stamp)
+        
         db.session.add(self)
         db.session.commit()
-        print(self.time_stamp)
+        
 
     def update(self):
         db.session.commit()

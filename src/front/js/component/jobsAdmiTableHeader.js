@@ -16,6 +16,7 @@ export const JobsAdmiTableHeader = () => {
                                                     <tr>
                                                         <th scope="col" className="text-white text-center cell-size-jobs">Job ID</th>
                                                         <th scope="col" className="text-white text-center cell-size-jobs">Code</th>
+                                                        <th scope="col" className="text-white text-center cell-size-jobs">User</th>
                                                         <th scope="col" className="text-white text-center cell-size-jobs">Type</th>
                                                         <th scope="col" className="text-white text-center cell-size-jobs">Status</th>
                                                         <th scope="col" className="text-white text-center cell-size-jobs">Actions</th>

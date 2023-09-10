@@ -53,7 +53,7 @@ export const Footer = () => {
 				</div>
 
 				<div className="col mb-5">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/contactUs" className="link-footer text-decoration-none">
 						<span className="footer-span">Contact</span>
 					</Link>
 				</div>

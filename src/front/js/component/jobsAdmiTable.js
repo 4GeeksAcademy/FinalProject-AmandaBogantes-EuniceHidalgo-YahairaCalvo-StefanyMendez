@@ -22,6 +22,7 @@ export const JobsAdmiTable = ({ job }, ...props) => {
                                                     <tr>
                                                         <th scope="row" className="text-center cell-size-jobs align-middle fs-5">{job.id}</th>
                                                         <td className="text-center cell-size-jobs align-middle fs-5">{job.code}</td>
+                                                        <td className="text-center cell-size-jobs align-middle fs-5">{job.technical.username}</td>
                                                         <td className="text-center cell-size-jobs align-middle fs-5">{job.type}</td>
                                                         <td className="text-center cell-size-jobs align-middle fs-5">{job.status}</td>
                                                         <td className="text-center users-cell-size align-middle  fs-5">

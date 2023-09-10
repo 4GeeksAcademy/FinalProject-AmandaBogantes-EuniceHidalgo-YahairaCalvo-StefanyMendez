@@ -265,8 +265,21 @@ def updateUser(user_id):
 @app.route('/user/<int:user_id>', methods=['DELETE'])
 def deleteUser(user_id):
     user = User.query.get(user_id)
-    job = Job.query.filter_by(id_technical = user_id).first()
+    admin = User.query.filter_by(role = "admin").first()
+    job_by_status_finish = Job.query.filter_by(id_technical = user_id, status="finish")
+    job_by_status_cancel = Job.query.filter_by(id_technical = user_id, status="cancel")
     
+    for job_finish in job_by_status_finish:
+        job_finish.id_technical = admin.id
+        job_finish.update()
+        
+    
+    for job_cancel in job_by_status_cancel:
+        job_cancel.id_technical = admin.id
+        job_cancel.update()
+        
+    
+    job = Job.query.filter_by(id_technical = user_id).first()
     if job is not None:
         raise APIException(f"The tecinical has jobs asigned, please reassign jobs before proceeding", status_code=400)
 
@@ -527,7 +540,7 @@ def getJobsByTechnical(technical_id):
 
 
 @app.route('/job/client/<int:client_id>', methods=['GET'])
-def getJobsNyClient(client_id):
+def getJobsByClient(client_id):
     job = Job.query.filter_by(id_client=client_id)
     jobs = list(map(lambda job: job.serialize(), job))
 
