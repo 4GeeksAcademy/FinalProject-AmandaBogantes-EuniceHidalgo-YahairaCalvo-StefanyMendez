@@ -18,17 +18,17 @@ export const UsersTable = ({ user }, ...props) => {
                       <table className="table table-hover mb-0">
                         <tbody>
                           <tr>
-                            <th scope="row" className="text-center users-cell-size align-middle">{user.id}</th>
-                            <td className="text-center users-cell-size align-middle">{user.first_name}</td>
-                            <td className="text-center users-cell-size align-middle">{user.last_name}</td>
-                            <td className="text-center users-cell-size align-middle">{user.role}</td>
+                            <th scope="row" className="text-center users-cell-size align-middle fs-5">{user.id}</th>
+                            <td className="text-center users-cell-size align-middle fs-5">{user.first_name}</td>
+                            <td className="text-center users-cell-size align-middle fs-5">{user.last_name}</td>
+                            <td className="text-center users-cell-size align-middle fs-5">{user.role}</td>
                             <td className="text-center users-cell-size align-middle">
-                              <button className="btn btn-login fw-bold text-center" onClick={() => actions.get_user_by_id(user.id)}>
+                              <button className="btn btn-login text-center" onClick={() => actions.get_user_by_id(user.id)}>
                                 <i className="fa-solid fa-circle-info me-2"></i>View Details
                               </button>
                             </td>
                             <td className="text-center users-cell-size align-middle">
-                              <button className="btn btn-login fw-bold text-center" onClick={() =>
+                              <button className="btn btn-login text-center" onClick={() =>
                                 Swal.fire({
                                   title: 'Are you sure?',
                                   text: "You won't be able to revert this!",
@@ -44,15 +44,6 @@ export const UsersTable = ({ user }, ...props) => {
                                   if (result.isConfirmed) {
                                     actions.delete_user_by_id(user.id)
                                     actions.delete_user_change()
-                                    Swal.fire({
-                                      title: 'Deleted!',
-                                      text: `The user ${user.first_name} ${user.last_name} was deleted`,
-                                      icon: 'success',
-                                      showConfirmButton: false,
-                                      color: '#FFFFFF',
-                                      background: '#41206C',
-                                      timer: 2000
-                                    })
                                   }
                                 })}>
                                 <i className="fa-solid fa-trash"></i>

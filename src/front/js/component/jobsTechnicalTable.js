@@ -24,7 +24,7 @@ export const JobsTechnicalTable = ({ job }, ...props) => {
                                                         <td className="text-center cell-size-jobs align-middle fs-5">{job.type}</td>
                                                         <td className="text-center cell-size-jobs align-middle fs-5">{job.status}</td>
                                                         <td className="text-center users-cell-size align-middle">
-                                                            <button className="btn btn-login fw-bold text-center" onClick={() => { actions.get_job_by_id(job.id) }}>
+                                                            <button className="btn btn-login text-center" onClick={() => { actions.get_job_by_id(job.id) }}>
                                                                 <i className="fa-solid fa-circle-info me-2"></i>View Details
                                                             </button>
                                                         </td>

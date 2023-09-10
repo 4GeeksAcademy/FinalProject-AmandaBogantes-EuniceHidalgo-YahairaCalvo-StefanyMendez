@@ -19,6 +19,15 @@
 .formControlLogin {
   border-radius: 20px;
 }
+.form-login{
+  background-color: rgba(50, 50, 50, 0.2);
+  padding: 2rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: 0 auto;
+  color: white;
+}
 
 .btnLogin {
   height: 2.8rem;

@@ -8,7 +8,7 @@ export const UsersTableHeader = () => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-12">
-                <div className="card tableUsersHeader text-center">
+                <div className="card tableUsersHeader text-center fs-4">
                   <div className="card-body cardBodyUsers">
                     <div className="table-responsive">
                       <table className="table mb-0">

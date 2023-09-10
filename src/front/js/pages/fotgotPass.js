@@ -16,7 +16,7 @@ const ForgotPass = () => {
         <div className='container-forgot my-5'>
             <img src={logo} alt='logo' className='logo1 w-100' />
 
-            <form hidden={store.hidden_username} onSubmit={(e)=>{
+            <form className='form-forgot' hidden={store.hidden_username} onSubmit={(e)=>{
                 e.preventDefault()
                 actions.forgot_password()
             }}>

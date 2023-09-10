@@ -15,7 +15,15 @@
 .lh1 {
   color: white;
 }
-
+.form-forgot{
+  background-color: rgba(50, 50, 50, 0.2);
+  padding: 2rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: 0 auto;
+  color: white;
+}
 .logo1 {
   width: 12rem;
   height: 10.5rem;

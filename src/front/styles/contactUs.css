@@ -1,90 +1,93 @@
-
 /*------------------------------------------Top----------------------------------------*/
-.title-contactUs{
-    font-size: 6rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    margin: 4rem;
-    max-width: 100%;
+.title-contactUs {
+  font-size: 6rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin: 4rem;
+  max-width: 100%;
 }
-.text-contactus{
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    margin-bottom: 2rem;
+
+.text-contactus {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-bottom: 2rem;
 }
+
 /*------------------------------------------Container----------------------------------------*/
-.container{
-    margin-top: 2rem;
+.container {
+  margin-top: 2rem;
 }
 
 /*------------------------------------------Image----------------------------------------*/
 .contact-image {
-    max-width: 100%; 
-    height: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 3rem; 
-  }
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 3rem;
+}
 
 /*------------------------------------------Form----------------------------------------*/
-form{
-    background-color: rgba(50, 50, 50, 0.2);
-    padding: 2rem;
-    border-radius: 3rem; 
-    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2); 
-    max-width: 100%; 
-    margin: 0 auto;
-    color: white;
+form {
+  background-color: rgba(50, 50, 50, 0.2);
+  padding: 2rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: 0 auto;
+  color: white;
 }
 
 .form-container {
-    max-width: 100%; 
-    margin:auto; 
+  max-width: 100%;
+  margin: auto;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 1rem;
+}
+
+.btn-contact {
+
+  color: white;
+  padding: 0px 30px;
+  height: 3rem;
+  border-radius: 20px;
+  background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+
+  &:hover {
+    box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
   }
 
-  .form-label {
-    font-weight: bold;
+  &:active {
+    -webkit-transform: translateY(0.25em);
+    transform: translateY(0.25em);
   }
-  
-  .form-control {
-    border-radius: 1rem;
-  }
-  
-  .btn-contact {
+}
 
-    color: white;
-    padding: 0px 30px;
-    height: 3rem;
-    border-radius: 20px;
-    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+.btn-primary:hover {
+  background-color: #6a006a;
+}
 
-    &:hover {
-        box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
-    }
-
-    &:active {
-        -webkit-transform: translateY(0.25em);
-        transform: translateY(0.25em);
-    }
-  }
-  
-  .btn-primary:hover {
-    background-color: #6a006a;
-  }
-  
 /*------------------------------------------Icon social Networks----------------------------------------*/
-.information-contact{
-    font-family: sans-serif;
-    
+.information-contact {
+  font-family: sans-serif;
+
 }
-.social-information{
-    margin: 2rem;
-    color: white;
-    align-items: center;
-    justify-content: center;
+
+.social-information {
+  margin: 2rem;
+  color: white;
+  align-items: center;
+  justify-content: center;
 }
-i{
-    color: #D04E8D;
-    margin: 0.5rem;
+
+i {
+  color: #D04E8D;
+  margin: 0.5rem;
 }
