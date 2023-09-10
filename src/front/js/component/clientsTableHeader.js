@@ -9,7 +9,7 @@ export const ClientsTableHeader = () => {
                         <div className="row justify-content-center">
                             <div className="col-12">
                                 <div className="card tableHeader text-center">
-                                    <div className="card-body cardBodyClients">
+                                    <div className="card-body cardBodyClients fs-4">
                                         <div className="table-responsive">
                                             <table className="table mb-0">
                                                 <thead>

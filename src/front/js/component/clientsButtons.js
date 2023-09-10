@@ -27,7 +27,7 @@ export const ClientsButtons = () => {
                     <div className="col-md-3 col-sm-3 my-2">
                         <div className="card clientsCard d-flex justify-content-center align-items-center">
                             <div className="card-body pb-0 pt-0">
-                                <button className="btn btn-login my-1 fw-bold" onClick={() => {actions.handle_show_modal()}}>
+                                <button className="btn btn-login my-1" onClick={() => {actions.handle_show_modal()}}>
                                     <i className="fa-solid fa-user-plus me-2"></i>Add</button>
                             </div>
                         </div>

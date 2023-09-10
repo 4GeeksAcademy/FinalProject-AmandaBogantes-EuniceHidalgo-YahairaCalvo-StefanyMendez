@@ -265,6 +265,10 @@ def updateUser(user_id):
 @app.route('/user/<int:user_id>', methods=['DELETE'])
 def deleteUser(user_id):
     user = User.query.get(user_id)
+    job = Job.query.filter_by(id_technical = user_id).first()
+    
+    if job is not None:
+        raise APIException(f"The tecinical has jobs asigned, please reassign jobs before proceeding", status_code=400)
 
     if user is None:
         raise APIException("User not found", status_code=404)
@@ -390,6 +394,14 @@ def addClient():
 
     if "phone" not in request_body or request_body["phone"] == "":
         raise APIException("The phone is required")
+    
+    client_exist = Client.query.filter_by(
+        first_name=request_body['first_name'], 
+        last_name=request_body['last_name'], 
+        phone=request_body['phone']).first()
+
+    if client_exist:
+        raise APIException("The client already exist", status_code=400)
 
     client = Client(
         first_name=request_body['first_name'],
