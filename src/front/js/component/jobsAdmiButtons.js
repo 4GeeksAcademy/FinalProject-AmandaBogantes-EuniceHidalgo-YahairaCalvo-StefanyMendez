@@ -5,7 +5,7 @@ export const JobsAdmiButtons = () => {
     const { store, actions } = useContext(Context)
     return (
         <div>
-            <div className="container jobsButtons my-3">
+            <div className="container-job m-auto w-75 jobsButtons my-3">
                 <div className="titleJobsTable mb-3 mt-5 text-start">
                     <p>Jobs Dashboard</p>
                 </div>
@@ -24,7 +24,7 @@ export const JobsAdmiButtons = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-5 col-sm-3 my-2">
+                    <div className="col-md-3 col-sm-3 my-2">
                         <div className="card clientsCard d-flex justify-content-center align-items-center">
                             <div className="card-body pb-0 pt-0">
                                 <button className="btn btn-login my-1 fw-bold fs-5" onClick={() => { actions.handle_show_modal() }}>
