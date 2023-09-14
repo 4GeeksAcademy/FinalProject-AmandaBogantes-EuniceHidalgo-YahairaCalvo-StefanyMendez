@@ -1,0 +1,65 @@
+/* mapLocation.css */
+
+.mapBigContainer {
+    background-size: cover;
+    margin-bottom: 5rem;
+    display: flex; 
+    justify-content: space-between;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.map-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 35%;
+    overflow: hidden;
+    background-color: rgba(50, 50, 50, 0.2);
+    border-radius: 3rem;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 90%;
+    height: 85%;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.maptitle {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    animation: moveLeftRight 5s ease forwards;
+    padding-left: 3rem;
+
+}
+
+.addressContainer { 
+    background-color: rgba(50, 50, 50, 0.2);
+    border-radius: 3rem;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+    color: white;
+    height: 50%;
+}
+
+.ubication {
+    color: red;
+}
