@@ -21,7 +21,7 @@ from flask_jwt_extended import (
 from flask import Flask
 from flask_mail import Mail, Message
 from flask import Flask, make_response
-
+from datetime import datetime
 
 
 # from models import Person
@@ -106,10 +106,11 @@ def getUsers():
         raise APIException("Users not found", status_code=404)
 
     users = list(map(lambda user: user.serialize(), user))
+    sorted_users = sorted(users, key=lambda user: user['id'])
 
     response_body = {
         "msg": "ok",
-        "Users": users
+        "Users": sorted_users
     }
 
     return jsonify(response_body), 200
@@ -363,10 +364,11 @@ def getClients():
         raise APIException("Clients not found", status_code=404)
 
     clients = list(map(lambda client: client.serialize(), client))
+    sorted_clients = sorted(clients, key=lambda client: client['id'])
 
     response_body = {
         "msg": "ok",
-        "clients": clients
+        "clients": sorted_clients
     }
 
     return jsonify(response_body), 200
@@ -490,9 +492,11 @@ def getJobs():
 
     jobs = list(map(lambda job: job.serialize(), job))
 
+    sorted_jobs = sorted(jobs, key=lambda job: job['id'])
+    
     response_body = {
         "msg": "ok",
-        "Jobs": jobs
+        "Jobs": sorted_jobs
     }
     return jsonify(response_body), 200
 
@@ -528,13 +532,15 @@ def getJobById(job_id):
 def getJobsByTechnical(technical_id):
     job = Job.query.filter_by(id_technical=technical_id)
     jobs = list(map(lambda job: job.serialize(), job))
+    
 
     if job is None:
         raise APIException("Jobs not found", status_code=404)
 
+    sorted_jobs = sorted(jobs, key=lambda job: job['id'])
     response_body = {
         "msg": "ok",
-        "Jobs": jobs
+        "Jobs": sorted_jobs
     }
     return jsonify(response_body), 200
 
@@ -623,7 +629,8 @@ def addJob():
         issues=request_body['issues'],
         comments=comments,
         id_technical=request_body['id_technical'],
-        id_client=request_body['id_client']
+        id_client=request_body['id_client'],
+        time_stamp=datetime.utcnow()
     )
     job.save()
 
@@ -669,6 +676,9 @@ def updateJob(job_id):
 
     if "id_technical" in request_body:
         job.id_technical = request_body['id_technical']
+        
+    if "id_client" in request_body:
+        job.id_client = request_body['id_client']
 
     job.update()
 

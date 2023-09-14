@@ -50,13 +50,23 @@ table td {
     color: white;
 }
 
+.formControlJobsSearchButton{
+    margin-right: 2rem;
+    border: 2px solid;
+    background-color: white;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    border-radius: 0;
+}
+
 thead {
     top: 0;
     position: sticky;
 }
 
 .cell-size-jobs {
-    width: 16%;
+    width: 12.5%;
 }
 
 .jobsButtons {

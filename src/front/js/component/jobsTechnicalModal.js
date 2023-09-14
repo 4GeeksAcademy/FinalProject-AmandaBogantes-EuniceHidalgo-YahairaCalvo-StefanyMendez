@@ -17,7 +17,7 @@ export const JobsTechnicalModal = () => {
                 <div className="modal-content jobsTechnicalModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold fs-5">Job Details</h5>
-                        <button type="button" className="close btn btn-login fw-bold text-center fw-bold fs-5"
+                        <button type="reset" className="close btn btn-login fw-bold text-center fw-bold fs-5"
                             onClick={() => actions.handle_delete_modal()}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>
@@ -165,7 +165,7 @@ export const JobsTechnicalModal = () => {
                         <div className="form-group mb-2">
                             <label htmlFor="time_stamp" className="modal-label-input" hidden={store.hidden_time_stamp}>
                                 <i className="fa-regular fa-clock me-1"></i>
-                                Time Stamp: {!!store.job_id ? store.job_id.time_stamp : ""}
+                                Time Stamp: {!!store.job_id ? new Date(store.job_id.time_stamp).toLocaleString() : ""}
                                 </label>
                         </div>
                     </div>

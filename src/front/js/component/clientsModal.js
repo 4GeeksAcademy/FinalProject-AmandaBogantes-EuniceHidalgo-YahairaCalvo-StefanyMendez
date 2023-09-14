@@ -24,7 +24,7 @@ export const ClientsModal = (...props) => {
                 <div className="modal-content clientsModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold">Client</h5>
-                        <button type="button" className="close btn btn-login fw-bold text-center fw-bold"
+                        <button type="reset" className="close btn btn-login fw-bold text-center fw-bold"
                             onClick={() => { actions.handle_delete_modal() }}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>

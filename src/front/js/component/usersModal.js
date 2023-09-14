@@ -12,7 +12,7 @@ export const UsersModal = (...props) => {
             if (!!store.user_id) {
                 actions.update_user_by_id(store.user_id.id)
                 e.target.reset()
-            }else {
+            } else {
                 actions.add_user()
                 e.target.reset()
             }
@@ -21,7 +21,7 @@ export const UsersModal = (...props) => {
                 <div className="modal-content usersModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold">User</h5>
-                        <button type="button" className="close btn btn-login fw-bold text-center fw-bold"
+                        <button type="reset" className="close btn btn-login fw-bold text-center fw-bold"
                             onClick={() => actions.handle_delete_modal()}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>
@@ -66,16 +66,17 @@ export const UsersModal = (...props) => {
                             />
                         </div>
                         <div className="form-group mb-2">
-                            <label htmlFor="phone" className="modal-label-input">Phone</label>
-                            <input
-                                type="text"
-                                className="form-control formModalUsers"
-                                id="phone"
-                                name="phone"
-                                onChange={actions.handle_change}
-                                defaultValue={!!store.user_id ? store.user_id.phone : ""}
-                            />
+                            <label htmlFor="phonePreffix" className="modal-label-input">Phone</label>
+                                <input
+                                    type="text"
+                                    className="form-control formModalUsers"
+                                    id="phone"
+                                    name="phone"
+                                    onChange={actions.handle_change}
+                                    defaultValue={!!store.user_id ? store.user_id.phone : ""}
+                                /> 
                         </div>
+
                         <div className="form-group mb-2">
                             <label htmlFor="role" className="modal-label-input">Role</label>
                             <div className="input-group group-user-modal mb-3 input-select">

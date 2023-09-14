@@ -17,6 +17,7 @@ import { ContactUs } from "./pages/contactUs";
 import { JobsAdmi } from "./pages/jobsAdmi";
 import { JobsTechnical } from "./pages/jobsTechnical";
 import BackToTopBtn from "./component/backToTopBtn";
+import PrivateRoutes from "./utils/privateRoutes"
 
 
 
@@ -44,11 +45,15 @@ const Layout = () => {
                         <Route element={<ChangePass />} path="/changePass" />
                         <Route element={<AboutUs />} path="/aboutus" />
                         <Route element={<OurServices />} path="/ourServices" />
-                        <Route element={<Clients />} path="/clients" />
-                        <Route element={<Users />} path="/users" />
                         <Route element={<ContactUs />} path="/contactUs" />
-                        <Route element={<JobsAdmi />} path="/jobs/admi" />
-                        <Route element={<JobsTechnical />} path="jobs/technical" />
+                        <Route element={<PrivateRoutes role={"admin"}/>}>
+                            <Route element={<JobsAdmi />} path="/jobs/admi" />
+                            <Route element={<Clients />} path="/clients" />
+                            <Route element={<Users />} path="/users" />
+                        </Route>    
+                        <Route element={<PrivateRoutes role={"technical"}/>}>
+                            <Route element={<JobsTechnical />} path="jobs/technical" />
+                        </Route>                   
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

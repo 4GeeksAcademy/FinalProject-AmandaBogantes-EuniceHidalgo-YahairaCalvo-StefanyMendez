@@ -41,7 +41,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user_question: {},
 			is_logued: false,
 
-
 			hidden_username: null,
 			hidden_questions_answer: null,
 			hidden_id: null,
@@ -621,9 +620,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						timer: 3000
 					})
 					actions.handle_delete_modal()
-					setStore({ first_name: null })
-					setStore({ last_name: null })
-					setStore({ phone: null })
+					actions.clear_store()
+
 				} else {
 					Swal.fire({
 						position: 'top-end',
@@ -635,9 +633,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					setStore({ first_name: null })
-					setStore({ last_name: null })
-					setStore({ phone: null })
+					actions.clear_store()
 				}
 			},
 			search_clients: (input) => {
@@ -827,6 +823,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (store.technical_id != null) {
 					job.id_technical = store.technical_id
 				}
+				
 
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
 					method: 'PUT',
@@ -841,7 +838,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
-						title: 'Add',
+						title: 'Update',
 						text: `The Job ${result.Job.code} was updated`,
 						showConfirmButton: false,
 						color: '#FFFFFF',
@@ -879,6 +876,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (job.code.includes(input) ||
 						job.type.toLowerCase().includes(input.toLowerCase()) ||
 						job.status.toLowerCase().includes(input.toLowerCase()) ||
+						job.technical.username.toLowerCase().includes(input.toLowerCase())||
 						job.id.toString().includes(input)) {
 						return job
 					}
@@ -922,10 +920,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			handle_delete_modal: () => {
+				const actions = getActions()
+
 				setStore({ show_modal: false })
 				setStore({ user_id: null })
 				setStore({ client_id: null })
 				setStore({ job_id: null })
+
+				actions.clear_store()
 
 			},
 
