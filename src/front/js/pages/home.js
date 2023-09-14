@@ -47,7 +47,7 @@ export const Home = () => {
 
 				<section className="portfolio">
 					<div className="container container-portfolio">
-						<h3 className="title-home">Services</h3>
+						<h3 className="title-home">team</h3>
 						<div className="galeria-port">
 							<div className="imagen-port">
 								<img src="https://media.istockphoto.com/id/843765236/es/foto/ingeniera-electr%C3%B3nica-placa-base-del-ordenador-de-prueba-en-laboratorio.jpg?s=612x612&w=0&k=20&c=Sjh2562Iq5WgqI5Mf_5jltRfWM6hNtyFcCkhcRcKC7I=" alt="" />
@@ -78,7 +78,7 @@ export const Home = () => {
 				</section>
 
 				<section className="container-ourClients">
-					<h3 className="title-home">Our Clients</h3>
+					<h3 className="title-home">What our costumers</h3>
 					<div className="row">
 						<div className="col-md-4">
 							<div className="card-group-information">
@@ -115,27 +115,27 @@ export const Home = () => {
 					<CardOffers />
 				</section>
 
-				<section className="services-home">
-					<div className="container services-home">
+				<section className="team-home">
+					<div className="container team-home">
 						<h3 className="title-home">Team</h3>
 						<div className="row m-1">
 							<div className="col-md-4">
 								<div className="service-ind text-center">
-									<img src="https://media.istockphoto.com/id/1171169127/es/foto/disparo-de-cabeza-de-hombre-guapo-alegre-con-corte-de-pelo-de-moda-y-gafas-aisladas-en-el.jpg?s=612x612&w=0&k=20&c=5l5tRTmRQHFFHAZZjgpIiOUY-6HHbzwuV74mcW4z_Mw=" className="img-services" />
+									<img src="https://media.istockphoto.com/id/1171169127/es/foto/disparo-de-cabeza-de-hombre-guapo-alegre-con-corte-de-pelo-de-moda-y-gafas-aisladas-en-el.jpg?s=612x612&w=0&k=20&c=5l5tRTmRQHFFHAZZjgpIiOUY-6HHbzwuV74mcW4z_Mw=" className="img-team" />
 									<h6 className="subtitles-home">Maintenance</h6>
 									<p className="text-homeau">Contact: Carlos@dev.team.2023@gmail.com</p>
 								</div>
 							</div>
 							<div className="col-md-4">
 								<div className="service-ind  text-center">
-									<img src="https://media.istockphoto.com/id/1280113805/es/foto/sonrisa-joven-belleza-de-cerca-retrato.jpg?s=612x612&w=0&k=20&c=X1aTHQJJA9ewNOZwWA8AV9mw6UvyZafQX3PWWTt2T5M=" className="img-services" />
+									<img src="https://media.istockphoto.com/id/1280113805/es/foto/sonrisa-joven-belleza-de-cerca-retrato.jpg?s=612x612&w=0&k=20&c=X1aTHQJJA9ewNOZwWA8AV9mw6UvyZafQX3PWWTt2T5M=" className="img-team" />
 									<h6 className="subtitles-home">Devoloper</h6>
 									<p className="text-homeau">Contact: Nicoles@dev.team.2023@gmail.com</p>
 								</div>
 							</div>
 							<div className="col-md-4">
 								<div className="service-ind  text-center">
-									<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_5tpMFF_09iqmpNENhS-eMf2gfkp2xGALufduEqoy-DLklND4PrNrt2tYY37KDQ_XQjE&usqp=CAU" className="img-services" />
+									<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_5tpMFF_09iqmpNENhS-eMf2gfkp2xGALufduEqoy-DLklND4PrNrt2tYY37KDQ_XQjE&usqp=CAU" className="img-team" />
 									<h6 className="subtitles-home">Coustomer Service</h6>
 									<p className="text-homeau">Contact: Sofia@dev.team.2023@gmail.com</p>
 								</div>

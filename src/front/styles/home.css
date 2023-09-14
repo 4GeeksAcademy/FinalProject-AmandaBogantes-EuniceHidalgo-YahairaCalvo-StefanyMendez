@@ -1,4 +1,4 @@
-/* Header */
+/*------------------------------------------HEADER----------------------------------------*/
 /* Cut and Background 1 */
 header {
     height: 50vh;
@@ -44,284 +44,6 @@ header {
     font-size: 30px;
     font-weight: 300;
     color: #fff;
-}
-
-/* About us */
-
-.container-aboutUs-home {
-    width: 100%;
-    align-items: center;
-    color: white;
-    align-items: center;
-}
-
-.container-about-us {
-    display: flex;
-    justify-content: center;
-}
-
-.container-textHome p span {
-    margin: 0;
-    background: #634779;
-    color: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    padding: 2px;
-}
-
-.container-cardInfHome {
-    margin: 0;
-}
-
-/* Galeria */
-
-.portfolio {
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    margin-bottom: 8rem;
-    margin-top: 8rem ;
-    padding-bottom: 3rem;
-}
-
-.galeria-port {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.imagen-port {
-    width: 24%;
-    margin-bottom: 10px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
-}
-
-.imagen-port>img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.hover-galeria {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    transform: scale(0);
-    background: hsla(273, 91%, 27%, 0.7);
-    transition: transform .5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.hover-galeria img {
-    width: 50px;
-}
-
-.hover-galeria p {
-    color: #fff;
-}
-
-.imagen-port:hover .hover-galeria {
-    transform: scale(1);
-}
-
-/* Clients */
-
-
-.container-ourClients {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    background-color: #ffffff16;
-}
-
-.card-img-clients {
-    margin: 1rem;
-    cursor: pointer;
-    margin-bottom: 0.625rem;
-    object-fit: cover;
-    width: 9.375rem;
-    height: 9.375rem;
-    border-radius: 3.125rem;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-/*  Team */
-
-
-.services-home {
-    width: 100%;
-    justify-content: center;
-    margin: auto;
-    margin-top: 3rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 3rem;
-    color: white;
-}
-
-
-.img-services {
-    justify-content: center;
-    /* align-items: center; */
-    /* margin: auto; */
-    margin-bottom: 2rem;
-    /* cursor: pointer; */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    width: 9.375rem;
-    height: 9.375rem;
-    
-    border-radius: 50%;
-    overflow: hidden;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-}
-
-.services-ind {
-    margin: 1rem;
-    width: 28%;
-    align-content: center;
-    justify-content: center;
-}
-
-.services-ind img {
-    width: 20%;
-}
-
-.services-ind h3 {
-    margin: 10px 0;
-    text-align: center;
-}
-
-.services-ind p {
-    font-weight: 300;
-    align-items: center;
-
-}
-
-
-@media screen and (max-width:900px) {
-    header {
-        background-position: center;
-    }
-
-    .container-about-us {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .about-us .container-textHome {
-        width: 90%;
-    }
-
-    .imagen-about-us {
-        width: 90%;
-    }
-
-    /* Galeria */
-
-    .imagen-port {
-        width: 44%;
-    }
-
-    /* Clientes */
-
-    /* .cards {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    } */
-
-    .cards .card {
-        width: 90%;
-    }
-
-    .cards .card:first-child {
-        margin-bottom: 30px;
-    }
-
-    /* servicios */
-
-    .services-cont {
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .services-ind {
-        width: 100%;
-        text-align: center;
-    }
-
-    .services-ind:nth-child(1),
-    .services-ind:nth-child(2) {
-        margin-bottom: 60px;
-    }
-
-    .services-ind img {
-        width: 90%;
-    }
-}
-
-@media screen and (max-width:500px) {
-    nav {
-        text-align: center;
-        padding: 30px 0 0 0;
-    }
-
-    nav>a {
-        margin-right: 5px;
-    }
-
-    .textos-header h1 {
-        font-size: 35px;
-    }
-
-    .textos-header h2 {
-        font-size: 20px;
-    }
-
-    /* ABOUT US */
-
-    .imagen-about-us {
-        margin-bottom: 60px;
-        width: 99%;
-    }
-
-    .container-about-us .container-textHome {
-        width: 95%;
-    }
-
-
-    /* Galeria */
-
-    .imagen-port {
-        width: 95%;
-    }
-
-    /* Clients */
-
-    .cards .card {
-        height: 450px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cards .card img {
-        width: 90px;
-        height: 90px;
-    }
 }
 
 /*  ---------------------------------------up--------------------------*/
@@ -382,22 +104,207 @@ h6.subtitles-home {
 }
 
 
+/*------------------------------------------ABAOUT US----------------------------------------*/
+
+.container-aboutUs-home {
+    width: 100%;
+    align-items: center;
+    color: white;
+    align-items: center;
+}
+
+.container-about-us {
+    display: flex;
+    justify-content: center;
+}
+
+.container-textHome p span {
+    margin: 0;
+    background: #634779;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+}
+
+.container-cardInfHome {
+    margin: 0;
+}
+
+/*------------------------------------------PORTFOLIO/Our Services----------------------------------------*/
+
+.portfolio {
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 8rem;
+    margin-top: 8rem ;
+    padding-bottom: 3rem;
+}
+
+.galeria-port {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.imagen-port {
+    width: 24%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+}
+
+.imagen-port>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hover-galeria {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: scale(0);
+    background: hsla(273, 91%, 27%, 0.7);
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hover-galeria img {
+    width: 50px;
+}
+
+.hover-galeria p {
+    color: #fff;
+}
+
+.imagen-port:hover .hover-galeria {
+    transform: scale(1);
+}
+
+/*------------------------------------------CLIENTS----------------------------------------*/
+
+
+.container-ourClients {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background-color: #ffffff16;
+}
+
+.card-img-clients {
+    margin: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.625rem;
+    object-fit: cover;
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 3.125rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+/*------------------------------------------OUR TEAM----------------------------------------*/
+
+
+.team-home {
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.img-team {
+    justify-content: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-ind {
+    margin: 1rem;
+    width: 28%;
+    align-content: center;
+    justify-content: center;
+}
+
+.team-ind img {
+    width: 20%;
+}
+
+.team-ind h3 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.team-ind p {
+    font-weight: 300;
+    align-items: center;
+
+}
+
+/*------------------------------------------MEDIA RESPONSIVE----------------------------------------*/
+@media screen and (max-width:900px) {
+    header {
+        background-position: center;
+    }
+
+    .container-about-us {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-us .container-textHome {
+        margin: 2rem;
+        width: 70%;
+    }
+
+    /* Galeria */
+
+    .imagen-port {
+        width: 44%;
+    }
+
+}
+
+
+/*----------------COMPONENTS--------------------COMPONENTS------------------------COMPONENTS---------------------- */
+
+
 /*------------------------------------------CARDCODE---------------------------------------- */
 
 .card-code {
     margin: auto;
     width: 70%;
     height: 30rem;
-    background: url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
-    /* background-size: cover;
-    background-position: left;  */
+    background: url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg) ;
     margin-bottom: 3rem;
     border-radius: 3rem;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background: white; */
     min-height: 60vh;
     border-radius: 2rem;
     z-index: 2;
@@ -478,7 +385,6 @@ width: 100%;
     height: 100%;
 }
 
-
 /*------------------------------------------CARDOFFERS----------------------------------------*/
 .container-offers {
     margin: auto;
@@ -488,8 +394,7 @@ width: 100%;
 
 }
 
-
-/*------------------------------------------CardInformation----------------------------------------*/
+/*------------------------------------------CARDINFORMATION----------------------------------------*/
 .container-information {
     background-size: cover;
     margin-bottom: 1.5rem;
@@ -523,7 +428,7 @@ width: 100%;
     height: 50rem;
 }
 
-/*------------------------------------------RESPONSIVE----------------------------------------*/
+/*------------------------------------------MEDIA RESPONSIVE----------------------------------------*/
 /* Media query for small devices */
 @media (max-width: 768px) {
     .card-code {
