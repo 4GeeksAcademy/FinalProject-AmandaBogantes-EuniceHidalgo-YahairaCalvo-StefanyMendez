@@ -1,16 +1,18 @@
 /* Header */
 /* Cut and Background 1 */
 header {
-  height: 50vh;
-  width: 100%;
-  /* background-image: linear-gradient(0deg, #08AEEA 0%, #41206C 100%); */
-  clip-path: ellipse(100% 55% at 48% 44%);
-} */
-* {
+    height: 50vh;
+    width: 100%;
+    /* background-image: linear-gradient(0deg, #08AEEA 0%, #41206C 100%); */
+    clip-path: ellipse(100% 55% at 48% 44%);
+}
+
+*/ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /*  Background 2*/
 header {
     width: 100%;
@@ -21,10 +23,9 @@ header {
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-
 }
 
-header .titles-header {
+.titles-header {
     display: flex;
     height: 430px;
     width: 100%;
@@ -45,22 +46,13 @@ header .titles-header {
     color: #fff;
 }
 
-.wave {
-    position: absolute;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    stroke: none;
-    fill: white;
-}
-
 /* About us */
 
 .container-aboutUs-home {
     width: 100%;
     align-items: center;
     color: white;
-
+    align-items: center;
 }
 
 .container-about-us {
@@ -68,36 +60,32 @@ header .titles-header {
     justify-content: center;
 }
 
-.imagen-about-us {
-    width: 48%;
-}
-.container-about-us code.card {
-    margin: 1rem;
-}
-
 .container-textHome p span {
+    margin: 0;
     background: #634779;
     color: #fff;
     border-radius: 50%;
     display: inline-block;
-    text-align: center;
     width: 30px;
     height: 30px;
     padding: 2px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
-    margin-right: 5px;
 }
 
 .container-cardInfHome {
-    background-color: #ffffff16;
     margin: 0;
 }
 
 /* Galeria */
 
 .portfolio {
+    align-items: center;
+    justify-content: center;
     margin: auto;
+    margin-bottom: 8rem;
+    margin-top: 8rem ;
+    padding-bottom: 3rem;
 }
+
 .galeria-port {
     display: flex;
     justify-content: space-evenly;
@@ -147,76 +135,63 @@ header .titles-header {
 }
 
 /* Clients */
-.container-clients {
-    margin: auto;
-    margin-top: 3rem;
-    background-color: #ffffff16;
-    justify-content: center;
-    align-items: center;
-}
 
-.card-text {
-    font-weight: 300;
-    padding-top: 5px;
-}
-.card-img-clients{
-    cursor: pointer;
+
+.container-ourClients {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    margin-bottom: 0.625rem; 
-    box-shadow: 0 0 0.375rem 0 rgba(0, 0, 0, .5); 
-    object-fit: cover; 
-    width: 9.375rem; 
-    height: 9.375rem; 
-    border-radius: 3.125rem; 
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-/*  Our team */
-
-.services-home {
-    margin: auto;
+    padding: 1rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
-    display: flex;
-    justify-content: space-evenly;
+    background-color: #ffffff16;
+}
+
+.card-img-clients {
+    margin: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.625rem;
+    object-fit: cover;
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 3.125rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+/*  Team */
+
+
+.services-home {
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
     color: white;
 }
 
 
-.container-services-home {
-    margin: auto;
-    border-radius: 3rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-
-
-}
-.img-services{
-    margin: auto;
-    width: 24%;
-    margin-bottom: 10px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+.img-services {
+    justify-content: center;
+    /* align-items: center; */
+    /* margin: auto; */
+    margin-bottom: 2rem;
+    /* cursor: pointer; */
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    width: 150px; 
-    height: 150px;
-    border-radius: 50%; 
+    width: 9.375rem;
+    height: 9.375rem;
+    
+    border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 }
+
 .services-ind {
+    margin: 1rem;
     width: 28%;
-    text-align: center;
+    align-content: center;
+    justify-content: center;
 }
 
 .services-ind img {
@@ -225,11 +200,13 @@ header .titles-header {
 
 .services-ind h3 {
     margin: 10px 0;
+    text-align: center;
 }
 
 .services-ind p {
     font-weight: 300;
-    text-align: justify;
+    align-items: center;
+
 }
 
 
@@ -238,13 +215,13 @@ header .titles-header {
         background-position: center;
     }
 
-    .contenedor-sobre-nosotros {
+    .container-about-us {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .sobre-nosotros .contenido-textos {
+    .about-us .container-textHome {
         width: 90%;
     }
 
@@ -260,11 +237,11 @@ header .titles-header {
 
     /* Clientes */
 
-    .cards {
+    /* .cards {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
+    } */
 
     .cards .card {
         width: 90%;
@@ -320,6 +297,7 @@ header .titles-header {
         margin-bottom: 60px;
         width: 99%;
     }
+
     .container-about-us .container-textHome {
         width: 95%;
     }
@@ -360,7 +338,8 @@ header .titles-header {
 }
 
 h3.title-home {
-   text-align: center;
+    align-items: center;
+    text-align: center;
     font-size: 3rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -377,7 +356,7 @@ h3.title-home {
 }
 
 h6.subtitles-home {
-    color: #6743CC ;
+    color: #6743CC;
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
@@ -409,12 +388,10 @@ h6.subtitles-home {
     margin: auto;
     width: 70%;
     height: 30rem;
-    background: linear-gradient(to right bottom, rgba(255,255,255,0.7),
-    rgba(255,255,255,0.3)), url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
+    background: url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
     /* background-size: cover;
     background-position: left;  */
     margin-bottom: 3rem;
-    margin-top: 3rem;
     border-radius: 3rem;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -428,7 +405,23 @@ h6.subtitles-home {
     display: flex;
     position: relative;
 
-
+.code-title{
+    color: white;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    border: 1px solid rga(255, 255, 255, 0.18);
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+}
 }
 
 .btn-code {
@@ -463,28 +456,42 @@ h6.subtitles-home {
 }
 
 /*------------------------------------------CARDPRODUCTS/Carousel----------------------------------------*/
+
 .carousel {
-    text-align: center; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    max-width: 56.25rem;
+    max-height: 34.375rem;
+    overflow: hidden;
 }
 
-.carousel-img {
-    width: 50%; 
-    max-height: 50rem; }
+.carousel-item{
+height: 30rem;
+width: 100%;
+}
+
+.img-carousel {
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 
 
 /*------------------------------------------CARDOFFERS----------------------------------------*/
-.card-offers {
-   margin: auto;
-    color: aliceblue;
-    overflow: inherit;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.container-offers {
+    margin: auto;
+    margin-bottom: 8rem;
+    padding-bottom: 3rem;
+    margin-top: 8rem;
+
 }
+
 
 /*------------------------------------------CardInformation----------------------------------------*/
 .container-information {
     background-size: cover;
-    max-width: 500rem;
     margin-bottom: 1.5rem;
     overflow: auto;
     padding: 1rem;
@@ -535,9 +542,4 @@ h6.subtitles-home {
         width: 100%;
         text-align: center;
     }
-
-    .carousel {
-        width: 100%;
-    }
 }
-

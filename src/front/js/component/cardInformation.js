@@ -7,7 +7,7 @@ export const cardInformation = ({ }, ...props) => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container-information">
+    <div className="container container-information">
       <h3 className="title-home">How it works</h3>
       <h6 className="subtitles-home">Find out how to get started</h6>
       <div className="card-group card-group-information">

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import CardSearchCode from "../component/cardSearchCode";
-import CardProducts from "../component/cardProducts";
+
 import CardOffers from "../component/cardOffers";
 import CardInformation from "../component/cardInformation";
 
@@ -17,10 +17,6 @@ export const Home = () => {
 					<h1>Give your components the maintenance they deserve</h1>
 					<h2>Byte by Byte</h2>
 				</section>
-				{/* <div className="wave">
-					<svg viewBox="0 0 500 150" preserveAspectRatio="none">
-						<path d="M-0.00,49.92 C258.97,168.01 191.25,43.85 500.00,49.92 L500.00,149.78 L-0.00,149.78 Z" /></svg>
-				</div> */}
 			</header>
 			<main>
 				<section className="container-aboutUs-home">
@@ -30,7 +26,7 @@ export const Home = () => {
 							<CardSearchCode />
 						</div>
 						<div className="col-lg-6">
-							<div className="container-textHome">
+							<div className="container-textHome m-3">
 								<h6 className="subtitles-home"><i className="fa-solid fa-lightbulb"></i> The simplest way to stay updated on your team and process.</h6>
 								<p className="text-homeau">On our IT page, we offer you a comprehensive solution for all your technological needs.
 									From equipment maintenance to implementing the latest innovations, we are committed to providing you with a seamless and efficient experience.</p>
@@ -43,12 +39,11 @@ export const Home = () => {
 					</div>
 				</section>
 
-				<secttion>
+				<section>
 					<div className="container-cardInfHome">
 						<CardInformation />
 					</div>
-				</secttion>
-				<CardProducts/>
+				</section>
 
 				<section className="portfolio">
 					<div className="container container-portfolio">
@@ -82,7 +77,7 @@ export const Home = () => {
 					</div>
 				</section>
 
-				<section className="container-clients">
+				<section className="container-ourClients">
 					<h3 className="title-home">Our Clients</h3>
 					<div className="row">
 						<div className="col-md-4">
@@ -111,31 +106,35 @@ export const Home = () => {
 									<p className="card-text">Excellent service, it allows you to stay updated on the process and they always keep you informed. It's a very intuitive page, perfect!!</p>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</section>
 
+				<section className="offers">
+					<CardOffers />
+				</section>
+
 				<section className="services-home">
-					<div className="container-services-home">
-						<h3 className="title-home">Our Team</h3>
-						<div className="row">
+					<div className="container services-home">
+						<h3 className="title-home">Team</h3>
+						<div className="row m-1">
 							<div className="col-md-4">
-								<div className="service-ind">
+								<div className="service-ind text-center">
 									<img src="https://media.istockphoto.com/id/1171169127/es/foto/disparo-de-cabeza-de-hombre-guapo-alegre-con-corte-de-pelo-de-moda-y-gafas-aisladas-en-el.jpg?s=612x612&w=0&k=20&c=5l5tRTmRQHFFHAZZjgpIiOUY-6HHbzwuV74mcW4z_Mw=" className="img-services" />
 									<h6 className="subtitles-home">Maintenance</h6>
-									<p className="text-homeau">Contact: carlos@dev.team.2023@gmail.com</p>
+									<p className="text-homeau">Contact: Carlos@dev.team.2023@gmail.com</p>
 								</div>
 							</div>
 							<div className="col-md-4">
-								<div className="service-ind">
+								<div className="service-ind  text-center">
 									<img src="https://media.istockphoto.com/id/1280113805/es/foto/sonrisa-joven-belleza-de-cerca-retrato.jpg?s=612x612&w=0&k=20&c=X1aTHQJJA9ewNOZwWA8AV9mw6UvyZafQX3PWWTt2T5M=" className="img-services" />
 									<h6 className="subtitles-home">Devoloper</h6>
 									<p className="text-homeau">Contact: Nicoles@dev.team.2023@gmail.com</p>
 								</div>
 							</div>
 							<div className="col-md-4">
-								<div className="service-ind">
+								<div className="service-ind  text-center">
 									<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_5tpMFF_09iqmpNENhS-eMf2gfkp2xGALufduEqoy-DLklND4PrNrt2tYY37KDQ_XQjE&usqp=CAU" className="img-services" />
 									<h6 className="subtitles-home">Coustomer Service</h6>
 									<p className="text-homeau">Contact: Sofia@dev.team.2023@gmail.com</p>
@@ -144,7 +143,7 @@ export const Home = () => {
 						</div>
 					</div>
 				</section>
-				<CardOffers/>
+
 			</main>
 		</div>
 	);
