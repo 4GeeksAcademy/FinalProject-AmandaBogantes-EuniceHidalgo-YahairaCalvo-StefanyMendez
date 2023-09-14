@@ -8,8 +8,8 @@ export const cardInformation = ({ }, ...props) => {
 
   return (
     <div className="container-information">
-      <h3>How it works</h3>
-      <h6>Find out how to get started</h6>
+      <h3 className="title-home">How it works</h3>
+      <h6 className="subtitles-home">Find out how to get started</h6>
       <div className="card-group card-group-information">
         <div className=" card card-information mx-3">
           <img src="https://img.freepik.com/free-vector/gradient-mobile-isometric-technology-background_52683-4701.jpg?size=626&ext=jpg&ga=GA1.2.700783956.1693189001&semt=sph" className="card-img-top" alt="..." />

@@ -1,10 +1,350 @@
-/*
-    home.css: This website contains selectors only used in home.css
+/* Header */
+/* Cut and Background 1 */
+header {
+  height: 50vh;
+  width: 100%;
+  /* background-image: linear-gradient(0deg, #08AEEA 0%, #41206C 100%); */
+  clip-path: ellipse(100% 55% at 48% 44%);
+} */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*  Background 2*/
+header {
+    width: 100%;
+    height: 37.5rem;
+    background: #bc4e9c;
+    background: -webkit-linear-gradient(to right, hsla(340, 95%, 50%, 0.459), hsla(317, 45%, 52%, 0.664)), url(https://pymstatic.com/106480/conversions/mitos-verdades-psicologia-online-wide_webp.webp);
+    background: linear-gradient(to right, hsla(340, 95%, 50%, 0.459), hsla(317, 45%, 52%, 0.664)), url(https://pymstatic.com/106480/conversions/mitos-verdades-psicologia-online-wide_webp.webp);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+}
+
+header .titles-header {
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.titles-header h1 {
+    font-size: 50px;
+    color: #fff;
+}
+
+.titles-header h2 {
+    font-size: 30px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.wave {
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    stroke: none;
+    fill: white;
+}
+
+/* About us */
+
+.container-aboutUs-home {
+    width: 100%;
+    align-items: center;
+    color: white;
+
+}
+
+.container-about-us {
+    display: flex;
+    justify-content: center;
+}
+
+.imagen-about-us {
+    width: 48%;
+}
+.container-about-us code.card {
+    margin: 1rem;
+}
+
+.container-textHome p span {
+    background: #634779;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+    margin-right: 5px;
+}
+
+.container-cardInfHome {
+    background-color: #ffffff16;
+    margin: 0;
+}
+
+/* Galeria */
+
+.portfolio {
+    margin: auto;
+}
+.galeria-port {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.imagen-port {
+    width: 24%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+}
+
+.imagen-port>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hover-galeria {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: scale(0);
+    background: hsla(273, 91%, 27%, 0.7);
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hover-galeria img {
+    width: 50px;
+}
+
+.hover-galeria p {
+    color: #fff;
+}
+
+.imagen-port:hover .hover-galeria {
+    transform: scale(1);
+}
+
+/* Clients */
+.container-clients {
+    margin: auto;
+    margin-top: 3rem;
+    background-color: #ffffff16;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text {
+    font-weight: 300;
+    padding-top: 5px;
+}
+.card-img-clients{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.625rem; 
+    box-shadow: 0 0 0.375rem 0 rgba(0, 0, 0, .5); 
+    object-fit: cover; 
+    width: 9.375rem; 
+    height: 9.375rem; 
+    border-radius: 3.125rem; 
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+/*  Our team */
+
+.services-home {
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+}
+
+
+.container-services-home {
+    margin: auto;
+    border-radius: 3rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+
+}
+.img-services{
+    margin: auto;
+    width: 24%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; 
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.services-ind {
+    width: 28%;
+    text-align: center;
+}
+
+.services-ind img {
+    width: 20%;
+}
+
+.services-ind h3 {
+    margin: 10px 0;
+}
+
+.services-ind p {
+    font-weight: 300;
+    text-align: justify;
+}
+
+
+@media screen and (max-width:900px) {
+    header {
+        background-position: center;
+    }
+
+    .contenedor-sobre-nosotros {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sobre-nosotros .contenido-textos {
+        width: 90%;
+    }
+
+    .imagen-about-us {
+        width: 90%;
+    }
+
+    /* Galeria */
+
+    .imagen-port {
+        width: 44%;
+    }
+
+    /* Clientes */
+
+    .cards {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cards .card {
+        width: 90%;
+    }
+
+    .cards .card:first-child {
+        margin-bottom: 30px;
+    }
+
+    /* servicios */
+
+    .services-cont {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .services-ind {
+        width: 100%;
+        text-align: center;
+    }
+
+    .services-ind:nth-child(1),
+    .services-ind:nth-child(2) {
+        margin-bottom: 60px;
+    }
+
+    .services-ind img {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    nav {
+        text-align: center;
+        padding: 30px 0 0 0;
+    }
+
+    nav>a {
+        margin-right: 5px;
+    }
+
+    .textos-header h1 {
+        font-size: 35px;
+    }
+
+    .textos-header h2 {
+        font-size: 20px;
+    }
+
+    /* ABOUT US */
+
+    .imagen-about-us {
+        margin-bottom: 60px;
+        width: 99%;
+    }
+    .container-about-us .container-textHome {
+        width: 95%;
+    }
+
+
+    /* Galeria */
+
+    .imagen-port {
+        width: 95%;
+    }
+
+    /* Clients */
+
+    .cards .card {
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards .card img {
+        width: 90px;
+        height: 90px;
+    }
+}
 
 /*  ---------------------------------------up--------------------------*/
 .card-home-title {
@@ -19,7 +359,8 @@
     -webkit-text-fill-color: transparent;
 }
 
-h3 {
+h3.title-home {
+   text-align: center;
     font-size: 3rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -31,20 +372,24 @@ h3 {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
-    animation: moveLeftRight 5s ease forwards;
+    /* display: inline-block; */
 
 }
 
-h6 {
-    color: white;
+h6.subtitles-home {
+    color: #6743CC ;
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
     /* 1.4rem */
     position: relative;
-    animation: bounceEffect 1.5s ease infinite alternate;
+    text-shadow: 1px 1px 1px rgba(78, 78, 78, 0.8);
+}
+
+.titles-Products {
+    margin-left: 3rem;
+    margin-bottom: 2rem;
 }
 
 @keyframes bounceEffect {
@@ -57,27 +402,31 @@ h6 {
     }
 }
 
-.titles-Products {
-    margin-left: 3rem;
-    margin-bottom: 2rem;
-}
 
 /*------------------------------------------CARDCODE---------------------------------------- */
 
 .card-code {
-    width: 100%;
-    height: 30rem;
     margin: auto;
-    background: linear-gradient(to bottom, transparent, rgba(199, 114, 241, 0.721)), url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
-    background-size: cover;
-    background-position: center;
+    width: 70%;
+    height: 30rem;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7),
+    rgba(255,255,255,0.3)), url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
+    /* background-size: cover;
+    background-position: left;  */
     margin-bottom: 3rem;
     margin-top: 3rem;
-    border-radius: 10px;
+    border-radius: 3rem;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background: white; */
+    min-height: 60vh;
+    border-radius: 2rem;
+    z-index: 2;
+    backdrop-filter: blur(2rem);
+    display: flex;
+    position: relative;
 
 
 }
@@ -101,7 +450,7 @@ h6 {
 }
 
 .formControlSearchCode {
-    width: 30rem;
+    width: 20rem;
     height: 3rem;
     max-width: 100%;
     align-items: center;
@@ -113,20 +462,20 @@ h6 {
     width: 18%;
 }
 
-/*------------------------------------------CARDPRODUCTS----------------------------------------*/
+/*------------------------------------------CARDPRODUCTS/Carousel----------------------------------------*/
 .carousel {
-    text-align: start;
+    text-align: center; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    color: white;
 }
-.carousel-img{
-    height: 50rem;
-}
+
+.carousel-img {
+    width: 50%; 
+    max-height: 50rem; }
+
 
 /*------------------------------------------CARDOFFERS----------------------------------------*/
 .card-offers {
-    margin: 8rem 0;
+   margin: auto;
     color: aliceblue;
     overflow: inherit;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -138,21 +487,20 @@ h6 {
     max-width: 500rem;
     margin-bottom: 1.5rem;
     overflow: auto;
-   
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .card-group-information {
     color: white;
     margin: 1rem;
     text-align: center;
+    justify-content: center;
 }
 
 .card-information {
     margin-bottom: 1rem;
     border-radius: 1.25rem;
     background: #41206C;
-   
 }
 
 .card-img-top {
@@ -163,9 +511,9 @@ h6 {
     border-radius: 50%;
     box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
 }
-.card-img{
+
+.card-img {
     height: 50rem;
-    
 }
 
 /*------------------------------------------RESPONSIVE----------------------------------------*/
@@ -192,3 +540,4 @@ h6 {
         width: 100%;
     }
 }
+
