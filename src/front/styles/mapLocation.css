@@ -2,11 +2,10 @@
 
 .mapBigContainer {
     background-size: cover;
+    margin-top: 7rem;
     margin-bottom: 5rem;
-    display: flex; 
+    display: flex;
     justify-content: space-between;
-    margin-left: 4rem;
-    margin-right: 4rem;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -36,23 +35,15 @@
 }
 
 .maptitle {
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 120%;
-    text-transform: capitalize;
-    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    animation: moveLeftRight 5s ease forwards;
-    padding-left: 3rem;
-
+    font-size: 6rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 4rem;
+    max-width: 100%;
 }
 
-.addressContainer { 
+.addressContainer {
     background-color: rgba(50, 50, 50, 0.2);
     border-radius: 3rem;
     box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
