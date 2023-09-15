@@ -823,7 +823,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (store.technical_id != null) {
 					job.id_technical = store.technical_id
 				}
-				
+
 
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
 					method: 'PUT',
@@ -876,7 +876,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (job.code.includes(input) ||
 						job.type.toLowerCase().includes(input.toLowerCase()) ||
 						job.status.toLowerCase().includes(input.toLowerCase()) ||
-						job.technical.username.toLowerCase().includes(input.toLowerCase())||
+						job.technical.username.toLowerCase().includes(input.toLowerCase()) ||
 						job.id.toString().includes(input)) {
 						return job
 					}

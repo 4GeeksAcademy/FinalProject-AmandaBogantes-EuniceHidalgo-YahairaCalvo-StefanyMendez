@@ -18,6 +18,7 @@ import { JobsAdmi } from "./pages/jobsAdmi";
 import { JobsTechnical } from "./pages/jobsTechnical";
 import BackToTopBtn from "./component/backToTopBtn";
 import PrivateRoutes from "./utils/privateRoutes"
+import { AboutProject } from "./pages/aboutProject";
 
 
 
@@ -46,6 +47,7 @@ const Layout = () => {
                         <Route element={<AboutUs />} path="/aboutus" />
                         <Route element={<OurServices />} path="/ourServices" />
                         <Route element={<ContactUs />} path="/contactUs" />
+                        <Route element={<AboutProject/>} path="/aboutproject"/>
                         <Route element={<PrivateRoutes role={"admin"}/>}>
                             <Route element={<JobsAdmi />} path="/jobs/admi" />
                             <Route element={<Clients />} path="/clients" />

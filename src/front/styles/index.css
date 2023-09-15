@@ -86,13 +86,10 @@ body {
   color: #D04E8D
 }
 
-@media (max-width: 768px) {
-  .logo-footer {
-    width: 90%;
-    height: 80%;
-  }
 
-}
+.logo-footer {
+    width: 100%;
+  }
 
 .input-search {
   position: relative;

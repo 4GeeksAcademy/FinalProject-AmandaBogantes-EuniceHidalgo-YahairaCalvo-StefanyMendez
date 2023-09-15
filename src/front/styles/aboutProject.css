@@ -1,0 +1,78 @@
+.container-main-aboutProject{
+    margin-top: 6rem !important;
+}
+.container-aboutProject {
+    background-color: rgba(22, 22, 22, 0.496);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 3rem;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.634), 0 0 40px 0 rgba(93, 10, 165, 0.512);
+}
+
+.logo-aboutProject {
+    width: 100%;
+    margin-top: auto;
+}
+.h1-aboutProject {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.7rem;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container-card-obj{
+    margin-top: 9rem;
+}
+.card-aboutProject{
+    color: white;
+    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+    padding: 1.5rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+.card-text-aboutProject{
+    margin-top: 2rem;
+    text-align: justify;
+}
+.card-title-aboutProject{
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+.card-text-aboutProject{
+    font-size: 1.2rem;
+}
+.technology{
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.title-technology{
+    margin-left: 1rem;
+    font-size: 3.5rem;
+}
+.container-card-tech{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+.photo{
+    width: 13rem;
+    height: 13rem;
+}
+.h1-aboutProjectDev{
+    font-family: 'EB Garamond', serif;
+    font-size: 3.3rem;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container-aboutProject-Dev{
+    background-color: rgba(22, 22, 22, 0.496);
+    border-radius: 3rem;
+    width: 95%;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.634), 0 0 40px 0 rgba(93, 10, 165, 0.512);
+    margin-top: 10rem;
+}
+
