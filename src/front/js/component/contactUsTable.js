@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-
+import MapLocation from "../component/mapLocation";
 
 export const ContactUsTable = () => {
     const { store, actions } = useContext(Context)
@@ -54,12 +54,13 @@ export const ContactUsTable = () => {
                     <img src="https://www.searchenginejournal.com/wp-content/uploads/2022/08/contact-us-2-62fa2cc2edbaf-sej.png" alt="call" className="mb-4 contact-image img-fluid" />
                 </div>
             </div>
-            <div className="row social-information">
-                <div className="col-md-2">
+            <MapLocation />
+            <div className="row social-information text-center">
+                <div className="col-md-3">
                     <div className="icon-contact"><i className="far fa-address-book i-contactUs"></i> San Jose, Costa Rica</div>
                 </div>
                 <div className="col-md-2">
-                    <div className="icon-contact"><i className="fab fa-whatsapp i-contactUs"></i> (506) 88-88-88-88</div>
+                    <div className="icon-contact"><i className="fab fa-whatsapp i-contactUs"></i>88-88-88-88</div>
                 </div>
                 <div className="col-md-2">
                     <div className="icon-contact"><i className="fas fa-phone i-contactUs"></i> 22-22-22-22</div>
@@ -67,7 +68,7 @@ export const ContactUsTable = () => {
                 <div className="col-md-2">
                     <div className="icon-contact"><i className="fab fa-facebook i-contactUs"></i> EyASolutions</div>
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <div className="icon-contact"><i className="fab fa-instagram i-contactUs"></i> EyA_Solutions</div>
                 </div>
             </div>
