@@ -47,7 +47,7 @@ export const Home = () => {
 
 				<section className="portfolio">
 					<div className="container container-portfolio">
-						<h3 className="title-home">team</h3>
+						<h3 className="title-home">Services</h3>
 						<div className="galeria-port">
 							<div className="imagen-port">
 								<img src="https://media.istockphoto.com/id/843765236/es/foto/ingeniera-electr%C3%B3nica-placa-base-del-ordenador-de-prueba-en-laboratorio.jpg?s=612x612&w=0&k=20&c=Sjh2562Iq5WgqI5Mf_5jltRfWM6hNtyFcCkhcRcKC7I=" alt="" />

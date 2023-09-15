@@ -9,7 +9,7 @@ const CardSearchCode = () => {
     return (
         <div className="card-code text-center">
             <div>
-            <h3 className=" code-title">Consult for your process</h3>
+                <h3 className=" code-title">Consult for your process</h3>
             </div>
             <form className="form mt-auto mb-5">
                 <div className="row mb-3">

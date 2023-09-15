@@ -246,6 +246,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			change_password: async () => {
 				const store = getStore()
 				const actions = getActions()
+				const token = localStorage.getItem('jwt-token')
 
 				if (store.password == store.confirm_password) {
 					try {
@@ -268,9 +269,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 							const response = await fetch(process.env.BACKEND_URL + `/user/${store.user_question.id}`, {
 								method: 'PUT',
 								body: JSON.stringify(user),
-								headers: {
-									'Content-Type': 'application/json'
-								}
+								headers: { 
+									"Content-Type": "application/json",
+									'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+									} 
 							})
 							const result = await response.json()
 							setStore({ password_changed: true })
@@ -325,25 +327,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 						} 
 				})
 				const result = await response.json()
-				console.log(result);
 				setStore({ users: result.Users })
 				setStore({ users_search: result.Users })
 
 			},
 			get_user_by_id: async (user_id) => {
+				const token = localStorage.getItem('jwt-token')
 				setStore({ hidden_input_question_answer: true })
 				setStore({ read_only_username: true })
 				setStore({ hidden_id: false })
-
 				setStore({ show_modal: true })
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
 					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ user_id: result.User })
 
 			},
 			add_user: async () => {
+				const token = localStorage.getItem('jwt-token')
 				setStore({ hidden_input_question_answer: false })
 				setStore({ read_only_username: false })
 				const store = getStore()
@@ -378,9 +384,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + '/user', {
 					method: 'POST',
 					body: JSON.stringify(user),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 
@@ -414,6 +421,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			update_user_by_id: async (user_id) => {
+				const token = localStorage.getItem('jwt-token')
 				const store = getStore()
 				const actions = getActions()
 				setStore({ hidden_input_question_answer: true })
@@ -437,9 +445,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(user),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
@@ -472,8 +481,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			delete_user_by_id: async (user_id) => {
+				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
-					method: 'DELETE'
+					method: 'DELETE',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				console.log(result);
@@ -520,26 +534,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			get_all_clients: async () => {
-				const store = getStore()
+				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + '/client', {
-					method: 'GET'
+					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ clients: result.clients })
 				setStore({ clients_search: result.clients })
 			},
 			get_client_by_id: async (client_id) => {
+				const token = localStorage.getItem('jwt-token')
 				setStore({ show_modal: true })
 				setStore({ hidden_id: false })
 
 				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
-					method: 'GET'
+					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ client_id: result.Client })
 
 			},
 			add_client: async () => {
+				const token = localStorage.getItem('jwt-token')
 				const store = getStore()
 				const actions = getActions()
 
@@ -557,9 +581,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + '/client', {
 					method: 'POST',
 					body: JSON.stringify(client),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 
@@ -592,6 +617,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			update_client_by_id: async (client_id) => {
+				const token = localStorage.getItem('jwt-token')
 				const store = getStore()
 				const actions = getActions()
 
@@ -609,9 +635,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(client),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
@@ -656,28 +683,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			get_all_jobs: async () => {
+				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + '/job', {
-					method: 'GET'
+					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
 				setStore({ jobs_search: result.Jobs })
 			},
 			get_job_by_id: async (job_id) => {
+				const token = localStorage.getItem('jwt-token')
 				setStore({ show_modal: true })
 				setStore({ hidden_id: false })
 				setStore({ hidden_time_stamp: false })
 				setStore({ hidden_btn_new_code: true })
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
-					method: 'GET'
+					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ job_id: result.Job })
 			},
 			get_job_by_technical: async (user_login_id) => {
-
+				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + `/job/technical/${user_login_id}`, {
-					method: 'GET'
+					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
@@ -723,6 +764,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ code: null })
 			},
 			add_job: async () => {
+				const token = localStorage.getItem('jwt-token')
 				const store = getStore()
 				const actions = getActions()
 
@@ -761,9 +803,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + "/job", {
 					method: 'POST',
 					body: JSON.stringify(job),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				}
 
 				)
@@ -797,7 +840,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			update_job_by_id: async (job_id) => {
-
+				const token = localStorage.getItem('jwt-token')
 				const store = getStore()
 				const actions = getActions()
 
@@ -834,9 +877,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(job),
-					headers: {
-						'Content-Type': 'application/json'
-					}
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
@@ -869,8 +913,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			delete_job_by_id: async (job_id) => {
+				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
-					method: 'DELETE'
+					method: 'DELETE',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
 				setStore({ job_deleted: true })
@@ -949,9 +998,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// const result = await response.json()
 
 				if (response.ok) {
-					alert('Send Message...');
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Success',
+						text: `Message sent succesdfully`,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
 				} else {
-					alert('Error');
+					Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'Opppsss',
+						text: "At this moment we can't send your message",
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
 				}
 			},
 
