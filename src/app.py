@@ -95,6 +95,63 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+# <----------------- Login ----------------------->
+
+
+@app.route('/login', methods=['POST'])
+def addLogin():
+    request_body = request.get_json(force=True, silent=True)
+
+    if request_body is None:
+        raise APIException("You must send information", status_code=404)
+
+    if "username" not in request_body or request_body["username"] == "":
+        raise APIException("The username is required", status_code=404)
+
+    if "password" not in request_body or request_body["password"] == "":
+        raise APIException("The password is required", status_code=404)
+
+    user_data = User.query.filter_by(username=request_body['username']).first()
+
+    if user_data is None:
+        raise APIException("The username is incorrect", status_code=404)
+
+    if bcrypt.check_password_hash(user_data.password, request_body['password']) is False:
+        raise APIException('The password is incorrect', 401)
+
+    access_token = create_access_token(identity=request_body['username'])
+
+    response_body = {
+        "msg": "ok",
+        "access_token": access_token,
+        "User": user_data.serialize()
+    }
+
+    return jsonify(response_body), 200
+
+
+@app.route('/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    user = User.query(username=current_user).first()
+
+    if user is None:
+        return jsonify({"message": "User not found"}), 404
+
+    response_body = {
+        "id": user.id,
+        "username": user.username,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "phone": user.phone,
+        "role": user.role,
+        "question_security": user.question_security,
+        "answer_security": user.answer_security
+    }
+
+    return jsonify(response_body), 200
+
 # <----------------- User ----------------------->
 
 
@@ -295,63 +352,6 @@ def deleteUser(user_id):
 
     return jsonify(response_body)
 
-
-# <----------------- Login ----------------------->
-
-
-@app.route('/login', methods=['POST'])
-def addLogin():
-    request_body = request.get_json(force=True, silent=True)
-
-    if request_body is None:
-        raise APIException("You must send information", status_code=404)
-
-    if "username" not in request_body or request_body["username"] == "":
-        raise APIException("The username is required", status_code=404)
-
-    if "password" not in request_body or request_body["password"] == "":
-        raise APIException("The password is required", status_code=404)
-
-    user_data = User.query.filter_by(username=request_body['username']).first()
-
-    if user_data is None:
-        raise APIException("The username is incorrect", status_code=404)
-
-    if bcrypt.check_password_hash(user_data.password, request_body['password']) is False:
-        raise APIException('The password is incorrect', 401)
-
-    access_token = create_access_token(identity=request_body['username'])
-
-    response_body = {
-        "msg": "ok",
-        "access_token": access_token,
-        "User": user_data.serialize()
-    }
-
-    return jsonify(response_body), 200
-
-
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    user = User.query.filter_by(username=current_user).first()
-
-    if user is None:
-        return jsonify({"message": "User not found"}), 404
-
-    response_body = {
-        "id": user.id,
-        "username": user.username,
-        "first_name": user.first_name,
-        "last_name": user.last_name,
-        "phone": user.phone,
-        "role": user.role,
-        "question_security": user.question_security,
-        "answer_security": user.answer_security
-    }
-
-    return jsonify(response_body), 200
 
 # <----------------- Client ----------------------->
 

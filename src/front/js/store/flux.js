@@ -316,10 +316,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			get_all_users: async () => {
 
+				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + '/user', {
-					method: 'GET'
+					method: 'GET',
+					headers: { 
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
+						} 
 				})
 				const result = await response.json()
+				console.log(result);
 				setStore({ users: result.Users })
 				setStore({ users_search: result.Users })
 
