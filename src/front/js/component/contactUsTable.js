@@ -21,30 +21,30 @@ export const ContactUsTable = () => {
                     <form className="form-contactUs" onSubmit={(e) => { actions.handleSubmit(e, formData) }}>
                         <div className="row mb-4">
                             <div className="col">
-                                <label for="Name" className="form-label form-labelContactUs">Name</label>
+                                <label htmlFor="Name" className="form-label form-labelContactUs">Name</label>
                                 <input type="text" className="form-control form-controlContactUs" id="ID" placeholder="Juan" name="name" onChange={handleChange} />
                             </div>
                             <div className="col">
-                                <label for="lastName" className="form-label form-labelContactUs">Last Name</label>
+                                <label htmlFor="lastName" className="form-label form-labelContactUs">Last Name</label>
                                 <input type="text" className="form-control form-controlContactUs" id="lastName" placeholder="Pérez" name="lastName" onChange={handleChange} />
                             </div>
                         </div>
                         <div className="row mb-4">
                             <div className="col">
-                                <label for="phone" className="form-label form-labelContactUs">Phone</label>
+                                <label htmlFor="phone" className="form-label form-labelContactUs">Phone</label>
                                 <input type="tel" className="form-control form-controlContactUs" id="phone" placeholder="(123) 456-7890" name="phone" onChange={handleChange} />
                             </div>
                             <div className="col">
-                                <label for="mail" className="form-label form-labelContactUs">Email</label>
+                                <label htmlFor="mail" className="form-label form-labelContactUs">Email</label>
                                 <input type="email" className="form-control form-controlContactUs" id="mail" placeholder="mail@example.com" name="email" onChange={handleChange} />
                             </div>
                         </div>
                         <div className="mb-4">
-                            <label for="consult" className="form-label form-labelContactUs">Topic</label>
+                            <label htmlFor="consult" className="form-label form-labelContactUs">Topic</label>
                             <input type="text" className="form-control form-controlContactUs" id="consult" placeholder="Question" name="question" onChange={handleChange} />
                         </div>
                         <div className="mb-4">
-                            <label for="message" className="form-label form-labelContactUs">Message</label>
+                            <label htmlFor="message" className="form-label form-labelContactUs">Message</label>
                             <textarea className="form-control form-controlContactUs" id="message" rows="4" placeholder="Your Message Here" name="message" onChange={handleChange} />
                         </div>
                         <button type="submit" className="btn-contact">Send</button>

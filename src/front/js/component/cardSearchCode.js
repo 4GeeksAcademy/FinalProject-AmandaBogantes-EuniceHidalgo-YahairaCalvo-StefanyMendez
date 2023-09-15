@@ -8,10 +8,12 @@ const CardSearchCode = () => {
 
     return (
         <div className="card-code text-center">
-            <img className="logo ms-auto" src={Logo} alt="Logo" />
+            <div>
+            <h3 className=" code-title">Consult for your process</h3>
+            </div>
             <form className="form mt-auto mb-5">
                 <div className="row mb-3">
-                    <div className="col-xs-12">
+                    <div className="col-xs-6">
                         <input
                             name="code"
                             type="code"
@@ -22,7 +24,7 @@ const CardSearchCode = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-xs-12">
+                    <div className="col-xs-6">
                         <button
                             type="button"
                             className="btn btn-code"

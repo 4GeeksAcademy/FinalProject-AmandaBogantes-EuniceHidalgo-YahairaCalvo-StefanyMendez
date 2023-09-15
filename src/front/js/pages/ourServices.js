@@ -11,51 +11,47 @@ const OurServices = () => {
             <div className='content-box-lg'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-md-3'>
+                        <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
                                     <i className='fa fa-desktop'></i>
                                 </div>
-                                <h4 className='tituloH2'>Servicio 1</h4>
+                                <h4 className='tituloH2'>Maintenance</h4>
                                 <hr />
-                                <p className=''>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy</p>
+                                <p className=''>Optimize your operations with our comprehensive equipment maintenance services. Our skilled technicians ensure peak performance and longevity of your machinery.</p>
                             </div>
                         </div>
-
-                        <div className='col-md-3'>
+      
+                        <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
                                     <i className='fa fa-tablet'></i>
                                 </div>
-                                <h4 className='tituloH2'>Servicio 2</h4>
+                                <h4 className='tituloH2'>Component purchase</h4>
                                 <hr />
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy</p>
+                                <p>Explore our extensive inventory of high-quality components. From essential parts to advanced modules, we provide solutions for your specific needs.</p>
                             </div>
                         </div>
 
-                        <div className='col-md-3'>
+                        <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
                                     <i className='fa fa-desktop'></i>
                                 </div>
-                                <h4 className='tituloH2'>Servicio 3</h4>
+                                <h4 className='tituloH2'>Spare parts sale</h4>
                                 <hr />
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy</p>
+                                <p>Keep your systems up and running with our premium spare parts. We offer a wide range of genuine components for efficient replacements and repairs</p>
                             </div>
                         </div>
 
-                        <div className='col-md-3'>
+                        <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
                                     <i className='fa fa-tablet'></i>
                                 </div>
-                                <h4 className='tituloH2'>Servicio 4</h4>
+                                <h4 className='tituloH2'>Repair</h4>
                                 <hr />
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy</p>
+                                <p>Experience fast and reliable equipment repairs with our dedicated team. We specialize in restoring functionality and minimizing downtime.</p>
                             </div>
                         </div>
 
