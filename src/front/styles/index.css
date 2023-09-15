@@ -1,7 +1,7 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
-body{
+body {
   background-image: url(https://wallpaperaccess.com/full/38123.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,87 +9,88 @@ body{
   background-attachment: fixed;
   font-family: 'Raleway', sans-serif;
 }
-.navbar, .footer{
-    background: #41206C;
-    font-family: 'EB Garamond', serif;
-    font-size: 1.6rem;
 
+.navbar,
+.footer {
+  background: #41206C;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.4rem;
   line-height: 140%;
 }
-.nav-link{
+
+.nav-link {
   color: rgb(255, 255, 255);
-  &:hover{
+
+  &:hover {
     color: #22B5BE;
     -webkit-transform: translateY(-0.25em);
     transform: translateY(-0.25em);
   }
 }
-.btn-login, .btn-account{
+
+.btn-login,
+.btn-account {
+  font-family: 'Raleway', sans-serif;
   color: white;
   height: 2.8rem;
-  padding: 0px 30px;
+  padding: 0px 1.3rem;
   justify-content: center;
   align-items: center;
   gap: 12px;
   border-radius: 20px;
+  font-size: 1.2rem;
   background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
-  &:hover{
+
+  &:hover {
     box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
   }
-  &:active{
+
+  &:active {
     -webkit-transform: translateY(0.25em);
     transform: translateY(0.25em);
   }
 }
-.nav-img{
+
+.nav-img {
   width: 4rem;
   height: 3.5rem;
 }
-.navbar-toggler{
+
+.navbar-toggler {
   color: white;
 }
-.dropdown-menu{
-  background: #41206C;
-  border:none;
 
-}
-.dropdown-item{
-  color:white;
-  &:hover{
-      background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
-  }
-}
-.hr-footer{
+.hr-footer {
   width: 100%;
 }
 
-.link-footer{
-color: white;
-&:hover{
-  color: #22B5BE;
+.link-footer {
+  color: white;
+
+  &:hover {
+    color: #22B5BE;
+  }
 }
-}
-.icon{
+.icon {
   position: relative;
   color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.68, -0.55,0.265,1.55);
-  
-  &:hover{
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  &:hover {
     color: #D04E8D;
   }
 }
-.footer-title{
-  color:#D04E8D
+
+.footer-title {
+  color: #D04E8D
 }
-@media (max-width: 768px) {
-  .logo-footer{
-    width: 90%;
-    height: 80%;
+
+
+.logo-footer {
+    width: 100%;
   }
-  
-}
+
 .input-search {
   position: relative;
 }
@@ -101,16 +102,19 @@ color: white;
   right: 2.4rem;
   color: grey;
 }
-input{
+
+input {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   font-weight: 500;
 }
-textarea{
+
+textarea {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
 }
-h5{
+
+h5 {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   font-weight: 500;

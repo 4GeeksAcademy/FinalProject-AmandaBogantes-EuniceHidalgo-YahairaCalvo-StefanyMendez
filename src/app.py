@@ -21,7 +21,7 @@ from flask_jwt_extended import (
 from flask import Flask
 from flask_mail import Mail, Message
 from flask import Flask, make_response
-
+from datetime import datetime
 
 
 # from models import Person
@@ -114,12 +114,14 @@ def getUsers():
     
     if users is None:
         raise APIException("Users not found", status_code=404)
-    
-    users_serialized = list(map(lambda user: user.serialize(), user))
+
+    users = list(map(lambda user: user.serialize(), user))
+    sorted_users = sorted(users, key=lambda user: user['id'])
 
     response_body = {
         "msg": "ok",
-        "Users": users_serialized
+        "Users": sorted_users
+
     }
 
     return jsonify(response_body), 200
@@ -310,6 +312,23 @@ def updateUser(user_id):
 @jwt_required()
 def deleteUser(user_id):
     user = User.query.get(user_id)
+    admin = User.query.filter_by(role = "admin").first()
+    job_by_status_finish = Job.query.filter_by(id_technical = user_id, status="finish")
+    job_by_status_cancel = Job.query.filter_by(id_technical = user_id, status="cancel")
+    
+    for job_finish in job_by_status_finish:
+        job_finish.id_technical = admin.id
+        job_finish.update()
+        
+    
+    for job_cancel in job_by_status_cancel:
+        job_cancel.id_technical = admin.id
+        job_cancel.update()
+        
+    
+    job = Job.query.filter_by(id_technical = user_id).first()
+    if job is not None:
+        raise APIException(f"The tecinical has jobs asigned, please reassign jobs before proceeding", status_code=400)
 
     if user is None:
         raise APIException("User not found", status_code=404)
@@ -404,10 +423,11 @@ def getClients():
         raise APIException("Clients not found", status_code=404)
     
     clients = list(map(lambda client: client.serialize(), client))
+    sorted_clients = sorted(clients, key=lambda client: client['id'])
 
     response_body = {
         "msg": "ok",
-        "clients": clients
+        "clients": sorted_clients
     }
 
     return jsonify(response_body), 200
@@ -468,6 +488,14 @@ def addClient():
 
     if "phone" not in request_body or request_body["phone"] == "":
         raise APIException("The phone is required")
+    
+    client_exist = Client.query.filter_by(
+        first_name=request_body['first_name'], 
+        last_name=request_body['last_name'], 
+        phone=request_body['phone']).first()
+
+    if client_exist:
+        raise APIException("The client already exist", status_code=400)
 
     client = Client(
         first_name=request_body['first_name'],
@@ -573,9 +601,11 @@ def getJobs():
 
     jobs = list(map(lambda job: job.serialize(), job))
 
+    sorted_jobs = sorted(jobs, key=lambda job: job['id'])
+    
     response_body = {
         "msg": "ok",
-        "Jobs": jobs
+        "Jobs": sorted_jobs
     }
     return jsonify(response_body), 200
 
@@ -632,26 +662,28 @@ def getJobsByTechnical(technical_id):
     
     job = Job.query.filter_by(id_technical=technical_id)
     jobs = list(map(lambda job: job.serialize(), job))
+    
 
     if job is None:
         raise APIException("Jobs not found", status_code=404)
 
+    sorted_jobs = sorted(jobs, key=lambda job: job['id'])
     response_body = {
         "msg": "ok",
-        "Jobs": jobs
+        "Jobs": sorted_jobs
     }
     return jsonify(response_body), 200
 
 
 @app.route('/job/client/<int:client_id>', methods=['GET'])
 @jwt_required()
-def getJobsNyClient(client_id):
+def getJobsByClient(client_id):
     current_user = get_jwt_identity()
     user = User.query.filter_by(username=current_user).first()
 
     if user is None:
         raise APIException("Users not found", status_code=404)
-    
+        
     job = Job.query.filter_by(id_client=client_id)
     jobs = list(map(lambda job: job.serialize(), job))
 
@@ -744,7 +776,8 @@ def addJob():
         issues=request_body['issues'],
         comments=comments,
         id_technical=request_body['id_technical'],
-        id_client=request_body['id_client']
+        id_client=request_body['id_client'],
+        time_stamp=datetime.utcnow()
     )
     job.save()
 
@@ -796,9 +829,12 @@ def updateJob(job_id):
 
         if "comments" in request_body:
             job.comments = request_body['comments']
-
+            
         if "id_technical" in request_body:
             job.id_technical = request_body['id_technical']
+        
+        if "id_client" in request_body:
+            job.id_client = request_body['id_client']
         
     elif user.role == "technical":
         if "comments" in request_body:

@@ -17,7 +17,7 @@ const Login = () => {
             
             <img src={logo} alt='logo' className='logo1 w-100' />
 
-            <form className=" login mt-3" onSubmit={e => {
+            <form className="form-login mt-3" onSubmit={e => {
                 e.preventDefault()
                 actions.login_user()
             }

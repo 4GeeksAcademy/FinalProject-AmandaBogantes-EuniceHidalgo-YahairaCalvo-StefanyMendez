@@ -42,9 +42,18 @@ table td {
     margin-bottom: 1rem;
     border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
     border-image-slice: 1;
-    font-weight: bold;
     background-color: transparent;
     color: white;
+}
+
+.formControlUsersButtons{
+    margin-right: 2rem;
+    border: 2px solid;
+    background-color: white;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    border-radius: 0;
 }
 
 thead {
@@ -61,16 +70,6 @@ thead {
 .usersCard {
     background-color: transparent;
     font-weight: bold;
-}
-
-.formControlUsersButtons {
-    margin-right: 2rem;
-    border: 2px solid;
-    background-color: white;
-    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
-    border-image-slice: 1;
-    font-weight: bold;
-    border-radius: 0;
 }
 
 .usersModalContent {
