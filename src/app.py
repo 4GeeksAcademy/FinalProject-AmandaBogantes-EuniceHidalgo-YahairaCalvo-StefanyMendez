@@ -95,17 +95,62 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+# <----------------- Login ----------------------->
+
+
+@app.route('/login', methods=['POST'])
+def addLogin():
+    request_body = request.get_json(force=True, silent=True)
+
+    if request_body is None:
+        raise APIException("You must send information", status_code=404)
+
+    if "username" not in request_body or request_body["username"] == "":
+        raise APIException("The username is required", status_code=404)
+
+    if "password" not in request_body or request_body["password"] == "":
+        raise APIException("The password is required", status_code=404)
+
+    user_data = User.query.filter_by(username=request_body['username']).first()
+
+    if user_data is None:
+        raise APIException("The username is incorrect", status_code=404)
+
+    if bcrypt.check_password_hash(user_data.password, request_body['password']) is False:
+        raise APIException('The password is incorrect', 401)
+
+    access_token = create_access_token(identity=request_body['username'])
+
+    response_body = {
+        "msg": "ok",
+        "access_token": access_token,
+        "User": user_data.serialize()
+    }
+
+    return jsonify(response_body), 200
+
+
 # <----------------- User ----------------------->
 
 
 @app.route('/user', methods=['GET'])
+@jwt_required()
 def getUsers():
-    user = User.query.all()
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
 
     if user is None:
         raise APIException("Users not found", status_code=404)
+    
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
 
-    users = list(map(lambda user: user.serialize(), user))
+    users = User.query.all()
+    
+    if users is None:
+        raise APIException("Users not found", status_code=404)
+
+    users = list(map(lambda user: user.serialize(), users))
     sorted_users = sorted(users, key=lambda user: user['id'])
 
     response_body = {
@@ -117,12 +162,22 @@ def getUsers():
 
 
 @app.route('/user/<int:user_id>', methods=['GET'])
+@jwt_required()
 def getUserById(user_id):
-    user = User.query.get(user_id)
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
 
     if user is None:
         raise APIException("User not found", status_code=404)
+    
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
 
+    user = User.query.get(user_id)
+    
+    if user is None:
+        raise APIException("Users not found", status_code=404)
+    
     response_body = {
         "msg": "ok",
         "User": {
@@ -165,7 +220,17 @@ def getUserByUsername(user_username):
 
 
 @app.route('/user', methods=['POST'])
+@jwt_required()
 def addUser():
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     request_body = request.get_json(force=True, silent=True)
 
     if request_body is None:
@@ -226,12 +291,22 @@ def addUser():
 
 
 @app.route('/user/<int:user_id>', methods=['PUT'])
+@jwt_required()
 def updateUser(user_id):
-    request_body = request.get_json(force=True, silent=True)
+    current_user = get_jwt_identity()
+    user_current = User.query.filter_by(username=current_user).first()
+    
+    if user_current is None:
+        raise APIException("User not found", status_code=404)
+    
     user = User.query.get(user_id)
+    request_body = request.get_json(force=True, silent=True)
 
     if user is None:
         raise APIException("User not found", status_code=404)
+    
+    if user_current.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
 
     if request_body is None:
         raise APIException("You must send information", status_code=404)
@@ -264,7 +339,11 @@ def updateUser(user_id):
 
 
 @app.route('/user/<int:user_id>', methods=['DELETE'])
+@jwt_required()
 def deleteUser(user_id):
+    current_user = get_jwt_identity()
+    user_current = User.query.filter_by(username=current_user).first()
+    
     user = User.query.get(user_id)
     admin = User.query.filter_by(role = "admin").first()
     job_by_status_finish = Job.query.filter_by(id_technical = user_id, status="finish")
@@ -274,7 +353,6 @@ def deleteUser(user_id):
         job_finish.id_technical = admin.id
         job_finish.update()
         
-    
     for job_cancel in job_by_status_cancel:
         job_cancel.id_technical = admin.id
         job_cancel.update()
@@ -284,8 +362,11 @@ def deleteUser(user_id):
     if job is not None:
         raise APIException(f"The tecinical has jobs asigned, please reassign jobs before proceeding", status_code=400)
 
-    if user is None:
+    if user_current is None:
         raise APIException("User not found", status_code=404)
+    
+    if user_current.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
 
     user.delete()
 
@@ -296,74 +377,27 @@ def deleteUser(user_id):
     return jsonify(response_body)
 
 
-# <----------------- Login ----------------------->
-
-
-@app.route('/login', methods=['POST'])
-def addLogin():
-    request_body = request.get_json(force=True, silent=True)
-
-    if request_body is None:
-        raise APIException("You must send information", status_code=404)
-
-    if "username" not in request_body or request_body["username"] == "":
-        raise APIException("The username is required", status_code=404)
-
-    if "password" not in request_body or request_body["password"] == "":
-        raise APIException("The password is required", status_code=404)
-
-    user_data = User.query.filter_by(username=request_body['username']).first()
-
-    if user_data is None:
-        raise APIException("The username is incorrect", status_code=404)
-
-    if bcrypt.check_password_hash(user_data.password, request_body['password']) is False:
-        raise APIException('The password is incorrect', 401)
-
-    access_token = create_access_token(identity=request_body['username'])
-
-    response_body = {
-        "msg": "ok",
-        "access_token": access_token,
-        "User": user_data.serialize()
-    }
-
-    return jsonify(response_body), 200
-
-
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    user = User.query.filter_by(username=current_user).first()
-
-    if user is None:
-        return jsonify({"message": "User not found"}), 404
-
-    response_body = {
-        "id": user.id,
-        "username": user.username,
-        "first_name": user.first_name,
-        "last_name": user.last_name,
-        "phone": user.phone,
-        "role": user.role,
-        "question_security": user.question_security,
-        "answer_security": user.answer_security
-    }
-
-    return jsonify(response_body), 200
-
 # <----------------- Client ----------------------->
 
 
 @app.route('/client', methods=['GET'])
+@jwt_required()
 def getClients():
-    client = Client.query.all()
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
 
-    if client is None:
+    if user is None:
         raise APIException("Clients not found", status_code=404)
+    
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
 
-    clients = list(map(lambda client: client.serialize(), client))
+    clients = Client.query.all()
+    
+    if clients is None:
+        raise APIException("Clients not found", status_code=404)
+    
+    clients = list(map(lambda client: client.serialize(), clients))
     sorted_clients = sorted(clients, key=lambda client: client['id'])
 
     response_body = {
@@ -375,7 +409,17 @@ def getClients():
 
 
 @app.route('/client/<int:client_id>', methods=['GET'])
+@jwt_required()
 def getClient(client_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("User not found", status_code=404)
+
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)    
+    
     client = Client.query.get(client_id)
 
     if client is None:
@@ -395,7 +439,17 @@ def getClient(client_id):
 
 
 @app.route('/client', methods=['POST'])
+@jwt_required()
 def addClient():
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("User not found", status_code=404)
+
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     request_body = request.get_json(force=True, silent=True)
 
     if request_body is None:
@@ -435,7 +489,17 @@ def addClient():
 
 
 @app.route('/client/<int:client_id>', methods=['PUT'])
+@jwt_required()
 def updateClient(client_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("User not found", status_code=404)
+
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     request_body = request.get_json(force=True, silent=True)
     client = Client.query.get(client_id)
 
@@ -465,7 +529,17 @@ def updateClient(client_id):
 
 
 @app.route('/client/<int:client_id>', methods=['DELETE'])
+@jwt_required()
 def deleteClient(client_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    
+    if user is None:
+        raise APIException("User not found", status_code=404)
+
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     client = Client.query.get(client_id)
 
     if client is None:
@@ -484,7 +558,17 @@ def deleteClient(client_id):
 
 
 @app.route('/job', methods=['GET'])
+@jwt_required()
 def getJobs():
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    
+    if user is None:
+        raise APIException("Users not found", status_code=404)
+    
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     job = Job.query.all()
 
     if job is None:
@@ -502,34 +586,51 @@ def getJobs():
 
 
 @app.route('/job/<int:job_id>', methods=['GET'])
+@jwt_required()
 def getJobById(job_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
     job = Job.query.get(job_id)
 
     if job is None:
         raise APIException("Job not found", status_code=404)
 
     response_body = {
-        "msg": "ok",
-        "Job": {
-            "id": job.id,
-            "code": job.code,
-            "type": job.type.name,
-            "brand": job.brand,
-            "model": job.model,
-            "serial_number": job.serial_number,
-            "status": job.status.name,
-            "issues": job.issues,
-            "comments": job.comments,
-            "time_stamp": job.time_stamp,
-            "technical": job.technical.serialize(),
-            "client": job.client.serialize()
+            "msg": "ok",
+            "Job": {
+                "id": job.id,
+                "code": job.code,
+                "type": job.type.name,
+                "brand": job.brand,
+                "model": job.model,
+                "serial_number": job.serial_number,
+                "status": job.status.name,
+                "issues": job.issues,
+                "comments": job.comments,
+                "time_stamp": job.time_stamp,
+                "technical": job.technical.serialize(),
+                "client": job.client.serialize()
+            }
         }
-    }
     return jsonify(response_body), 200
 
 
 @app.route('/job/technical/<int:technical_id>', methods=['GET'])
+@jwt_required()
 def getJobsByTechnical(technical_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
+    if user.role.value != "technical":
+        raise APIException("Access denied", status_code=403)
+    
     job = Job.query.filter_by(id_technical=technical_id)
     jobs = list(map(lambda job: job.serialize(), job))
     
@@ -546,7 +647,14 @@ def getJobsByTechnical(technical_id):
 
 
 @app.route('/job/client/<int:client_id>', methods=['GET'])
+@jwt_required()
 def getJobsByClient(client_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("Users not found", status_code=404)
+        
     job = Job.query.filter_by(id_client=client_id)
     jobs = list(map(lambda job: job.serialize(), job))
 
@@ -576,7 +684,17 @@ def getJobByCode(code):
 
 
 @app.route('/job', methods=['POST'])
+@jwt_required()
 def addJob():
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("User not found", status_code=404)
+
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     request_body = request.get_json(force=True, silent=True)
 
     if request_body is None:
@@ -643,42 +761,59 @@ def addJob():
 
 
 @app.route('/job/<int:job_id>', methods=['PUT'])
+@jwt_required()
 def updateJob(job_id):
-    request_body = request.get_json(force=True, silent=True)
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
     job = Job.query.get(job_id)
 
     if job is None:
         raise APIException("Job not found", status_code=404)
+    
+    request_body = request.get_json(force=True, silent=True)
 
     if request_body is None:
         raise APIException("You must send information", status_code=404)
+    
+    if user.role.value == "admin":
+        if "type" in request_body:
+            job.type = request_body['type']
 
-    if "type" in request_body:
-        job.type = request_body['type']
+        if "brand" in request_body:
+            job.brand = request_body['brand']
 
-    if "brand" in request_body:
-        job.brand = request_body['brand']
+        if "model" in request_body:
+            job.model = request_body['model']
 
-    if "model" in request_body:
-        job.model = request_body['model']
+        if "serial_number" in request_body:
+            job.serial_number = request_body['serial_number']
 
-    if "serial_number" in request_body:
-        job.serial_number = request_body['serial_number']
+        if "status" in request_body:
+            job.status = request_body['status']
+            
+        if "issues" in request_body:
+            job.issues = request_body['issues']
 
-    if "status" in request_body:
-        job.status = request_body['status']
+        if "comments" in request_body:
+            job.comments = request_body['comments']
+            
+        if "id_technical" in request_body:
+            job.id_technical = request_body['id_technical']
         
-    if "issues" in request_body:
-        job.issues = request_body['issues']
-
-    if "comments" in request_body:
-        job.comments = request_body['comments']
-
-    if "id_technical" in request_body:
-        job.id_technical = request_body['id_technical']
+        if "id_client" in request_body:
+            job.id_client = request_body['id_client']
         
-    if "id_client" in request_body:
-        job.id_client = request_body['id_client']
+    elif user.role.value == "technical":
+        if "comments" in request_body:
+            job.comments = request_body['comments']
+        if "status" in request_body:
+            job.status = request_body['status']
+    else:
+        raise APIException("Access denied", status_code=403)
 
     job.update()
 
@@ -691,7 +826,17 @@ def updateJob(job_id):
 
 
 @app.route('/job/<int:job_id>', methods=['DELETE'])
+@jwt_required()
 def deleteJob(job_id):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    
+    if user.role.value != "admin":
+        raise APIException("Access denied", status_code=403)
+    
     job = Job.query.get(job_id)
 
     if job is None:
@@ -718,8 +863,8 @@ def send_email():
     return 'Correo enviado con éxito!'
 
 
+
 # this only runs if `$ python src/main.py` is executed
 if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 3001))
     app.run(host="0.0.0.0", port=PORT, debug=True)
-

@@ -71,12 +71,14 @@ body {
     color: #22B5BE;
   }
 }
+
 .icon {
   position: relative;
   color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
   &:hover {
     color: #D04E8D;
   }
@@ -88,8 +90,8 @@ body {
 
 
 .logo-footer {
-    width: 100%;
-  }
+  width: 100%;
+}
 
 .input-search {
   position: relative;

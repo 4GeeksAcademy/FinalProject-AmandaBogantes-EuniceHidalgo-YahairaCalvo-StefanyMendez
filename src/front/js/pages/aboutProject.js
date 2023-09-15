@@ -39,7 +39,6 @@ export const AboutProject = () => {
                     </div>
                 </div>
             </div>
-
             <div className='container container-card-obj'>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     <div className="col">
