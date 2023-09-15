@@ -1,7 +1,454 @@
-/*
-    home.css: This website contains selectors only used in home.css
+/*------------------------------------------HEADER----------------------------------------*/
+/* Cut and Background 1 */
+header {
+    height: 50vh;
+    width: 100%;
+    /* background-image: linear-gradient(0deg, #08AEEA 0%, #41206C 100%); */
+    clip-path: ellipse(100% 55% at 48% 44%);
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+*/ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  Background 2*/
+header {
+    width: 100%;
+    height: 37.5rem;
+    background: #bc4e9c;
+    background: -webkit-linear-gradient(to right, hsla(340, 95%, 50%, 0.459), hsla(317, 45%, 52%, 0.664)), url(https://pymstatic.com/106480/conversions/mitos-verdades-psicologia-online-wide_webp.webp);
+    background: linear-gradient(to right, hsla(340, 95%, 50%, 0.459), hsla(317, 45%, 52%, 0.664)), url(https://pymstatic.com/106480/conversions/mitos-verdades-psicologia-online-wide_webp.webp);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.titles-header {
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.titles-header h1 {
+    font-size: 50px;
+    color: #fff;
+}
+
+.titles-header h2 {
+    font-size: 30px;
+    font-weight: 300;
+    color: #fff;
+}
+
+/*  ---------------------------------------up--------------------------*/
+.card-home-title {
+    margin: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #41206C 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h3.title-home {
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* display: inline-block; */
+
+}
+
+h6.subtitles-home {
+    color: #6743CC;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 1.4rem */
+    position: relative;
+    text-shadow: 1px 1px 1px rgba(78, 78, 78, 0.8);
+}
+
+.titles-Products {
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+@keyframes bounceEffect {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/*------------------------------------------ABAOUT US----------------------------------------*/
+
+.container-aboutUs-home {
+    width: 100%;
+    align-items: center;
+    color: white;
+    align-items: center;
+}
+
+.container-about-us {
+    display: flex;
+    justify-content: center;
+}
+
+.container-textHome p span {
+    margin: 0;
+    background: #634779;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+}
+
+.container-cardInfHome {
+    margin: 0;
+}
+
+/*------------------------------------------PORTFOLIO/Our Services----------------------------------------*/
+
+.portfolio {
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 8rem;
+    margin-top: 8rem;
+    padding-bottom: 3rem;
+}
+
+.galeria-port {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.imagen-port {
+    width: 24%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+}
+
+.imagen-port>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hover-galeria {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: scale(0);
+    background: hsla(273, 91%, 27%, 0.7);
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hover-galeria img {
+    width: 50px;
+}
+
+.hover-galeria p {
+    color: #fff;
+}
+
+.imagen-port:hover .hover-galeria {
+    transform: scale(1);
+}
+
+/*------------------------------------------CLIENTS----------------------------------------*/
+
+
+.container-ourClients {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background-color: #ffffff16;
+}
+
+.card-img-clients {
+    margin: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.625rem;
+    object-fit: cover;
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 3.125rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+/*------------------------------------------OUR TEAM----------------------------------------*/
+
+
+.team-home {
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.img-team {
+    justify-content: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-ind {
+    margin: 1rem;
+    width: 28%;
+    align-content: center;
+    justify-content: center;
+}
+
+.team-ind img {
+    width: 20%;
+}
+
+.team-ind h3 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.team-ind p {
+    font-weight: 300;
+    align-items: center;
+
+}
+
+/*------------------------------------------MEDIA RESPONSIVE----------------------------------------*/
+@media screen and (max-width:900px) {
+    header {
+        background-position: center;
+    }
+
+    .container-about-us {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-us .container-textHome {
+        margin: 2rem;
+        width: 70%;
+    }
+
+    /* Galeria */
+
+    .imagen-port {
+        width: 44%;
+    }
+
+}
+
+
+/*----------------COMPONENTS--------------------COMPONENTS------------------------COMPONENTS---------------------- */
+
+
+/*------------------------------------------CARDCODE---------------------------------------- */
+
+.card-code {
+    margin: auto;
+    width: 70%;
+    height: 30rem;
+    background: url(https://e1.pxfuel.com/desktop-wallpaper/911/61/desktop-wallpaper-the-best-gamer-headsets-to-buy-gaming-headphones.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    background-attachment: fixed;
+    margin-bottom: 3rem;
+    border-radius: 3rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60vh;
+    border-radius: 2rem;
+    z-index: 2;
+    backdrop-filter: blur(2rem);
+    display: flex;
+    position: relative;
+
+    .code-title {
+        color: white;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        border: 1px solid rga(255, 255, 255, 0.18);
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%;
+        text-transform: capitalize;
+    }
+}
+
+.btn-code {
+    color: white;
+    align-items: center;
+    padding: 0px 30px;
+    height: 4rem;
+    border-radius: 20px;
+    background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+
+    &:hover {
+        box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
+    }
+
+    &:active {
+        -webkit-transform: translateY(0.25em);
+        transform: translateY(0.25em);
+    }
+}
+
+.formControlSearchCode {
+    width: 20rem;
+    height: 3rem;
+    max-width: 100%;
+    align-items: center;
+}
+
+.logo {
+    margin: 2rem;
+    height: 32%;
+    width: 18%;
+}
+
+/*------------------------------------------CARDPRODUCTS/Carousel----------------------------------------*/
+
+.carousel {
+    margin: auto;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    max-width: 56.25rem;
+    max-height: 34.375rem;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 30rem;
+    width: 100%;
+}
+
+.img-carousel {
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/*------------------------------------------CARDOFFERS----------------------------------------*/
+.container-offers {
+    margin: auto;
+    margin-bottom: 8rem;
+    padding-bottom: 3rem;
+    margin-top: 8rem;
+
+}
+
+/*------------------------------------------CARDINFORMATION----------------------------------------*/
+.container-information {
+    background-size: cover;
+    margin-bottom: 1.5rem;
+    overflow: auto;
+    padding: 1rem;
+}
+
+.card-group-information {
+    color: white;
+    margin: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.card-information {
+    margin-bottom: 1rem;
+    border-radius: 1.25rem;
+    background: #41206C;
+}
+
+.card-img-top {
+    margin: auto;
+    margin-top: 1rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-img {
+    height: 50rem;
+}
+
+/*------------------------------------------MEDIA RESPONSIVE----------------------------------------*/
+/* Media query for small devices */
+@media (max-width: 768px) {
+    .card-code {
+        width: 100%;
+        height: auto;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 0;
+    }
+
+    .formControlSearchCode {
+        width: 100%;
+    }
+
+    .btn-code {
+        width: 100%;
+        text-align: center;
+    }
+}

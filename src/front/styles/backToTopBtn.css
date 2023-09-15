@@ -1,0 +1,12 @@
+.go-top-btn {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    cursor: pointer;
+}
+
+.fa-angles-up{
+    color:#D04E8D ;
+    font-size: 40px;
+}
+

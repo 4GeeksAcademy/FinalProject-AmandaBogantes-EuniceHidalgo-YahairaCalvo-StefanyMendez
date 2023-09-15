@@ -1,0 +1,127 @@
+/* jobsAdmi.css */
+
+.titleJobsTable {
+
+    font-size: 2.5rem;
+    font-weight: bolder;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveLeftRight 5s ease forwards;
+}
+
+html,
+body,
+.intro {
+    height: 100%;
+}
+
+table {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: none;
+    outline: none;
+}
+
+.cardBodyJobs {
+    padding: 0.5rem;
+}
+
+.tableJobsItems {
+    border: none;
+    outline: none;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background: var(--gradient-2, linear-gradient(129deg, #2cd7e0 0%, #6743CC 100%));
+
+}
+
+.tableJobsHeader {
+    margin-bottom: 1rem;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    background-color: transparent;
+    color: white;
+}
+
+.formControlJobsSearchButton{
+    margin-right: 2rem;
+    border: 2px solid;
+    background-color: white;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
+.cell-size-jobs {
+    width: 12.5%;
+}
+
+.jobsButtons {
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+}
+
+.jobsCard {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.modal-dialog {
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+.jobsModalContent {
+    background: #1C1C1C !important;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+}
+
+.formModalJobs {
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    border-radius: 0;
+}
+
+.modal-label-input {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    font-family: 'Raleway', sans-serif;
+}
+input{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+textarea{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.option-job-modal {
+    background: #1C1C1C;
+    color: white;
+}
+
+.select-jobs-modal {
+    border-radius: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}

@@ -1,0 +1,84 @@
+
+
+.body1 {
+    min-height: 100vh;
+    background-image: url("https://watermark.lovepik.com/photo/20211123/large/lovepik-material-for-computer-maintenance-picture_500824720.jpg ");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.tituloH1 {
+    font-size: 3rem;
+    margin: 3rem 2rem;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    text-align: center;
+    animation: moveLeftRight 5s ease forwards;
+    background: linear-gradient(135deg, rba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rga(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 2.5rem;
+}
+
+.services {
+    margin: 0;
+    padding: 5px;
+}
+
+.item-service {
+    height: 31rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #41206C;
+    padding: 80px 30px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, .6);
+    border-radius: 9px;
+}
+
+.fa {
+    font-size: 30px;
+    margin: 10px;
+    color: black;
+}
+
+.tituloH2 {
+    color: whitesmoke;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.item-service hr {
+    width: 46px;
+    height: 3px;
+    background-color: #108288;
+    margin: 0 auto;
+    border: none;
+}
+
+.item-service p {
+    margin-top: 15px;
+    color: aliceblue;
+}
+
+.item-service:hover {
+    background-color: #6743CC;
+}
+
+.item-service {
+    box-shadow: 5px 7px 9px -3px #41206C;
+    cursor: pointer;
+    color: white;
+}

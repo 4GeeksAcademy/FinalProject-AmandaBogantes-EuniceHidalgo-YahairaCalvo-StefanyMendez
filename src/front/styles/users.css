@@ -1,0 +1,108 @@
+/* users.css */
+
+html,
+body,
+.intro {
+    height: 100%;
+}
+
+table {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: none;
+    outline: none;
+}
+
+.cell-question {
+    white-space: pre-line;
+}
+
+.cardBodyUsers {
+    padding: 0.5rem;
+}
+
+.users-cell-size {
+    width: 16%;
+}
+
+.tableUsersItems {
+    border: none;
+    outline: none;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background: var(--gradient-2, linear-gradient(129deg, #2cd7e0 0%, #6743CC 100%));
+}
+
+.tableUsersHeader {
+    margin-bottom: 1rem;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    background-color: transparent;
+    color: white;
+}
+
+.formControlUsersButtons{
+    margin-right: 2rem;
+    border: 2px solid;
+    background-color: white;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
+.usersButtons {
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+}
+
+.usersCard {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.usersModalContent {
+    background: #1C1C1C !important;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+}
+
+.formModalUsers {
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    border-radius: 0;
+}
+
+.modal-label-input {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.option-user-modal{
+    background: #1C1C1C;
+    color: white;
+}
+
+.select-user-modal{
+    border-radius: 0;
+}
+.titleUsersTable {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveLeftRight 5s ease forwards;
+
+}

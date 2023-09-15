@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.body-about {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("https://img.freepik.com/fotos-premium/tecnico-reparacion-computadora-portatil-rota-destornillador_185126-1339.jpg ");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.about-1 {
+    padding: 1rem;
+}
+
+.about-1 h1 {
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: capitalize;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    display: inline-block;
+    text-align: center;
+    animation: moveLeftRight 5s ease forwards;
+}
+
+.about-1 p {
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.about-1 {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    background: linear-gradient(135deg, rba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    border: 1px solid rga(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.about-item {
+    margin: 1rem 2rem;
+    background-color: #41206C;
+    padding: 2rem 2rem;
+    box-shadow: 0 0 9px rgba(0, 0, 0, .6);
+    border-radius: 1rem;
+    text-align: justify;
+    height: 90%;
+}
+
+.textAboutUs {
+    text-align: justify;
+}
+
+.fa {
+    font-size: 35px;
+    margin: 10px;
+}
+
+.itemH3 {
+    color: whitesmoke;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.about-item hr {
+    width: 46px;
+    height: 3px;
+    background-color: #108288;
+    margin: 0 auto;
+    border: none;
+}
+
+.about-item p {
+    margin-top: 2rem;
+    font-size: 15px;
+    color: whitesmoke;
+}
+
+
+.about-item:hover {
+    background-color: #6743CC;
+}

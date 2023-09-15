@@ -1,0 +1,78 @@
+.container-forgot {
+  background: url(https://media.istockphoto.com/id/1399980043/photo/technology-innovation-modern-futuristic-background.webp?b=1&s=170667a&w=0&k=20&c=d_SCKLxnRYJIq_k7IfnAr3o63bySvnfBYu3e84yFMyg=);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  padding: 3rem;
+}
+
+.lh1 {
+  color: white;
+}
+.form-forgot{
+  background-color: rgba(50, 50, 50, 0.2);
+  padding: 2rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+.logo1 {
+  width: 12rem;
+  height: 10.5rem;
+}
+
+.formControlForgotPassword {
+  width: Hug (130px);
+  height: 40px;
+  padding: 0px 30px 0px 30px;
+  border-radius: 20px;
+  gap: 15px;
+}
+
+.a1 {
+  color: white;
+  text-decoration: none;
+}
+
+.select-forgot-pass {
+  width: Hug (130px);
+  height: 40px;
+  padding: 0px 30px 0px 30px;
+  border-radius: 20px;
+  gap: 15px;
+}
+
+.group-forgot-pass {
+  border-radius: 20px;
+}
+
+.option-forgot-pass {
+  color: white;
+  background: #41206C;
+}
+
+.btnforgot {
+
+  height: 2.8rem;
+  padding: 0px 30px;
+  color: white;
+  border-radius: 20px;
+  background: var(--gradient-1, linear-gradient(149deg, #D04E8D 0%, #6D2CBF 100%));
+
+  &:hover {
+    box-shadow: 0 12px 16px 0 rgba(231, 59, 174, 0.377), 0 17px 50px 0 rgba(231, 59, 174, 0.377);
+  }
+
+  &:active {
+    -webkit-transform: translateY(0.25em);
+    transform: translateY(0.25em);
+  }
+}

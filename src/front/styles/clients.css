@@ -1,0 +1,104 @@
+/* clients.css */
+
+html,
+body,
+.intro {
+    height: 100%;
+}
+
+table {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    border: none;
+    outline: none;
+}
+
+.cardBodyClients {
+    padding: 0.5rem;
+}
+
+.tableItems {
+    border: none;
+    outline: none;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background: var(--gradient-2, linear-gradient(129deg, #2cd7e0 0%, #6743CC 100%));
+    
+}
+
+.tableHeader {
+    margin-bottom: 1rem;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
+.cell-size {
+    width: 20%;
+}
+
+.clientsButtons {
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+}
+
+.clientsCard {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.formControlSearchButton {
+    margin-right: 2rem;
+    border: 2px solid;
+    background-color: white;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.modal-dialog {
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+.clientsModalContent {
+    background: #1C1C1C !important;
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+}
+
+.formModalClients {
+    border-image: linear-gradient(to right, #D04E8D, #6D2CBF);
+    border-image-slice: 1;
+    border-radius: 0;
+}
+
+.modal-label-input {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.titleClientsTable {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    background: var(--gradient-2, linear-gradient(129deg, #22B5BE 0%, #6743CC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: moveLeftRight 5s ease forwards;
+
+}
