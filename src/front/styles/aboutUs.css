@@ -60,6 +60,12 @@
     padding: 2rem 2rem;
     box-shadow: 0 0 9px rgba(0, 0, 0, .6);
     border-radius: 1rem;
+    text-align: justify;
+    height: 90%;
+}
+
+.textAboutUs {
+    text-align: justify;
 }
 
 .fa {
