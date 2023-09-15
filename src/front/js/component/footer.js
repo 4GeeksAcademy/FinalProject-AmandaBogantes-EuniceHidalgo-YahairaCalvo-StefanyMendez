@@ -9,7 +9,7 @@ export const Footer = () => {
 	<footer className="footer mt-auto py-3 text-white">
 		<div className="row me-0">
 			<div className="col-lg-4 col-md-12 col-sm-12">
-				<img src={logo} alt="Logo" className="m-auto logo-footer ms-3" />
+				<img src={logo} alt="Logo" className="m-auto logo-footer m-auto" />
 			</div>
 
 			<div className="col-lg-1 col-md-12 col-sm-12 text-center m-auto">
@@ -53,7 +53,7 @@ export const Footer = () => {
 				</div>
 
 				<div className="col mb-5">
-					<Link to="/" className="link-footer text-decoration-none">
+					<Link to="/contactUs" className="link-footer text-decoration-none">
 						<span className="footer-span">Contact</span>
 					</Link>
 				</div>

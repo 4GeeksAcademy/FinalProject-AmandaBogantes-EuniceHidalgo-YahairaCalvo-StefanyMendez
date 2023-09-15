@@ -1,6 +1,6 @@
 /*------------------------------------------Top----------------------------------------*/
 .title-contactUs {
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: bold;
   color: white;
   text-align: center;
@@ -16,6 +16,7 @@
 }
 /*------------------------------------------Container----------------------------------------*/
 .container-contactUs {
+  margin-top: 2rem;
   margin-top: 2rem;
 }
 /*------------------------------------------Image----------------------------------------*/
@@ -79,7 +80,7 @@
 }
 
 .social-information {
-  margin: 2rem;
+  margin-bottom: 2rem;
   color: white;
   align-items: center;
   justify-content: center;

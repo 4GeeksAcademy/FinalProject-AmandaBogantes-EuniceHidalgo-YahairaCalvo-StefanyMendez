@@ -19,6 +19,7 @@ export const JobsTechnicalTableHeader = () => {
                                                         <th scope="col" className="text-white text-center cell-size-technical-jobs">Type</th>
                                                         <th scope="col" className="text-white text-center cell-size-technical-jobs">Status</th>
                                                         <th scope="col" className="text-white text-center cell-size-technical-jobs">Actions</th>
+                                                        <th scope="col" className="text-white text-center cell-size-technical-jobs">Message</th>
                                                     </tr>
                                                 </thead>
                                             </table>

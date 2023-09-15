@@ -11,7 +11,6 @@ const OurServices = () => {
             <div className='content-box-lg'>
                 <div className='container'>
                     <div className='row'>
-
                         <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
@@ -22,7 +21,7 @@ const OurServices = () => {
                                 <p className=''>Optimize your operations with our comprehensive equipment maintenance services. Our skilled technicians ensure peak performance and longevity of your machinery.</p>
                             </div>
                         </div>
-
+      
                         <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>

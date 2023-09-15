@@ -8,16 +8,16 @@ export const JobsTechnicalModal = () => {
 
     return (
         <form className="modal" tabIndex="-1" style={{ display: store.show_modal ? "inline-block" : "none" }} onSubmit={(e) => {
-                e.preventDefault()
-                actions.update_job_by_id(store.job_id.id)
-                e.target.reset()
-           
+            e.preventDefault()
+            actions.update_job_by_id(store.job_id.id)
+            e.target.reset()
+
         }}>
             <div className="modal-dialog modal-dialog-centered p-1 fs-5">
                 <div className="modal-content jobsTechnicalModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold fs-5">Job Details</h5>
-                        <button type="button" className="close btn btn-login fw-bold text-center fw-bold fs-5"
+                        <button type="reset" className="close btn btn-login fw-bold text-center fw-bold fs-5"
                             onClick={() => actions.handle_delete_modal()}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>
@@ -165,8 +165,8 @@ export const JobsTechnicalModal = () => {
                         <div className="form-group mb-2">
                             <label htmlFor="time_stamp" className="modal-label-input" hidden={store.hidden_time_stamp}>
                                 <i className="fa-regular fa-clock me-1"></i>
-                                Time Stamp: {!!store.job_id ? store.job_id.time_stamp : ""}
-                                </label>
+                                Time Stamp: {!!store.job_id ? new Date(store.job_id.time_stamp).toLocaleString() : ""}
+                            </label>
                         </div>
                     </div>
                     <div className="modal-footer d-flex justify-content-center aligh-items-center">

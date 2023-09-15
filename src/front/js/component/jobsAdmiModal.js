@@ -11,9 +11,8 @@ export const JobsAdmiModal = (...props) => {
         actions.get_all_users()
     }, [])
 
-
     return (
-        <form className='modal' tabIndex="-1" style={{ display: store.show_modal ? "inline-block" : "none" }} onSubmit={(e) => {
+        <form className='modal' id="exampleModal" tabIndex="-1" style={{ display: store.show_modal ? "inline-block" : "none" }} onSubmit={(e) => {
             e.preventDefault()
             if (!!store.job_id) {
                 actions.update_job_by_id(store.job_id.id)
@@ -22,13 +21,12 @@ export const JobsAdmiModal = (...props) => {
                 actions.add_job()
                 e.target.reset()
             }
-
         }}>
             <div className="modal-dialog modal-dialog-centered p-1 fs-5">
                 <div className="modal-content jobsModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold fs-5">Job</h5>
-                        <button type="button" className="close btn btn-login fw-bold text-center fw-bold fs-5"
+                        <button type="reset" className="close btn btn-login fw-bold text-center fw-bold fs-5"
                             onClick={() => { actions.handle_delete_modal() }}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>
@@ -121,7 +119,7 @@ export const JobsAdmiModal = (...props) => {
                                     <option className='option-job-modal' defaultValue="null">Select the status</option>
                                     <option className='option-job-modal'
                                         selected={!!store.job_id && store.job_id.status == "recieve" ? true : false}
-                                        value="recieve">Recieved
+                                        value="recieve">Received
                                     </option>
                                     <option className='option-job-modal'
                                         selected={!!store.job_id && store.job_id.status == "review" ? true : false}
@@ -206,7 +204,7 @@ export const JobsAdmiModal = (...props) => {
                         <div className="form-group mb-2">
                             <label htmlFor="time_stamp" className="modal-label-input" hidden={store.hidden_time_stamp}>
                                 <i className="fa-regular fa-clock me-1">
-                                </i>Time Stamp: {!!store.job_id ? store.job_id.time_stamp : ""}
+                                </i>Time Stamp: {!!store.job_id ? new Date(store.job_id.time_stamp).toLocaleString() : ""}
                             </label>
                         </div>
                     </div>
@@ -234,3 +232,4 @@ JobsAdmiModal.propTypes = {
 JobsAdmiModal.defaultProps = {
     show: false
 }
+

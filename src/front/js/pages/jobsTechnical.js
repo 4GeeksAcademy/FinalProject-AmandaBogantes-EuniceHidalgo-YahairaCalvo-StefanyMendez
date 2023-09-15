@@ -23,7 +23,7 @@ export const JobsTechnical = () => {
                     <JobsTechnicalTable key={index} job={job} />
                 )
             })}
-            <JobsTechnicalModal show={store.show_modal}/>
+            <JobsTechnicalModal show={store.show_modal} />
         </>
     )
 }

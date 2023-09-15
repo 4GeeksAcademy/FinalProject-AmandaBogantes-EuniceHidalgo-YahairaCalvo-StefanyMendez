@@ -161,6 +161,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			forgot_password: async () => {
 				const store = getStore()
+				const actions = getActions()
+
 				try {
 					const response = await fetch(process.env.BACKEND_URL + `/user/${store.username}`, {
 						method: 'GET'
@@ -210,6 +212,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			check_question_answer: () => {
 				const store = getStore()
+				const actions = getActions()
+
 				if (store.question_security == null || store.answer_security == null || store.answer_security == "") {
 					Swal.fire({
 						position: 'top-end',
@@ -241,6 +245,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			change_password: async () => {
 				const store = getStore()
+				const actions = getActions()
+
 				if (store.password == store.confirm_password) {
 					try {
 						if (store.password == "" || store.password == null || store.confirm_password == "" || store.confirm_password == null) {
@@ -465,7 +471,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const result = await response.json()
 				console.log(result);
-				if (result.msg== "ok"){
+				if (result.msg == "ok") {
 					setStore({ user_deleted: true })
 					Swal.fire({
 						title: 'Deleted!',
@@ -475,8 +481,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						color: '#FFFFFF',
 						background: '#41206C',
 						timer: 2000
-					  })
-				}else{
+					})
+				} else {
 					Swal.fire({
 						position: 'top-end',
 						icon: 'error',
@@ -614,9 +620,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						timer: 3000
 					})
 					actions.handle_delete_modal()
-					setStore({ first_name: null })
-					setStore({ last_name: null })
-					setStore({ phone: null })
+					actions.clear_store()
+
 				} else {
 					Swal.fire({
 						position: 'top-end',
@@ -628,9 +633,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					setStore({ first_name: null })
-					setStore({ last_name: null })
-					setStore({ phone: null })
+					actions.clear_store()
 				}
 			},
 			search_clients: (input) => {
@@ -673,6 +676,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
 				setStore({ jobs_search: result.Jobs })
+			},
+			get_job_by_code: async (job_code) => {
+				const response = await fetch(process.env.BACKEND_URL + `/job/code/${job_code}`, {
+					method: 'GET'
+				})
+				const result = await response.json()
+				if (result.msg == "ok") {
+					Swal.fire({
+						title: 'Welcome ' + result.Job.client.first_name + ' ' + result.Job.client.last_name,
+						background: '#41206C',
+						color: '#FFFFFF',
+						width: 650,
+						html: `Code: ${result.Job.code}<br><br><h4>Status: ${result.Job.status}</h4>`,
+						footer: 'Thank you for choosing us!',
+						showClass: {
+							popup: 'animate__animated animate__swing'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutBottomRight'
+						}
+					})
+				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 2000,
+						showClass: {
+							popup: 'animate__animated animate__swing'
+						},
+						hideClass: {
+							popup: 'animate__animated animate__fadeOutBottomRight'
+						}
+					})
+				}
+				setStore({ code: null })
 			},
 			add_job: async () => {
 				const store = getStore()
@@ -782,6 +824,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					job.id_technical = store.technical_id
 				}
 
+
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(job),
@@ -795,7 +838,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
-						title: 'Add',
+						title: 'Update',
 						text: `The Job ${result.Job.code} was updated`,
 						showConfirmButton: false,
 						color: '#FFFFFF',
@@ -833,6 +876,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (job.code.includes(input) ||
 						job.type.toLowerCase().includes(input.toLowerCase()) ||
 						job.status.toLowerCase().includes(input.toLowerCase()) ||
+						job.technical.username.toLowerCase().includes(input.toLowerCase()) ||
 						job.id.toString().includes(input)) {
 						return job
 					}
@@ -856,45 +900,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ code: result })
 			},
 
-			get_job_by_code: async (job_code) => {
-				const response = await fetch(process.env.BACKEND_URL + `/job/code/${job_code}`, {
-					method: 'GET'
-				})
-				const result = await response.json()
-				if (result.msg == "ok") {
-					Swal.fire({
-						title: 'Welcome ' + result.Job.client.first_name + ' ' + result.Job.client.last_name,
-						background: '#41206C',
-						color: '#FFFFFF',
-						width: 650,
-						html: `Code: ${result.Job.code}<br><br><h4>Status: ${result.Job.status}</h4>`,
-						footer: 'Thank you for choosing us!',
-						showClass: {
-							popup: 'animate__animated animate__swing'
-						},
-						hideClass: {
-							popup: 'animate__animated animate__fadeOutBottomRight'
-						}
-					})
-				} else {
-					Swal.fire({
-						icon: 'error',
-						title: 'Opppsss',
-						text: result.message,
-						showConfirmButton: false,
-						color: '#FFFFFF',
-						background: '#41206C',
-						timer: 2000,
-						showClass: {
-							popup: 'animate__animated animate__swing'
-						},
-						hideClass: {
-							popup: 'animate__animated animate__fadeOutBottomRight'
-						}
-					})
-				}
-			},
-
 			handle_show_modal: () => {
 				const store = getStore()
 				const actions = getActions()
@@ -915,32 +920,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			handle_delete_modal: () => {
+				const actions = getActions()
+
 				setStore({ show_modal: false })
 				setStore({ user_id: null })
 				setStore({ client_id: null })
 				setStore({ job_id: null })
 
+				actions.clear_store()
+
 			},
 
-			handleSubmit:  async (e,data) => {
+			handleSubmit: async (e, data) => {
 				e.preventDefault();
 				const response = await fetch(process.env.BACKEND_URL + '/send_email', {
 					method: 'POST',
-					body:JSON.stringify(data),
+					body: JSON.stringify(data),
 					headers: {
-						"Content-Type":"application/json"
-				    }
+						"Content-Type": "application/json"
+					}
 				})
 				// const result = await response.json()
-			 
+
 				if (response.ok) {
-				   alert('Send Message...');
+					alert('Send Message...');
 				} else {
-				   alert('Error');
+					alert('Error');
 				}
 			},
+
 			clear_store: () => {
-				
+
 				setStore({ username: null })
 				setStore({ first_name: null })
 				setStore({ last_name: null })
@@ -962,8 +972,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ client_id: null })
 				setStore({ technical_id: null })
 			},
-      
-			 handle_change: (e) => {
+
+			handle_change: (e) => {
 				setStore({ [e.target.name]: e.target.value })
 			},
 		}
