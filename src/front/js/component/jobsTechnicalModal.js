@@ -8,10 +8,10 @@ export const JobsTechnicalModal = () => {
 
     return (
         <form className="modal" tabIndex="-1" style={{ display: store.show_modal ? "inline-block" : "none" }} onSubmit={(e) => {
-                e.preventDefault()
-                actions.update_job_by_id(store.job_id.id)
-                e.target.reset()
-           
+            e.preventDefault()
+            actions.update_job_by_id(store.job_id.id)
+            e.target.reset()
+
         }}>
             <div className="modal-dialog modal-dialog-centered p-1 fs-5">
                 <div className="modal-content jobsTechnicalModalContent p-2">
@@ -166,7 +166,7 @@ export const JobsTechnicalModal = () => {
                             <label htmlFor="time_stamp" className="modal-label-input" hidden={store.hidden_time_stamp}>
                                 <i className="fa-regular fa-clock me-1"></i>
                                 Time Stamp: {!!store.job_id ? new Date(store.job_id.time_stamp).toLocaleString() : ""}
-                                </label>
+                            </label>
                         </div>
                     </div>
                     <div className="modal-footer d-flex justify-content-center aligh-items-center">

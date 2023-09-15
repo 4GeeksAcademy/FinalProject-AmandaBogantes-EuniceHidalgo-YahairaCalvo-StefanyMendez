@@ -21,14 +21,13 @@ export const JobsAdmiModal = (...props) => {
                 actions.add_job()
                 e.target.reset()
             }
-
         }}>
             <div className="modal-dialog modal-dialog-centered p-1 fs-5">
                 <div className="modal-content jobsModalContent p-2">
                     <div className="modal-header">
                         <h5 className="modal-title fw-bold fs-5">Job</h5>
                         <button type="reset" className="close btn btn-login fw-bold text-center fw-bold fs-5"
-                            onClick={() => {actions.handle_delete_modal()}}>
+                            onClick={() => { actions.handle_delete_modal() }}>
                             <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
@@ -159,16 +158,16 @@ export const JobsAdmiModal = (...props) => {
                                     name='technical_id'>
                                     <option className='option-job-modal' defaultValue="null">Select the Technical</option>
                                     {!!store.users && store.users.map((user, index) => {
-                                            if (user.role == "technical") {
-                                                return (
-                                                    <option key={index}
-                                                        className='option-job-modal'
-                                                        selected={!!store.job_id && store.job_id.technical.id == user.id ? true : false}
-                                                        value={user.id}>{user.id} - {user.first_name} {user.last_name}
-                                                    </option>
-                                                )
-                                            }
-                                        })}
+                                        if (user.role == "technical") {
+                                            return (
+                                                <option key={index}
+                                                    className='option-job-modal'
+                                                    selected={!!store.job_id && store.job_id.technical.id == user.id ? true : false}
+                                                    value={user.id}>{user.id} - {user.first_name} {user.last_name}
+                                                </option>
+                                            )
+                                        }
+                                    })}
                                 </select>
                             </div>
                         </div>
