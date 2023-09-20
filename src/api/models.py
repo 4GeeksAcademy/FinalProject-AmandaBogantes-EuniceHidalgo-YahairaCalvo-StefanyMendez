@@ -6,15 +6,18 @@ import enum
 
 db = SQLAlchemy()
 
+
 class role(enum.Enum):
     admin = "admin"
     technical = "technical"
+
 
 class questions(enum.Enum):
     pet = "What is the name of your first pet?"
     color = "What is your favorite color?"
     movie = "What is your favorite movie?"
     food = "What is your favorite food?"
+
 
 class User(db.Model):
 
@@ -139,10 +142,9 @@ class Job(db.Model):
         }
 
     def save(self):
-        
+
         db.session.add(self)
         db.session.commit()
-        
 
     def update(self):
         db.session.commit()

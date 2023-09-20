@@ -8,8 +8,8 @@ export const Footer = () => {
 	return(
 	<footer className="footer mt-auto py-3 text-white">
 		<div className="row me-0">
-			<div className="col-lg-4 col-md-12 col-sm-12">
-				<img src={logo} alt="Logo" className="m-auto logo-footer m-auto" />
+			<div className="col-lg-4 col-md-12 col-sm-12 text-center">
+				<img src={logo} alt="Logo" className="m-auto logo-footer" />
 			</div>
 
 			<div className="col-lg-1 col-md-12 col-sm-12 text-center m-auto">

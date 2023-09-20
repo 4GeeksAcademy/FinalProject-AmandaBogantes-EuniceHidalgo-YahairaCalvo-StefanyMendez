@@ -269,24 +269,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 							const response = await fetch(process.env.BACKEND_URL + `/user/${store.user_question.id}`, {
 								method: 'PUT',
 								body: JSON.stringify(user),
-								headers: { 
+								headers: {
 									"Content-Type": "application/json",
-									'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-									} 
+								}
 							})
 							const result = await response.json()
-							setStore({ password_changed: true })
-							Swal.fire({
-								position: 'top-end',
-								icon: 'success',
-								title: 'Good',
-								text: "Password Changed",
-								showConfirmButton: false,
-								color: '#FFFFFF',
-								background: '#41206C',
-								timer: 3000
-							})
-							actions.clear_store()
+
+							if (result.msg == "ok") {
+								setStore({ password_changed: true })
+								Swal.fire({
+									position: 'top-end',
+									icon: 'success',
+									title: 'Good',
+									text: "Password Changed",
+									showConfirmButton: false,
+									color: '#FFFFFF',
+									background: '#41206C',
+									timer: 3000
+								})
+								actions.clear_store()
+							}
+							else {
+								Swal.fire({
+									position: 'top-end',
+									icon: 'error',
+									title: 'Opppsss',
+									text: result.message,
+									showConfirmButton: false,
+									color: '#FFFFFF',
+									background: '#41206C',
+									timer: 3000
+								})
+							}
 						}
 					} catch (error) {
 						console.log(error + " Error in change_password backEnd")
@@ -321,10 +335,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + '/user', {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ users: result.Users })
@@ -339,10 +353,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ show_modal: true })
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ user_id: result.User })
@@ -384,10 +398,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + '/user', {
 					method: 'POST',
 					body: JSON.stringify(user),
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 
@@ -416,7 +430,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					actions.clear_store()
 				}
 
 			},
@@ -445,10 +458,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(user),
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token
+					}
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
@@ -476,26 +489,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					actions.clear_store()
+
 				}
 
 			},
 			delete_user_by_id: async (user_id) => {
 				const token = localStorage.getItem('jwt-token')
-				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id}`, {
+				const response = await fetch(process.env.BACKEND_URL + `/user/${user_id.id}`, {
 					method: 'DELETE',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
-				console.log(result);
 				if (result.msg == "ok") {
 					setStore({ user_deleted: true })
 					Swal.fire({
 						title: 'Deleted!',
-						text: `The user ${user.first_name} ${user.last_name} was deleted`,
+						text: `The user ${user_id.first_name} ${user_id.last_name} was deleted`,
 						icon: 'success',
 						showConfirmButton: false,
 						color: '#FFFFFF',
@@ -514,7 +526,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						timer: 3000
 					})
 				}
-
 			},
 			search_users: (input) => {
 				const store = getStore();
@@ -537,10 +548,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + '/client', {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ clients: result.clients })
@@ -553,10 +564,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ client_id: result.Client })
@@ -581,10 +592,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + '/client', {
 					method: 'POST',
 					body: JSON.stringify(client),
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 
@@ -611,8 +622,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						color: '#FFFFFF',
 						background: '#41206C',
 						timer: 3000
-					})
-					actions.clear_store()
+					})		
 				}
 
 			},
@@ -635,13 +645,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + `/client/${client_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(client),
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
+					actions.handle_delete_modal()
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
@@ -652,7 +663,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					actions.handle_delete_modal()
 					actions.clear_store()
 
 				} else {
@@ -666,7 +676,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					actions.clear_store()
 				}
 			},
 			search_clients: (input) => {
@@ -686,10 +695,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + '/job', {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
@@ -703,10 +712,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ hidden_btn_new_code: true })
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ job_id: result.Job })
@@ -715,10 +724,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const token = localStorage.getItem('jwt-token')
 				const response = await fetch(process.env.BACKEND_URL + `/job/technical/${user_login_id}`, {
 					method: 'GET',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				setStore({ jobs: result.Jobs })
@@ -803,10 +812,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + "/job", {
 					method: 'POST',
 					body: JSON.stringify(job),
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				}
 
 				)
@@ -836,7 +845,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					actions.clear_store()
 				}
 			},
 			update_job_by_id: async (job_id) => {
@@ -877,10 +885,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
 					method: 'PUT',
 					body: JSON.stringify(job),
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
 				if (result.msg == "ok") {
@@ -908,21 +916,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 						background: '#41206C',
 						timer: 3000
 					})
-					actions.clear_store()
 				}
 
 			},
 			delete_job_by_id: async (job_id) => {
 				const token = localStorage.getItem('jwt-token')
-				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id}`, {
+				const response = await fetch(process.env.BACKEND_URL + `/job/${job_id.id}`, {
 					method: 'DELETE',
-					headers: { 
+					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer '+ token // ⬅⬅⬅ authorization token
-						} 
+						'Authorization': 'Bearer ' + token // ⬅⬅⬅ authorization token
+					}
 				})
 				const result = await response.json()
-				setStore({ job_deleted: true })
+				if (result.msg == "ok") {
+					setStore({ job_deleted: true })
+					Swal.fire({
+						title: 'Deleted!',
+						text: `The job ${job_id.code} was deleted`,
+						icon: 'success',
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 2000
+					})
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'error',
+						title: 'Opppsss',
+						text: result.message,
+						showConfirmButton: false,
+						color: '#FFFFFF',
+						background: '#41206C',
+						timer: 3000
+					})
+				}
 			},
 			search_jobs: (input) => {
 				const store = getStore();

@@ -78,7 +78,7 @@ export const Home = () => {
 				</section>
 
 				<section className="container-ourClients">
-					<h3 className="title-home">What our costumers</h3>
+					<h3 className="title-home">What our costumers say</h3>
 					<div className="row">
 						<div className="col-md-4">
 							<div className="card-group-information">
