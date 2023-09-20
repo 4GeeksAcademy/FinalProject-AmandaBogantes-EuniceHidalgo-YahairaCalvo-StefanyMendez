@@ -291,13 +291,7 @@ def addUser():
 
 
 @app.route('/user/<int:user_id>', methods=['PUT'])
-@jwt_required()
 def updateUser(user_id):
-    current_user = get_jwt_identity()
-    user_current = User.query.filter_by(username=current_user).first()
-    
-    if user_current is None:
-        raise APIException("User not found", status_code=404)
     
     user = User.query.get(user_id)
     request_body = request.get_json(force=True, silent=True)
@@ -305,8 +299,6 @@ def updateUser(user_id):
     if user is None:
         raise APIException("User not found", status_code=404)
     
-    if user_current.role.value != "admin":
-        raise APIException("Access denied", status_code=403)
 
     if request_body is None:
         raise APIException("You must send information", status_code=404)

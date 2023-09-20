@@ -26,6 +26,7 @@ const ChangePass = () => {
                     placeholder='NewPassword'
                     name='password'
                     onChange={actions.handle_change}
+                    rightIcon
                 />
                 <input
                     className='form-control formControlChangePassword mb-3'

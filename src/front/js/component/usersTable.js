@@ -42,7 +42,7 @@ export const UsersTable = ({ user }, ...props) => {
 
                                 }).then((result) => {
                                   if (result.isConfirmed) {
-                                    actions.delete_user_by_id(user.id)
+                                    actions.delete_user_by_id(user)
                                     actions.delete_user_change()
                                   }
                                 })}>
