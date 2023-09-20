@@ -27,15 +27,19 @@ export const AboutProject = () => {
                 <div className="row row-cols-1 row-cols-md-4 text-center">
                     <div className="col">
                         <img className='card-img-top photo' src={Amanda} />
+                        <label className='text-white mt-2 fs-4'>Amanda Bogantes</label>
                     </div>
                     <div className="col">
                         <img className='card-img-top photo' src={Eunice} />
+                        <label className='text-white mt-2 fs-4'>Eunice Hidalgo</label>
                     </div>
                     <div className="col">
                         <img className='card-img-top photo' src={Stefany} />
+                        <label className='text-white mt-2 fs-4'>Stefany Méndez</label>
                     </div>
                     <div className="col">
                         <img className='card-img-top photo' src={Yahaira} />
+                        <label className='text-white mt-2 fs-4'>Yahaira Calvo</label>
                     </div>
                 </div>
             </div>
