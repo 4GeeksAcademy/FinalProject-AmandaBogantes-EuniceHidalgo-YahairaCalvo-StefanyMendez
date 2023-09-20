@@ -28,9 +28,9 @@ const ForgotPass = () => {
                     onChange={actions.handle_change}
                 />
                 <div className='text-center'>
-                    <button className='btnforgot btn'>Check</button>
+                    <button className='btnforgot btn mb-2 me-2'>Check</button>
                     <Link to="/login">
-                        <button className='btnforgot btn ms-2'>Cancel</button>
+                        <button className='btnforgot btn '>Cancel</button>
                     </Link>
                 </div>
             </form>

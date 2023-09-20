@@ -46,26 +46,18 @@ export const JobsAdmiTable = ({ job }, ...props) => {
 
                                                                     }).then((result) => {
                                                                         if (result.isConfirmed) {
-                                                                            actions.delete_job_by_id(job.id)
+                                                                            actions.delete_job_by_id(job)
                                                                             actions.delete_job_change()
-                                                                            Swal.fire({
-                                                                                title: 'Deleted!',
-                                                                                text: `The job ${job.code} was deleted`,
-                                                                                icon: 'success',
-                                                                                showConfirmButton: false,
-                                                                                color: '#FFFFFF',
-                                                                                background: '#41206C',
-                                                                                timer: 2000
-                                                                            })
                                                                         }
                                                                     })}>
                                                                 <i className="fa-solid fa-trash"></i>
                                                             </button>
                                                         </td>
                                                         <td className="text-center cell-size-jobs align-middle">
-                                                            <a href={`https://api.whatsapp.com/send?phone=${job.client.phone}&text=Hello ${job.client.first_name} ${job.client.last_name}! The EYA Solutions' team hopes that you're doing great. 
-                                                            We want to let you know that the status of your ${job.type} , code ${job.code} is: ${job.status}.`} 
-                                                            className="btn btn-login">
+                                                            <a href={`https://api.whatsapp.com/send?phone=${job.client.phone}&text=Hello ${job.client.first_name} ${job.client.last_name}!
+                                                             The EYA Solutions' team hopes that you're doing great. 
+                                                            We want to let you know that the status of your ${job.type} , code ${job.code} is: ${job.status}.`}
+                                                                className="btn btn-login" target="_blank">
                                                                 <i className="fa-brands fa-whatsapp fs-3 mt-2"></i>
                                                             </a>
                                                         </td>
