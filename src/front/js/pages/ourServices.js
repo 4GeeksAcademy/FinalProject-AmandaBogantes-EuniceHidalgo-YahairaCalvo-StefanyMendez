@@ -14,7 +14,7 @@ const OurServices = () => {
                         <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
-                                    <i className='fa fa-desktop'></i>
+                                    <i className='icon-ourservices fa fa-desktop'></i>
                                 </div>
                                 <h4 className='tituloH2'>Maintenance</h4>
                                 <hr />
@@ -25,7 +25,7 @@ const OurServices = () => {
                         <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
-                                    <i className='fa fa-tablet'></i>
+                                    <i className='icon-ourservices fa fa-tablet'></i>
                                 </div>
                                 <h4 className='tituloH2'>Component purchase</h4>
                                 <hr />
@@ -36,7 +36,7 @@ const OurServices = () => {
                         <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
-                                    <i className='fa fa-desktop'></i>
+                                    <i className='icon-ourservices fa fa-desktop'></i>
                                 </div>
                                 <h4 className='tituloH2'>Spare parts sale</h4>
                                 <hr />
@@ -47,7 +47,7 @@ const OurServices = () => {
                         <div className='col-md-6 col-sm-12 col-lg-3'>
                             <div className='item-service text-center'>
                                 <div className='icon-service'>
-                                    <i className='fa fa-tablet'></i>
+                                    <i className='icon-ourservices fa fa-tablet'></i>
                                 </div>
                                 <h4 className='tituloH2'>Repair</h4>
                                 <hr />
