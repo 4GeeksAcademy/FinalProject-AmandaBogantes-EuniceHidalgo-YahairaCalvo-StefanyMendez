@@ -173,8 +173,8 @@ export const JobsTechnicalModal = () => {
                         <button type="submit" className="btn btn-login fw-bold text-center fs-5">
                             Save
                         </button>
-                        <button type="reset" className="btn btn-login fw-bold text-center fs-5">
-                            Clear
+                        <button type="reset" className="btn btn-login fw-bold text-center fs-5" onClick={() => actions.handle_delete_modal()}>
+                            Cancel
                         </button>
                     </div>
                 </div>

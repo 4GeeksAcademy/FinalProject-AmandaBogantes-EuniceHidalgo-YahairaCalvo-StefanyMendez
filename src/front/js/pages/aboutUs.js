@@ -12,7 +12,7 @@ const AboutUs = () => {
                 <div className='row  '>
                     <div className='about-1 ms-auto mt-5'>
                         <h1 className="fw-bold">About Us</h1>
-                        <p className='textAboutUs'>In the year 2023, four visionary women, experts in different areas of technology, joined forces to found EYA Solutions, a company that has become a beacon of innovation in the world of web development and asset management.
+                        <p className='textAboutUs p-2 mx-4'>In the year 2023, four visionary women, experts in different areas of technology, joined forces to found EYA Solutions, a company that has become a beacon of innovation in the world of web development and asset management.
 
                             Each of these women brought a unique and valuable perspective to the company. With backgrounds in artificial intelligence, cybersecurity, user experience design, and software development, they combined their skills to create a revolutionary web platform aimed at equipment maintenance.</p>
                     </div>
