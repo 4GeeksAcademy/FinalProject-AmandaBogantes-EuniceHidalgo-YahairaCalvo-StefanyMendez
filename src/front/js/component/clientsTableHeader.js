@@ -16,7 +16,7 @@ export const ClientsTableHeader = () => {
                                                     <tr>
                                                         <th scope="col" className="text-white text-center cell-size">Client ID</th>
                                                         <th scope="col" className="text-white text-center cell-size">First Name</th>
-                                                        <th scope="col" className="text-white text-center cell-size">Full Name</th>
+                                                        <th scope="col" className="text-white text-center cell-size">Last Name</th>
                                                         <th scope="col" className="text-white text-center cell-size">Phone</th>
                                                         <th scope="col" className="text-white text-center cell-size">Actions</th>
                                                     </tr>

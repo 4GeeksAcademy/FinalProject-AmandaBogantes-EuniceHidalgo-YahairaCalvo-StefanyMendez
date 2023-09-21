@@ -25,8 +25,8 @@
     text-align: center;
     animation: moveLeftRight 5s ease forwards;
     background: linear-gradient(135deg, rba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     border-radius: 20px;
     border: 1px solid rga(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -81,4 +81,7 @@
     box-shadow: 5px 7px 9px -3px #41206C;
     cursor: pointer;
     color: white;
+}
+.icon-ourservices{
+    color:#D04E8D
 }
